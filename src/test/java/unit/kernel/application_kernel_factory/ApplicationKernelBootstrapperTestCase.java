@@ -1,4 +1,4 @@
-package unit.kernel.application_kernel_bootstrapper;
+package unit.kernel.application_kernel_factory;
 
 import exceptions.UnableToCreateKernelException;
 import kernel.ApplicationKernelFactory;

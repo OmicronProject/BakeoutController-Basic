@@ -3,7 +3,7 @@ package unit.kernel.models;
 import unit.kernel.KernelTestCase;
 
 /**
- * Created by mkononen on 07/02/17.
+ * Base class for unit tests of {@link kernel.models}
  */
 public abstract class ModelsTestCase extends KernelTestCase {
 }

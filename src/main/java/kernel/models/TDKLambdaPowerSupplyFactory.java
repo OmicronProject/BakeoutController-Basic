@@ -6,7 +6,6 @@ import gnu.io.PortInUseException;
 import gnu.io.UnsupportedCommOperationException;
 import kernel.serial_ports.PortConfiguration;
 import kernel.serial_ports.SerialPort;
-import kernel.views.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
