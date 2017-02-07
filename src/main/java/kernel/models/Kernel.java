@@ -1,8 +1,8 @@
 package kernel.models;
 
 import devices.DeviceList;
-import kernel.controllers.ConnectionRequestFactory;
-import kernel.controllers.RS232PortConfigurationFactory;
+import kernel.controllers.*;
+import kernel.controllers.TDKLambdaPowerSupplyFactory;
 import kernel.serial_ports.PortDriver;
 import kernel.serial_ports.SerialPort;
 import kernel.views.CommPortReporter;
@@ -23,12 +23,20 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
      */
     private PortDriver portDriver;
 
+    private DeviceRegistry deviceRegistry;
+
+    private kernel.controllers.TDKLambdaPowerSupplyFactory
+            tdkLambdaPowerSupplyFactory;
+
     /**
      * @param portDriver The driver to be used for managing the RS232 serial
      *                   port
      */
     public Kernel(PortDriver portDriver){
         this.portDriver = portDriver;
+        this.deviceRegistry = new DeviceRegistry();
+        this.tdkLambdaPowerSupplyFactory = new kernel.models
+                .TDKLambdaPowerSupplyFactory();
     }
 
     /**
@@ -91,5 +99,22 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
     @Override
     public ConnectionRequestFactory getConnectionRequestFactory(){
         return new StandaloneConnectionRequest();
+    }
+
+    @Contract(pure = true)
+    @Override
+    public kernel.controllers.DeviceRegistry getDeviceRegistryController(){
+        return this.deviceRegistry;
+    }
+
+    @Contract(pure = true)
+    @Override
+    public kernel.views.DeviceRegistry getDeviceRegistryView(){
+        return this.deviceRegistry;
+    }
+
+    @Override
+    public TDKLambdaPowerSupplyFactory getPowerSupplyFactory(){
+        return this.tdkLambdaPowerSupplyFactory;
     }
 }

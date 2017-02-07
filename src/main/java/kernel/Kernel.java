@@ -1,8 +1,6 @@
 package kernel;
 
-import kernel.controllers.ConnectionRequestFactory;
-import kernel.controllers.DeviceConnector;
-import kernel.controllers.RS232PortConfigurationFactory;
+import kernel.controllers.*;
 import kernel.serial_ports.PortDriver;
 import kernel.views.CommPortReporter;
 import kernel.views.ConnectionRequest;
@@ -29,4 +27,10 @@ public interface Kernel {
     PortDriver getPortDriver();
 
     ConnectionRequestFactory getConnectionRequestFactory();
+
+    kernel.views.DeviceRegistry getDeviceRegistryView();
+
+    DeviceRegistry getDeviceRegistryController();
+
+    TDKLambdaPowerSupplyFactory getPowerSupplyFactory();
 }

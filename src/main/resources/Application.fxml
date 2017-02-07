@@ -10,7 +10,7 @@
          styleClass="topLevelLabel"
          text="Devices"
          id="devices-tab">
-        <fx:include source="Devices.fxml" />
+        <fx:include source="DeviceSetup.fxml" />
     </Tab>
     <Tab closable="false" text="Sequence" id="sequence-tab">
         <fx:include source="Sequence.fxml" />

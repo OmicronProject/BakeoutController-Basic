@@ -1,11 +1,8 @@
 package ui;
 
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.springframework.context.annotation.*;
-import ui.controllers.DevicesController;
-import ui.controllers.modals.NewDeviceController;
+import ui.controllers.DeviceSetupController;
 import ui.controllers.modals.NewStepController;
 import ui.controllers.SequenceController;
 
@@ -51,20 +48,14 @@ public class UserInterfaceConfiguration {
 
     @Bean
     @Scope("prototype")
-    public DevicesController devicesController(){
-        return new DevicesController();
+    public DeviceSetupController deviceSetupController(){
+        return new DeviceSetupController();
     }
 
     @Bean
     @Scope("prototype")
     public SequenceController sequenceController(){
         return new SequenceController();
-    }
-
-    @Bean
-    @Scope("prototype")
-    public NewDeviceController newDeviceController(){
-        return new NewDeviceController();
     }
 
     @Bean
