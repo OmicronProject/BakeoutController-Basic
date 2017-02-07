@@ -1,6 +1,8 @@
 package unit.ui;
 
+import devices.PowerSupply;
 import kernel.Kernel;
+import kernel.views.DeviceRegistry;
 import kernel.controllers.TDKLambdaPowerSupplyFactory;
 import kernel.views.CommPortReporter;
 import org.jmock.Expectations;
@@ -36,6 +38,8 @@ public class TestingConfiguration {
      *
      */
     private volatile List<String> portList;
+
+    private volatile DeviceRegistry mockDeviceRegistryView;
 
     /**
      * @return The context in which mockery is to take place
@@ -75,6 +79,23 @@ public class TestingConfiguration {
         return mockingContext().mock(TDKLambdaPowerSupplyFactory.class);
     }
 
+    @Bean
+    @Scope("singleton")
+    public DeviceRegistry deviceRegistryView(){
+        if(mockDeviceRegistryView == null){
+            mockDeviceRegistryView = mockingContext().mock(
+                    DeviceRegistry.class
+            );
+        }
+        return mockDeviceRegistryView;
+    }
+
+    @Bean
+    @Scope("singleton")
+    public PowerSupply powerSupply(){
+        return mockingContext().mock(PowerSupply.class);
+    }
+
     /**
      * @return A mock kernel
      */
@@ -112,6 +133,7 @@ public class TestingConfiguration {
             expectationsForPortReporter();
             expectationsForSerialPortNames();
             expectationsForFactory();
+            expectationsForDeviceRegistryView();
         }
 
         /**
@@ -134,6 +156,11 @@ public class TestingConfiguration {
         private void expectationsForFactory(){
             allowing(mockKernel).getPowerSupplyFactory();
             will(returnValue(tdkLambdaPowerSupplyFactory()));
+        }
+
+        private void expectationsForDeviceRegistryView(){
+            allowing(mockKernel).getDeviceRegistryView();
+            will(returnValue(deviceRegistryView()));
         }
     }
 }
