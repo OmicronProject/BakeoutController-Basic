@@ -1,0 +1,15 @@
+.root{
+    -fx-background-color: #B5B6BC;
+}
+
+.tab-title{
+    -fx-font-weight: bold;
+}
+
+.selection-label{
+    -fx-font-size: 20px;
+}
+
+.dropdown {
+    -fx-pref-width: 200px;
+}

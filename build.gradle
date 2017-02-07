@@ -1,0 +1,120 @@
+/**
+ * Contains configuration settings for the Gradle build process.
+ *
+ * @author: MichalKononenko
+ * @note: MichalKononenko is terrible at using Gradle, which is why this
+ *        file will probably be over-documented
+ */
+
+/*
+ * The buildscript block defines dependencies for the build process. 
+ * JavaFX is defined here as a dependency of the build process, but it will
+ * not be listed as a dependency for the application code. 
+ *
+ * The JavaFX-Gradle-Plugin contains tasks required for building JavaFX
+ * applications
+ */
+buildscript {
+    dependencies {
+        classpath \
+            group: 'de.dynamicfiles.projects.gradle.plugins', \
+            name: 'javafx-gradle-plugin', \
+            version: '8.7.0'
+    }
+    repositories {
+        jcenter()
+        mavenLocal()
+        mavenCentral()
+    }
+}
+
+plugins {
+    id "edu.sc.seis.launch4j" version "1.6.2"
+    id "java"
+    id "jacoco"
+    id "application"
+}
+// The JavaFX plugin requires use of the old-style plugin syntax
+apply plugin: 'javafx-gradle-plugin'
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    // Use 'jcenter' for resolving your dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+    mavenLocal()
+    mavenCentral()
+}
+
+// In this section you declare the dependencies for your production and test code
+dependencies {
+    // JetBrains Annotations
+    compile group: 'org.jetbrains', name: 'annotations', version: '13.0'
+
+    // Spring DI
+    compile 'org.springframework:spring-aop:3.2.18.RELEASE'
+
+    // Spring Boot
+    compile "org.springframework.boot:spring-boot-starter-web:1.4.3.RELEASE"
+
+    // Import RXTX. This is a cross-platform wrapper for an RS232 serial port
+    // that implements the Java Communications API
+    compile 'org.rxtx:rxtx:2.1.7'
+
+    // The production code uses the SLF4J logging API at compile time
+    compile 'org.slf4j:slf4j-api:1.7.13'
+    
+    // Declare the dependency for your favourite test framework you want to use in your tests.
+    // TestNG is also supported by the Gradle Test task. Just change the
+    // testCompile dependency to testCompile 'org.testng:testng:6.8.1' and add
+    // 'test.useTestNG()' to your build script.
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    // TestFX is the unit test suite for the JavaFX GUI library
+    testCompile group: 'org.testfx', name: 'testfx-junit', version:'4.+'
+
+    // Add a testing Mr.Robot that will allow the UI to be tested headlessly
+    testRuntime 'org.testfx:openjfx-monocle:1.8.0_20'
+
+    // Add Jmock 2 to stub out interfaces for fast unit testing
+    testCompile group: 'org.jmock', name: 'jmock-junit4', version: '2+'
+}
+
+/**
+ * Declare the name of the main class of the project. This is the class
+ * That is executed on launch of the program
+ */
+mainClassName = 'main.Main'
+
+launch4j {
+    mainClassName = mainClassName
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled true
+        csv.enabled true
+    }
+
+    afterEvaluate {
+        classDirectories = files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: '**/main')
+        })
+    }
+}
+
+check.dependsOn jacocoTestReport
+
+jfx {
+    mainClass = 'main.Main'
+    vendor = 'Michal Kononenko'
+}
+
+test {
+    systemProperty 'Dtestfx.robot', 'glass'
+    systemProperty 'Dglass.platform', 'Monocle'
+    systemProperty 'Dmonocle.platform', 'Headless'
+    systemProperty 'Dprism.order', 'sw'
+}
+

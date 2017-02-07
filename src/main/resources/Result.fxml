@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.HBox?>
+<GridPane styleClass="root">
+
+    <Text styleClass="tab-title" text="Result">
+        <GridPane.columnIndex>0</GridPane.columnIndex>
+        <GridPane.rowIndex>0</GridPane.rowIndex>
+    </Text>
+
+    <GridPane styleClass="results-status-panel">
+        <GridPane.rowIndex>1</GridPane.rowIndex>
+        <GridPane.columnIndex>0</GridPane.columnIndex>
+        <Text styleClass="status-title" text="Status">
+            <GridPane.rowIndex>0</GridPane.rowIndex>
+            <GridPane.columnIndex>0</GridPane.columnIndex>
+        </Text>
+        <GridPane styleClass="live-status">
+            <GridPane.rowIndex>1</GridPane.rowIndex>
+            <GridPane.columnIndex>0</GridPane.columnIndex>
+        </GridPane>
+    </GridPane>
+
+    <GridPane styleClass="chart-panel">
+        <GridPane.columnIndex>0</GridPane.columnIndex>
+        <GridPane.rowIndex>2</GridPane.rowIndex>
+        <LineChart styleClass="live-chart">
+            <GridPane.columnIndex>0</GridPane.columnIndex>
+            <GridPane.rowIndex>0</GridPane.rowIndex>
+            <xAxis>
+                <NumberAxis label="Time /s"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis label="Pressure / mBar"/>
+            </yAxis>
+        </LineChart>
+
+        <TilePane styleClass="live-chart-controls">
+            <GridPane.columnIndex>1</GridPane.columnIndex>
+            <GridPane.rowIndex>0</GridPane.rowIndex>
+            <HBox styleClass="axis-control">
+                <Text text="X-Axis" />
+                <ComboBox />
+            </HBox>
+            <HBox styleClass="axis-control">
+                <Text text="Y-Axis" />
+                <ComboBox />
+            </HBox>
+            <HBox styleClass="axis-control">
+                <Text text="Y2-Axis" />
+                <ComboBox />
+            </HBox>
+        </TilePane>
+    </GridPane>
+
+    <stylesheets>
+        <URL value="@css/Result.css" />
+    </stylesheets>
+</GridPane>

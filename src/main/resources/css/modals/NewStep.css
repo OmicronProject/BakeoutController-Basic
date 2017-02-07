@@ -1,0 +1,23 @@
+.modal-title {
+    -fx-font-weight: bold;
+    -fx-font-size: 25px;
+}
+
+.new-step-form {
+    -fx-vgap: 15px;
+    -fx-hgap: 10px;
+}
+
+.time-controls {
+    -fx-hgap: 10px;
+    -fx-pref-width: 200px;
+    -fx-max-width: 200px;
+}
+
+.time-control-entry-field {
+    -fx-pref-width: 50px;
+}
+
+.bottom-control-buttons {
+    -fx-alignment: baseline-right;
+}
