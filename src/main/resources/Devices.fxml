@@ -1,0 +1,53 @@
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.geometry.Insets?>
+
+<?import java.net.URL?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+
+<?import javafx.scene.layout.TilePane?>
+<GridPane alignment="CENTER_LEFT" styleClass="devices-panel"
+          xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="ui.controllers.DevicesController">
+    <padding>
+        <Insets top="10" left="10" right="10" bottom="10"/>
+    </padding>
+    <Text text="Devices" styleClass="title">
+        <GridPane.rowIndex>0</GridPane.rowIndex>
+        <GridPane.columnIndex>0</GridPane.columnIndex>
+    </Text>
+    <Text id="connectedDevicesLabel" text="Connected"
+          styleClass="section-title">
+        <GridPane.columnIndex>0</GridPane.columnIndex>
+        <GridPane.rowIndex>1</GridPane.rowIndex>
+    </Text>
+    <TilePane id="connectedDevicesList" alignment="CENTER_LEFT"
+              styleClass="device-list">
+        <GridPane.columnIndex>0</GridPane.columnIndex>
+        <GridPane.rowIndex>2</GridPane.rowIndex>
+    </TilePane>
+
+    <Text id="requiredDevicesLabel" text="Required">
+        <GridPane.rowIndex>3</GridPane.rowIndex>
+        <GridPane.columnIndex>0</GridPane.columnIndex>
+    </Text>
+    <GridPane id="requiredDevicesList" alignment="CENTER_LEFT"
+              styleClass="device-list">
+        <GridPane.columnIndex>0</GridPane.columnIndex>
+        <GridPane.rowIndex>4</GridPane.rowIndex>
+    </GridPane>
+
+    <HBox alignment="BASELINE_RIGHT" id="bottomRibbon">
+        <GridPane.columnIndex>0</GridPane.columnIndex>
+        <GridPane.rowIndex>5</GridPane.rowIndex>
+        <Button text="New" onAction="#displayNewDeviceForm"
+                id="newDeviceButton"/>
+    </HBox>
+
+    <stylesheets>
+        <URL value="@css/Devices.css" />
+    </stylesheets>
+
+</GridPane>

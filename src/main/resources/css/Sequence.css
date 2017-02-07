@@ -1,0 +1,25 @@
+.steps-display {
+    -fx-pref-width: 300px;
+    -fx-pref-height: 200px;
+}
+
+.bottom-row {
+    -fx-pref-width: 200px;
+}
+
+.steps-pane {
+    -fx-orientation: vertical;
+    -fx-pref-tile-height: 40px;
+    -fx-vgap: 10px;
+    -fx-pref-rows: 3;
+    -fx-pref-columns: 1;
+    -fx-background-color: #FFFFFF;
+}
+
+.sequence-information-bar {
+    -fx-alignment: baseline-left;
+}
+
+.sequence-control-button-panel {
+    -fx-alignment: baseline-right;
+}

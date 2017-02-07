@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.GridPane?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.ComboBox?>
+
+<?import javafx.scene.layout.HBox?>
+
+<?import javafx.scene.control.Button?>
+
+<?import java.net.URL?>
+
+<?import javafx.scene.control.TextField?>
+<GridPane alignment="CENTER"
+          xmlns="http://javafx.com/javafx/8.0.112"
+          xmlns:fx="http://javafx.com/fxml/1"
+          id="newDeviceForm"
+          styleClass="form, new-device-form"
+          fx:controller="ui.controllers.modals.NewDeviceController">
+
+    <stylesheets>
+        <URL value="@../css/modals/NewDevice.css"/>
+    </stylesheets>
+
+    <Text text="New Device" styleClass="modal-title">
+        <GridPane.columnIndex>0</GridPane.columnIndex>
+        <GridPane.rowIndex>0</GridPane.rowIndex>
+        <GridPane.columnSpan>4</GridPane.columnSpan>
+    </Text>
+
+    <Text text="Device" styleClass="modal-label">
+        <GridPane.columnIndex>0</GridPane.columnIndex>
+        <GridPane.rowIndex>1</GridPane.rowIndex>
+    </Text>
+    <ComboBox styleClass="three-column-combo-box" fx:id="deviceSelector"
+              id="device-selector" onAction="#handleDeviceSelected">
+        <GridPane.columnIndex>1</GridPane.columnIndex>
+        <GridPane.rowIndex>1</GridPane.rowIndex>
+        <GridPane.columnSpan>3</GridPane.columnSpan>
+    </ComboBox>
+
+    <Text text="Port" styleClass="modal-label">
+        <GridPane.columnIndex>0</GridPane.columnIndex>
+        <GridPane.rowIndex>2</GridPane.rowIndex>
+    </Text>
+    <ComboBox styleClass="three-column-combo-box" fx:id="portSelector"
+              id="port-selector">
+        <GridPane.columnIndex>1</GridPane.columnIndex>
+        <GridPane.rowIndex>2</GridPane.rowIndex>
+        <GridPane.columnSpan>3</GridPane.columnSpan>
+    </ComboBox>
+
+    <Text text="Details" styleClass="modal-minor-title">
+        <GridPane.columnIndex>0</GridPane.columnIndex>
+        <GridPane.rowIndex>3</GridPane.rowIndex>
+        <GridPane.columnSpan>4</GridPane.columnSpan>
+    </Text>
+
+    <Text text="Baud Rate" styleClass="modal-label">
+        <GridPane.columnIndex>0</GridPane.columnIndex>
+        <GridPane.rowIndex>4</GridPane.rowIndex>
+    </Text>
+    <ComboBox styleClass="one-column-combo-box"
+              id="availableBaudRates" fx:id="baudRateSelector">
+        <GridPane.columnIndex>1</GridPane.columnIndex>
+        <GridPane.rowIndex>4</GridPane.rowIndex>
+    </ComboBox>
+
+    <Text text="Parity">
+        <GridPane.columnIndex>2</GridPane.columnIndex>
+        <GridPane.rowIndex>4</GridPane.rowIndex>
+    </Text>
+    <ComboBox fx:id="paritySelector">
+        <GridPane.columnIndex>3</GridPane.columnIndex>
+        <GridPane.rowIndex>4</GridPane.rowIndex>
+    </ComboBox>
+
+    <Text text="Stop Bits">
+        <GridPane.columnIndex>0</GridPane.columnIndex>
+        <GridPane.rowIndex>5</GridPane.rowIndex>
+    </Text>
+    <ComboBox fx:id="stopBitSelector">
+        <GridPane.columnIndex>1</GridPane.columnIndex>
+        <GridPane.rowIndex>5</GridPane.rowIndex>
+    </ComboBox>
+
+    <Text text="Data Bits">
+        <GridPane.columnIndex>2</GridPane.columnIndex>
+        <GridPane.rowIndex>5</GridPane.rowIndex>
+    </Text>
+    <ComboBox fx:id="dataBitsSelector">
+        <GridPane.columnIndex>3</GridPane.columnIndex>
+        <GridPane.rowIndex>5</GridPane.rowIndex>
+    </ComboBox>
+
+    <Text text="Address">
+        <GridPane.columnIndex>0</GridPane.columnIndex>
+        <GridPane.rowIndex>6</GridPane.rowIndex>
+    </Text>
+    <TextField id="address-box" disable="true" fx:id="addressField">
+        <GridPane.columnIndex>1</GridPane.columnIndex>
+        <GridPane.rowIndex>6</GridPane.rowIndex>
+        <GridPane.columnSpan>3</GridPane.columnSpan>
+    </TextField>
+
+    <GridPane>
+        <GridPane.columnIndex>0</GridPane.columnIndex>
+        <GridPane.rowIndex>7</GridPane.rowIndex>
+        <GridPane.columnSpan>4</GridPane.columnSpan>
+
+        <HBox alignment="BASELINE_LEFT">
+            <GridPane.rowIndex>0</GridPane.rowIndex>
+            <GridPane.columnIndex>0</GridPane.columnIndex>
+            <Text text="status"/>
+        </HBox>
+        <HBox alignment="BASELINE_RIGHT">
+            <GridPane.rowIndex>0</GridPane.rowIndex>
+            <GridPane.columnIndex>1</GridPane.columnIndex>
+            <Button text="Refresh"
+                    id="refresh-button"
+                    onAction="#handleRefreshButtonClicked"/>
+            <Button text="Connect"
+                    id="connect-button"
+                    onAction="#handleConnectButtonClicked"/>
+            <Button text="Close"
+                    id="device-panel-close-button"
+                    onAction="#handleCloseButtonClicked"/>
+        </HBox>
+    </GridPane>
+</GridPane>
