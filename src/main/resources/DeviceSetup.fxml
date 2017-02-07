@@ -36,7 +36,7 @@
         <GridPane.rowIndex>2</GridPane.rowIndex>
         <GridPane.columnIndex>0</GridPane.columnIndex>
     </Text>
-    <ComboBox id="power-supply-address" fx:id="portSelector">
+    <ComboBox id="port-selector" fx:id="portSelector">
         <GridPane.rowIndex>2</GridPane.rowIndex>
         <GridPane.columnIndex>1</GridPane.columnIndex>
     </ComboBox>

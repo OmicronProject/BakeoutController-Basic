@@ -1,6 +1,7 @@
 package unit.ui;
 
 import kernel.Kernel;
+import kernel.controllers.TDKLambdaPowerSupplyFactory;
 import kernel.views.CommPortReporter;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
@@ -68,6 +69,12 @@ public class TestingConfiguration {
         return mockingContext().mock(CommPortReporter.class);
     }
 
+    @Bean
+    @Scope("singleton")
+    public TDKLambdaPowerSupplyFactory tdkLambdaPowerSupplyFactory(){
+        return mockingContext().mock(TDKLambdaPowerSupplyFactory.class);
+    }
+
     /**
      * @return A mock kernel
      */
@@ -104,6 +111,7 @@ public class TestingConfiguration {
         public ExpectationsForKernel(){
             expectationsForPortReporter();
             expectationsForSerialPortNames();
+            expectationsForFactory();
         }
 
         /**
@@ -121,6 +129,11 @@ public class TestingConfiguration {
         private void expectationsForSerialPortNames() {
             allowing(portReporter()).getSerialPortNames();
             will(returnValue(testData()));
+        }
+
+        private void expectationsForFactory(){
+            allowing(mockKernel).getPowerSupplyFactory();
+            will(returnValue(tdkLambdaPowerSupplyFactory()));
         }
     }
 }

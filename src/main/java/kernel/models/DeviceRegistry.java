@@ -5,8 +5,7 @@ import devices.PowerSupply;
 /**
  * Contains a registry for devices
  */
-public class DeviceRegistry implements kernel.controllers.DeviceRegistry,
-        kernel.views.DeviceRegistry {
+public class DeviceRegistry implements CombinedDeviceRegistry {
     private PowerSupply powerSupply;
     private Boolean powerSupplyWasSet;
 
