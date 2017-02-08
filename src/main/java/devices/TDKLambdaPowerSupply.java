@@ -2,6 +2,8 @@ package devices;
 
 import exceptions.ResponseNotOKException;
 import kernel.serial_ports.PortCommunicator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
@@ -14,6 +16,9 @@ public class TDKLambdaPowerSupply extends AbstractRS232Device
      * The device address
      */
     private final int deviceAddress;
+
+    private static Logger logger = LoggerFactory.getLogger("devices" +
+            ".TDKLambdaPowerSupply");
 
     /**
      *
@@ -161,6 +166,13 @@ public class TDKLambdaPowerSupply extends AbstractRS232Device
             IOException {
         this.write(commandToWrite);
         String response = this.read();
+
+        logger.debug(
+                String.format(
+                        "Writing command %s to power supply",
+                        commandToWrite
+                )
+        );
 
         if (!response.equals(PowerSupply.OK_RESPONSE)){
             throw new ResponseNotOKException("Did not receive response of " +
