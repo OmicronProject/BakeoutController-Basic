@@ -1,0 +1,28 @@
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.control.Button?>
+
+<GridPane styleClass="form, device-list-form"
+          xmlns="http://javafx.com/javafx/8.0.112"
+          xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="ui.controllers.DeviceListController">
+    <Text text="Device List" styleClass="form-title">
+        <GridPane.columnIndex>0</GridPane.columnIndex>
+        <GridPane.rowIndex>0</GridPane.rowIndex>
+    </Text>
+
+    <GridPane fx:id="deviceList">
+        <GridPane.columnIndex>0</GridPane.columnIndex>
+        <GridPane.rowIndex>1</GridPane.rowIndex>
+
+    </GridPane>
+
+    <TilePane styleClass="bottom-row">
+        <GridPane.columnIndex>0</GridPane.columnIndex>
+        <GridPane.rowIndex>2</GridPane.rowIndex>
+        <Button text="Refresh"
+                id="refresh-button"
+                onAction="#handleRefreshButtonClicked"/>
+    </TilePane>
+</GridPane>

@@ -1,10 +1,10 @@
 package unit.ui;
 
-import devices.TDKLambdaPowerSupplyListEntry;
+import devices.PowerSupply;
 import kernel.Kernel;
+import kernel.views.DeviceRegistry;
+import kernel.controllers.TDKLambdaPowerSupplyFactory;
 import kernel.views.CommPortReporter;
-import kernel.views.DeviceListEntry;
-import kernel.views.DeviceReporter;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.jmock.integration.junit4.JUnit4Mockery;
@@ -38,6 +38,8 @@ public class TestingConfiguration {
      *
      */
     private volatile List<String> portList;
+
+    private volatile DeviceRegistry mockDeviceRegistryView;
 
     /**
      * @return The context in which mockery is to take place
@@ -73,25 +75,25 @@ public class TestingConfiguration {
 
     @Bean
     @Scope("singleton")
-    public static DeviceListEntry deviceListEntry(){
-        return new TDKLambdaPowerSupplyListEntry();
+    public TDKLambdaPowerSupplyFactory tdkLambdaPowerSupplyFactory(){
+        return mockingContext().mock(TDKLambdaPowerSupplyFactory.class);
     }
 
     @Bean
     @Scope("singleton")
-    public static List<DeviceListEntry> deviceList(){
-        List<DeviceListEntry> deviceList = new ArrayList<>();
-        deviceList.add(
-            deviceListEntry()
-        );
-
-        return deviceList;
+    public DeviceRegistry deviceRegistryView(){
+        if(mockDeviceRegistryView == null){
+            mockDeviceRegistryView = mockingContext().mock(
+                    DeviceRegistry.class
+            );
+        }
+        return mockDeviceRegistryView;
     }
 
     @Bean
     @Scope("singleton")
-    public DeviceReporter deviceReporter(){
-        return mockingContext().mock(DeviceReporter.class);
+    public PowerSupply powerSupply(){
+        return mockingContext().mock(PowerSupply.class);
     }
 
     /**
@@ -130,7 +132,8 @@ public class TestingConfiguration {
         public ExpectationsForKernel(){
             expectationsForPortReporter();
             expectationsForSerialPortNames();
-            expectationsForDeviceReporter();
+            expectationsForFactory();
+            expectationsForDeviceRegistryView();
         }
 
         /**
@@ -145,17 +148,19 @@ public class TestingConfiguration {
          * Defines allowed behaviour for
          * {@link CommPortReporter#getSerialPortNames()}
          */
-        private void expectationsForSerialPortNames(){
+        private void expectationsForSerialPortNames() {
             allowing(portReporter()).getSerialPortNames();
             will(returnValue(testData()));
         }
 
-        private void expectationsForDeviceReporter(){
-            allowing(mockKernel).getDeviceReporter();
-            will(returnValue(deviceReporter()));
+        private void expectationsForFactory(){
+            allowing(mockKernel).getPowerSupplyFactory();
+            will(returnValue(tdkLambdaPowerSupplyFactory()));
+        }
 
-            allowing(deviceReporter()).getRS232Devices();
-            will(returnValue(deviceList()));
+        private void expectationsForDeviceRegistryView(){
+            allowing(mockKernel).getDeviceRegistryView();
+            will(returnValue(deviceRegistryView()));
         }
     }
 }

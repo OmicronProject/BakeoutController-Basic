@@ -8,9 +8,15 @@
          xmlns:fx="http://javafx.com/fxml/1" styleClass="root">
     <Tab closable="false"
          styleClass="topLevelLabel"
-         text="Devices"
+         text="Setup"
          id="devices-tab">
-        <fx:include source="Devices.fxml" />
+        <fx:include source="DeviceSetup.fxml" />
+    </Tab>
+    <Tab closable="false"
+         styleClass="topLevelLabel"
+         text="Device List"
+         id="device-list">
+        <fx:include source="DeviceList.fxml" />
     </Tab>
     <Tab closable="false" text="Sequence" id="sequence-tab">
         <fx:include source="Sequence.fxml" />
