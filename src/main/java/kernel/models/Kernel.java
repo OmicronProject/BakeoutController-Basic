@@ -32,8 +32,7 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
     public Kernel(PortDriver portDriver){
         this.portDriver = portDriver;
         this.deviceRegistry = new DeviceRegistry();
-        this.tdkLambdaPowerSupplyFactory = new kernel.models
-                .TDKLambdaPowerSupplyFactory();
+        createTDKLambdaPowerSupplyFactory();
     }
 
     /**
@@ -83,5 +82,11 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
     @Override
     public TDKLambdaPowerSupplyFactory getPowerSupplyFactory(){
         return this.tdkLambdaPowerSupplyFactory;
+    }
+
+    private void createTDKLambdaPowerSupplyFactory(){
+        this.tdkLambdaPowerSupplyFactory = new kernel.models
+                .TDKLambdaPowerSupplyFactory();
+        this.tdkLambdaPowerSupplyFactory.setKernel(this);
     }
 }

@@ -7,11 +7,15 @@ import gnu.io.UnsupportedCommOperationException;
 import kernel.serial_ports.PortConfiguration;
 import kernel.serial_ports.SerialPort;
 import org.springframework.beans.factory.annotation.Autowired;
+import kernel.Kernel;
 
 import java.io.IOException;
 
 /**
- * Created by mkononen on 07/02/17.
+ * Implements a factory for making the power supply. An instance of the
+ * power supply cannot legally exist without an open port with which to
+ * communicate, and so this factory ensures that the power supply is made
+ * correctly.
  */
 public class TDKLambdaPowerSupplyFactory implements kernel.controllers.TDKLambdaPowerSupplyFactory {
     @Autowired
@@ -19,6 +23,16 @@ public class TDKLambdaPowerSupplyFactory implements kernel.controllers.TDKLambda
 
     private String portName;
     private static final Integer deviceAddress = 6;
+
+    @Override
+    public Kernel getKernel(){
+        return kernel;
+    }
+
+    @Override
+    public void setKernel(Kernel kernel){
+        this.kernel = kernel;
+    }
 
     @Override
     public void setPortName(String portName){

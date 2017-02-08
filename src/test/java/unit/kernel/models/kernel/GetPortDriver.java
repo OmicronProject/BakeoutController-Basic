@@ -11,8 +11,6 @@ import static org.junit.Assert.assertNotNull;
 public final class GetPortDriver extends KernelTestCase {
     @Test
     public void getPortDriver(){
-        assertNotNull(
-            kernel.getPortDriver()
-        );
+        assertNotNull(kernel.getPortDriver());
     }
 }

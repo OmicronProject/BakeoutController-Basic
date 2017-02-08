@@ -1,8 +1,5 @@
 package kernel.serial_ports;
 
-import gnu.io.NoSuchPortException;
-import gnu.io.PortInUseException;
-
 import java.util.List;
 
 /**
