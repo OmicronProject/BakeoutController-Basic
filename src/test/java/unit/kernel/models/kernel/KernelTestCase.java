@@ -1,32 +1,37 @@
 package unit.kernel.models.kernel;
 
+import kernel.ApplicationKernelFactory;
 import kernel.Kernel;
-import main.ApplicationConfiguration;
+import kernel.KernelFactory;
+import kernel.serial_ports.PortDriver;
 import org.junit.Before;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import unit.kernel.models.ModelsTestCase;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  * Base class for unit tests of {@link kernel.Kernel}
  */
 public abstract class KernelTestCase extends ModelsTestCase {
-    protected ApplicationContext applicationContext;
     protected Kernel kernel;
+    protected PortDriver mockPortDriver;
 
     @Before
     public void setUp(){
-        setApplicationContext();
+        setMockPortDriver();
         setKernel();
     }
 
-    private void setApplicationContext(){
-        applicationContext = new AnnotationConfigApplicationContext(
-                ApplicationConfiguration.class
-       );
+    private void setMockPortDriver(){
+        mockPortDriver = context.mock(PortDriver.class);
     }
 
     private void setKernel(){
-        kernel = applicationContext.getBean(Kernel.class);
+        KernelFactory kernelFactory = new ApplicationKernelFactory();
+        kernelFactory.setPortDriver(mockPortDriver);
+
+        assertTrue(kernelFactory.canKernelBeStarted());
+
+        kernel = kernelFactory.getKernelInstance();
     }
 }
