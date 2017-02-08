@@ -6,6 +6,8 @@ import gnu.io.PortInUseException;
 import gnu.io.UnsupportedCommOperationException;
 import kernel.serial_ports.PortConfiguration;
 import kernel.serial_ports.SerialPort;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import kernel.Kernel;
 
@@ -23,6 +25,9 @@ public class TDKLambdaPowerSupplyFactory implements kernel.controllers.TDKLambda
 
     private String portName;
     private static final Integer deviceAddress = 6;
+
+    private static Logger logger = LoggerFactory.getLogger(
+            "kernel.models.TDKLambdaPowerSupplyFactory");
 
     @Override
     public Kernel getKernel(){
@@ -47,12 +52,15 @@ public class TDKLambdaPowerSupplyFactory implements kernel.controllers.TDKLambda
         kernel.views.DeviceRegistry registry = kernel.getDeviceRegistryView();
 
         if (!registry.hasPowerSupply()){
+            writeEntryForNoPowerSupply();
+
             kernel.controllers.DeviceRegistry registryController = kernel
                     .getDeviceRegistryController();
             powerSupply = createPowerSupply();
             registryController.setPowerSupply(powerSupply);
         } else {
             powerSupply = registry.getPowerSupply();
+            writeEntryForSupply(powerSupply);
         }
 
         return powerSupply;
@@ -76,6 +84,16 @@ public class TDKLambdaPowerSupplyFactory implements kernel.controllers.TDKLambda
         } catch (UnsupportedCommOperationException error){
             error.printStackTrace();
         }
+    }
+
+    private static void writeEntryForNoPowerSupply(){
+        logger.debug("No Power Supply. Creating a new one");
+    }
+
+    private static void writeEntryForSupply(PowerSupply supply){
+        logger.debug(
+                String.format("Found Power supply %s", supply.toString())
+        );
     }
 
     private class PortConfig implements PortConfiguration {

@@ -6,6 +6,8 @@ import kernel.serial_ports.SerialPort;
 import kernel.views.CommPortReporter;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -25,6 +27,8 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
     private kernel.controllers.TDKLambdaPowerSupplyFactory
             tdkLambdaPowerSupplyFactory;
 
+    private static final Logger logger = LoggerFactory.getLogger(Kernel.class);
+
     /**
      * @param portDriver The driver to be used for managing the RS232 serial
      *                   port
@@ -33,6 +37,7 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
         this.portDriver = portDriver;
         this.deviceRegistry = new DeviceRegistry();
         createTDKLambdaPowerSupplyFactory();
+        logger.info("Started Kernel");
     }
 
     /**
