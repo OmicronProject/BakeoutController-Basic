@@ -1,18 +1,18 @@
 package unit.ui.user_interface_launcher;
 
 import org.junit.Test;
-import ui.UserInterfaceLauncher;
+import ui.JavaFXGraphicalUserInterfaceLauncher;
 
 import static junit.framework.TestCase.assertNotNull;
 
 /**
- * Tests the null-argument constructor for {@link UserInterfaceLauncher}
+ * Tests the null-argument constructor for {@link JavaFXGraphicalUserInterfaceLauncher}
  */
 public final class NoArgumentConstructor extends
         UserInterfaceLauncherTestCase {
     @Test
     public void testNoArgumentConstructor(){
-        UserInterfaceLauncher launcher = new UserInterfaceLauncher();
+        JavaFXGraphicalUserInterfaceLauncher launcher = new JavaFXGraphicalUserInterfaceLauncher();
         assertNotNull(launcher);
     }
 }

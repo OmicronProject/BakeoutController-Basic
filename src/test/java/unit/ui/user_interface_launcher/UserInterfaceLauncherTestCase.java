@@ -3,11 +3,12 @@ package unit.ui.user_interface_launcher;
 import javafx.stage.Stage;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import ui.JavaFXGraphicalUserInterfaceLauncher;
 import unit.ui.UserInterfaceTestCase;
 
 
 /**
- * Base class for {@link ui.UserInterfaceLauncher}
+ * Base class for {@link JavaFXGraphicalUserInterfaceLauncher}
  */
 public abstract class UserInterfaceLauncherTestCase extends
         UserInterfaceTestCase {

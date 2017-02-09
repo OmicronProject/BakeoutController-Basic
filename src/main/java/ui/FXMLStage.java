@@ -4,7 +4,7 @@ import java.io.IOException;
 
 /**
  * Describes the methods that a Stage must possess in order to be rendered
- * by the {@link UserInterfaceLauncher}
+ * by the {@link JavaFXGraphicalUserInterfaceLauncher}
  */
 public interface FXMLStage {
     /**

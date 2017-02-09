@@ -1,22 +1,35 @@
 package main;
 
-import javafx.application.Application;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import ui.JavaFXGraphicalUserInterfaceLauncher;
 import ui.UserInterfaceLauncher;
 
 /**
  * The main runner for the application
  */
-public class Main {
-    private static Logger logger = LoggerFactory.getLogger(Main.class);
+public final class Main {
     /**
-     * Launch the UI
-     * @param args The launch arguments
-     * @throws Exception if an exception is thrown
+     * The application log
      */
-    public static void main(String[] args) throws Exception {
-        logger.info("Started Logger");
-        Application.launch(UserInterfaceLauncher.class, args);
+    private static Logger log = LoggerFactory.getLogger(Main.class);
+
+    /**
+     * The global Spring context defining all accessible beans
+     */
+    private static final ApplicationContext context =
+            new AnnotationConfigApplicationContext(
+                    ApplicationConfiguration.class
+            );
+
+    public static void main(String[] args){
+        log.info("Started Logger");
+        UserInterfaceLauncher launcher =
+                new JavaFXGraphicalUserInterfaceLauncher(
+                        context
+                );
+        launcher.launchWithDefaultStage(args);
     }
 }
