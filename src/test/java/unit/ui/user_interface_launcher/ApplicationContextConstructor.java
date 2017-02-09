@@ -4,14 +4,14 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import ui.UserInterfaceLauncher;
+import ui.JavaFXGraphicalUserInterfaceLauncher;
 import unit.ui.TestingConfiguration;
 
 import static org.junit.Assert.assertNotNull;
 
 /**
  * Contains unit tests for
- * {@link ui.UserInterfaceLauncher#UserInterfaceLauncher(ApplicationContext)}
+ * {@link JavaFXGraphicalUserInterfaceLauncher#JavaFXGraphicalUserInterfaceLauncher(ApplicationContext)}
  */
 public final class ApplicationContextConstructor extends
         UserInterfaceLauncherTestCase {
@@ -29,6 +29,6 @@ public final class ApplicationContextConstructor extends
 
     @Test
     public void testOneArgConstructor(){
-        assertNotNull(new UserInterfaceLauncher(this.applicationContext));
+        assertNotNull(new JavaFXGraphicalUserInterfaceLauncher(this.applicationContext));
     }
 }

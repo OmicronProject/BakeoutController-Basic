@@ -3,6 +3,7 @@ package unit.ui.user_interface_launcher;
 import org.jmock.Expectations;
 import org.springframework.context.annotation.*;
 import ui.FXMLStage;
+import ui.JavaFXGraphicalUserInterfaceLauncher;
 import ui.UserInterfaceConfiguration;
 import unit.ui.TestingConfiguration;
 
@@ -14,7 +15,7 @@ import static org.junit.Assert.fail;
  * A configuration that overrides the
  * {@link UserInterfaceConfiguration#application()} bean in order to return
  * a mock application. This is done to check that the
- * {@link ui.UserInterfaceLauncher} configures the application correctly.
+ * {@link JavaFXGraphicalUserInterfaceLauncher} configures the application correctly.
  */
 @Configuration
 @Import(UserInterfaceConfiguration.class)

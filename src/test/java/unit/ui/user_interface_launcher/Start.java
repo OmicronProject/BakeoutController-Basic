@@ -5,7 +5,7 @@ import org.jmock.Mockery;
 import org.junit.Before;
 import org.junit.Test;
 import ui.FXMLStage;
-import ui.UserInterfaceLauncher;
+import ui.JavaFXGraphicalUserInterfaceLauncher;
 
 import java.io.IOException;
 
@@ -13,14 +13,14 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
 /**
- * Contains unit tests for {@link ui.UserInterfaceLauncher#start(Stage)}
+ * Contains unit tests for {@link JavaFXGraphicalUserInterfaceLauncher#start(Stage)}
  */
 public final class Start extends UserInterfaceLauncherTestCase {
-    private UserInterfaceLauncher launcher;
+    private JavaFXGraphicalUserInterfaceLauncher launcher;
 
     @Before
     public void setLauncher(){
-        this.launcher = new UserInterfaceLauncher(applicationContext);
+        this.launcher = new JavaFXGraphicalUserInterfaceLauncher(applicationContext);
     }
 
     @Test
