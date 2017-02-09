@@ -1,7 +1,6 @@
 package unit.ui.controllers.device_setup_controller.handle_go_button_clicked;
 
 import exceptions.DeviceAlreadyCreatedException;
-import gnu.io.PortInUseException;
 import javafx.scene.text.Text;
 import org.jetbrains.annotations.Contract;
 import org.junit.Test;

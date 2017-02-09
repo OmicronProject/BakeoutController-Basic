@@ -63,7 +63,7 @@ public class DeviceSetupController {
         } catch (PortInUseException error){
             handlePortInUseException();
         } catch (DeviceAlreadyCreatedException error){
-            handleDeviceAlreadyCreatedException(error);
+            handleDeviceAlreadyCreatedException();
         }
     }
 
@@ -95,8 +95,7 @@ public class DeviceSetupController {
         statusReportField.setId(fieldId);
     }
 
-    private void handleDeviceAlreadyCreatedException
-            (DeviceAlreadyCreatedException error){
+    private void handleDeviceAlreadyCreatedException(){
         statusReportField.setText(
                 "Attempted to create power supply twice"
         );
