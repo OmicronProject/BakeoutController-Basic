@@ -11,8 +11,6 @@ import javafx.scene.text.Text;
 import kernel.Kernel;
 import kernel.controllers.TDKLambdaPowerSupplyFactory;
 import kernel.views.CommPortReporter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import ui.Controller;
 
@@ -23,8 +21,6 @@ import java.io.IOException;
  */
 @Controller
 public class DeviceSetupController {
-    private static Logger log = LoggerFactory.getLogger(
-            DeviceSetupController.class);
 
     @Autowired
     private Kernel kernel;
@@ -61,26 +57,24 @@ public class DeviceSetupController {
         try {
             factory.makePowerSupply();
         } catch (IOException error){
-            handleIOException(error);
+            handleIOException();
         } catch (UnsupportedCommOperationException error){
-            handleUnsupportedCommException(error);
+            handleUnsupportedCommException();
         } catch (PortInUseException error){
-            handlePortInUseException(error);
+            handlePortInUseException();
         } catch (DeviceAlreadyCreatedException error){
             handleDeviceAlreadyCreatedException(error);
         }
     }
 
-    private void handleIOException(IOException error){
-        log.error("IO exception thrown", error);
+    private void handleIOException(){
         writeErrorMessage(
                 "Port was opened, but unable to establish device I/O",
                 "io-exception-message"
         );
     }
 
-    private void handleUnsupportedCommException
-            (UnsupportedCommOperationException error){
+    private void handleUnsupportedCommException(){
         writeErrorMessage(
                 "Unable to set parameters to establish serial port " +
                         "connection",
@@ -88,7 +82,7 @@ public class DeviceSetupController {
         );
     }
 
-    private void handlePortInUseException(PortInUseException error){
+    private void handlePortInUseException(){
         writeErrorMessage(
                 "Unable to acquire port. Port is already in use.",
                 "port-in-use-exception-message"

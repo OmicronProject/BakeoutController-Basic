@@ -11,9 +11,9 @@ import java.util.Optional;
 import static org.junit.Assert.fail;
 
 /**
- * Created by mkononen on 09/02/17.
+ * Checks that {@link DeviceAlreadyCreatedException} is handled correctly
  */
-public class HandleDeviceAlreadyCreatedExceptionTest extends
+public final class HandleDeviceAlreadyCreatedExceptionTest extends
         HandleGoButtonClickedTestCase {
     private static final String queryForMessage =
             "#device-created-exception-message";
