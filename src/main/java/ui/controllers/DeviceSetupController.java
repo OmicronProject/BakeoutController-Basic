@@ -1,5 +1,6 @@
 package ui.controllers;
 
+import exceptions.DeviceAlreadyCreatedException;
 import gnu.io.PortInUseException;
 import gnu.io.UnsupportedCommOperationException;
 import javafx.collections.ObservableList;
@@ -58,13 +59,15 @@ public class DeviceSetupController {
         factory.setPortName(portName);
 
         try {
-            factory.getPowerSupply();
+            factory.makePowerSupply();
         } catch (IOException error){
             handleIOException(error);
         } catch (UnsupportedCommOperationException error){
             handleUnsupportedCommException(error);
         } catch (PortInUseException error){
             handlePortInUseException(error);
+        } catch (DeviceAlreadyCreatedException error){
+            handleDeviceAlreadyCreatedException(error);
         }
     }
 
@@ -78,7 +81,6 @@ public class DeviceSetupController {
 
     private void handleUnsupportedCommException
             (UnsupportedCommOperationException error){
-        log.error("Controller threw error", error);
         writeErrorMessage(
                 "Unable to set parameters to establish serial port " +
                         "connection",
@@ -87,7 +89,6 @@ public class DeviceSetupController {
     }
 
     private void handlePortInUseException(PortInUseException error){
-        error.printStackTrace();
         writeErrorMessage(
                 "Unable to acquire port. Port is already in use.",
                 "port-in-use-exception-message"
@@ -98,5 +99,15 @@ public class DeviceSetupController {
         statusReportField.setText(text);
         statusReportField.setFill(Color.RED);
         statusReportField.setId(fieldId);
+    }
+
+    private void handleDeviceAlreadyCreatedException
+            (DeviceAlreadyCreatedException error){
+        statusReportField.setText(
+                "Attempted to create power supply twice"
+        );
+        statusReportField.setId(
+                "device-created-exception-message"
+        );
     }
 }
