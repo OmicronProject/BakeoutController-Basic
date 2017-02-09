@@ -2,6 +2,8 @@ package kernel.serial_ports;
 
 import gnu.io.CommPortIdentifier;
 import kernel.serial_ports.comm_port_wrapper.PortIdentifierGetter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -12,6 +14,8 @@ import java.util.Vector;
  * Driver responsible for managing serial port names
  */
 public class RXTXPortDriver implements PortDriver {
+    private static Logger log = LoggerFactory.getLogger(RXTXPortDriver.class);
+
     /**
      * This name is used to sign out ports. A call from another application
      * to determine the owner of an RS232 port will see this name as the owner.
@@ -48,12 +52,11 @@ public class RXTXPortDriver implements PortDriver {
     @Override public List<String> getSerialPortNames(){
         Enumeration portIdentifiers = this.portWrapper.getPortIdentifiers();
         List<CommPortIdentifier> identifierList = castPortIdentifiersToList(
-            portIdentifiers);
-
+                portIdentifiers
+        );
         List<CommPortIdentifier> serialPortList = filterForSerialPorts(
                 identifierList
         );
-
         return getPortNamesForList(serialPortList);
     }
 
@@ -113,15 +116,16 @@ public class RXTXPortDriver implements PortDriver {
      *                       filtered
      * @return A list of serial ports available to the system
      */
-    private static List<CommPortIdentifier> filterForSerialPorts(
+    private List<CommPortIdentifier> filterForSerialPorts(
             List<CommPortIdentifier> identifierList){
 
         List<CommPortIdentifier> serialPorts = new ArrayList<>(
-            identifierList.size()
+                identifierList.size()
         );
 
         for(CommPortIdentifier identifier: identifierList){
             if(identifier.getPortType() == CommPortIdentifier.PORT_SERIAL){
+                writeLogEntryForSerialPort(identifier);
                 serialPorts.add(identifier);
             }
         }
@@ -144,5 +148,12 @@ public class RXTXPortDriver implements PortDriver {
         }
 
         return portNames;
+    }
+
+    private void writeLogEntryForSerialPort(CommPortIdentifier identifier){
+        log.info(
+                "Port identifier {} has been detected as a serial port",
+                identifier
+        );
     }
 }

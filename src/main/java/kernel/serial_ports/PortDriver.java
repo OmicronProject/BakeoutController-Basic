@@ -3,7 +3,7 @@ package kernel.serial_ports;
 import java.util.List;
 
 /**
- * Gets the name of all serial ports on the system
+ * Lists serial ports, and allows for serial ports to be opened
  */
 public interface PortDriver {
     /**

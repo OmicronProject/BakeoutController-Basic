@@ -3,6 +3,8 @@ package kernel;
 import exceptions.UnableToCreateKernelException;
 import kernel.models.Kernel;
 import kernel.serial_ports.PortDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Implements methods for bootstrapping the hardware kernel
@@ -28,9 +30,11 @@ public final class ApplicationKernelFactory implements KernelFactory {
      */
     private Boolean hasPortDriver;
 
+    private static Logger log = LoggerFactory.getLogger
+            (ApplicationKernelFactory.class);
+
     public ApplicationKernelFactory(){
         this.doesKernelExist = Boolean.FALSE;
-
         this.hasPortDriver = Boolean.FALSE;
     }
 
@@ -38,6 +42,8 @@ public final class ApplicationKernelFactory implements KernelFactory {
      * @param newPortDriver The port driver to use in the Kernel
      */
     @Override public void setPortDriver(PortDriver newPortDriver){
+        log.debug("Setting port driver to {}", newPortDriver.toString());
+
         this.portDriver = newPortDriver;
         this.hasPortDriver = Boolean.TRUE;
     }
