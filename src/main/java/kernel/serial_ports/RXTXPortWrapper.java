@@ -3,6 +3,8 @@ package kernel.serial_ports;
 import gnu.io.PortInUseException;
 import gnu.io.RXTXPort;
 import gnu.io.UnsupportedCommOperationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,6 +15,11 @@ import java.io.OutputStream;
  */
 final class RXTXPortWrapper implements SerialPort, PortCommunicator,
         PortConfiguration {
+
+    /**
+     * The application log to which logging parameters are to be written
+     */
+    private static Logger log = LoggerFactory.getLogger(RXTXPortWrapper.class);
 
     /**
      * The port that is to be wrapped
@@ -35,6 +42,7 @@ final class RXTXPortWrapper implements SerialPort, PortCommunicator,
      * @param portName the name of the port to wrap.
      */
     RXTXPortWrapper(String portName){
+        writeLogEntryForInitialization(portName);
         this.portName = portName;
     }
 
@@ -53,6 +61,7 @@ final class RXTXPortWrapper implements SerialPort, PortCommunicator,
      */
     @Override public InputStream getInputStream() throws IOException {
         assertPortOpen();
+        writeLogEntryForInputStreamRequest();
         return this.port.getInputStream();
     }
 
@@ -108,10 +117,17 @@ final class RXTXPortWrapper implements SerialPort, PortCommunicator,
      */
     @Override public void setConfig(PortConfiguration newConfig) throws
             UnsupportedCommOperationException {
+        int baudRate = newConfig.getBaudRate();
+        int dataBits = newConfig.getDataBits();
+        int stopBits = newConfig.getStopBits();
+        int parityBits = newConfig.getParityBits();
+
         this.port.setSerialPortParams(
-            newConfig.getBaudRate(), newConfig.getDataBits(),
-            newConfig.getStopBits(), newConfig.getParityBits()
+                baudRate, dataBits, stopBits, parityBits
         );
+
+        writeLogEntryForParametersSet(baudRate, dataBits, stopBits,
+                parityBits);
     }
 
     /**
@@ -122,6 +138,7 @@ final class RXTXPortWrapper implements SerialPort, PortCommunicator,
         if (!this.isPortOpen){
             this.port = new RXTXPort(this.portName);
             this.isPortOpen = true;
+            writeLogEntryForPortOpen();
         }
     }
 
@@ -139,6 +156,8 @@ final class RXTXPortWrapper implements SerialPort, PortCommunicator,
         if (this.isPortOpen){
             this.port.close();
             this.isPortOpen = false;
+
+            writeLogEntryForPortClosed();
         }
     }
 
@@ -146,9 +165,49 @@ final class RXTXPortWrapper implements SerialPort, PortCommunicator,
      * @throws IOException if the port is not open
      */
     private void assertPortOpen() throws IOException {
-        if(!this.isPortOpen){
+        if (!this.isPortOpen){
             throw new IOException("Attempted to access a resource that " +
                     "requires the port to be open");
         }
+    }
+
+    private void writeLogEntryForInitialization(String portName){
+        log.debug(
+                "Port wrapper initialized for RS232 port with name {}",
+                portName
+        );
+    }
+
+    private void writeLogEntryForInputStreamRequest(){
+        log.debug(
+                "Input stream requested for RS232 port {}", this.portName
+        );
+    }
+
+    private void writeLogEntryForParametersSet(
+            int baudRate, int dataBits, int stopBits, int parityBits
+    ){
+        String parameterTemplate = "Parameter {} for port {} was set to {}.";
+
+        log.info(
+                parameterTemplate, "Baud Rate", portName, baudRate
+        );
+        log.info(
+                parameterTemplate, "Data Bits", portName, dataBits
+        );
+        log.info(
+                parameterTemplate, "Stop Bits", portName, stopBits
+        );
+        log.info(
+                parameterTemplate, "Stop Bits", portName, parityBits
+        );
+    }
+
+    private void writeLogEntryForPortOpen(){
+        log.info("Port {} was opened.", portName);
+    }
+
+    private void writeLogEntryForPortClosed(){
+        log.info("Port {} was closed", portName);
     }
 }

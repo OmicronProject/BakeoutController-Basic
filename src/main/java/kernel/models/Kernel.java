@@ -27,7 +27,7 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
     private kernel.controllers.TDKLambdaPowerSupplyFactory
             tdkLambdaPowerSupplyFactory;
 
-    private static final Logger logger = LoggerFactory.getLogger(Kernel.class);
+    private static final Logger log = LoggerFactory.getLogger(Kernel.class);
 
     /**
      * @param portDriver The driver to be used for managing the RS232 serial
@@ -37,7 +37,8 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
         this.portDriver = portDriver;
         this.deviceRegistry = new DeviceRegistry();
         createTDKLambdaPowerSupplyFactory();
-        logger.info("Started Kernel");
+
+        log.info("Started kernel {}", this.toString());
     }
 
     /**
@@ -53,7 +54,9 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
      * @return The names of serial ports available on this machine
      */
     @Override public List<String> getSerialPortNames(){
-        return this.portDriver.getSerialPortNames();
+        List<String> portNames = this.portDriver.getSerialPortNames();
+        handleLogging(portNames);
+        return portNames;
     }
 
     /**
@@ -93,5 +96,30 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
         this.tdkLambdaPowerSupplyFactory = new kernel.models
                 .TDKLambdaPowerSupplyFactory();
         this.tdkLambdaPowerSupplyFactory.setKernel(this);
+    }
+
+    /**
+     * If the list of port names is empty, warn the user. If not, provide
+     * the port names in Information.
+     *
+     * @param portNames A list containing the detected port names
+     */
+    private void handleLogging(List<String> portNames){
+        if (portNames.isEmpty()) {
+            writeLogEntryForEmptyList();
+        } else {
+            writeLogEntryForPortsDetected(portNames);
+        }
+    }
+
+    private void writeLogEntryForEmptyList(){
+        log.warn("Kernel {} has not detected any available serial ports",
+                this.toString());
+    }
+
+    private void writeLogEntryForPortsDetected(List<String> portNames){
+        for (String portName: portNames){
+            log.info("Kernel {} detected serial port {}", this, portName);
+        }
     }
 }

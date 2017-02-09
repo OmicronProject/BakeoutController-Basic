@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * Describes how to get input and output streams for a port
+ * Describes a type with an input and output stream
  */
 public interface PortCommunicator {
 
