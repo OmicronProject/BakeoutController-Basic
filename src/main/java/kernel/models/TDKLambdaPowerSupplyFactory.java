@@ -46,7 +46,7 @@ public class TDKLambdaPowerSupplyFactory implements kernel.controllers.TDKLambda
 
     @Override
     public PowerSupply getPowerSupply() throws PortInUseException,
-            IOException {
+            IOException, UnsupportedCommOperationException {
         PowerSupply powerSupply;
 
         kernel.views.DeviceRegistry registry = kernel.getDeviceRegistryView();
@@ -67,7 +67,7 @@ public class TDKLambdaPowerSupplyFactory implements kernel.controllers.TDKLambda
     }
 
     private PowerSupply createPowerSupply() throws PortInUseException,
-            IOException
+            IOException, UnsupportedCommOperationException
     {
         SerialPort port = kernel.getPortDriver().getPortByName(this.portName);
 
@@ -79,11 +79,7 @@ public class TDKLambdaPowerSupplyFactory implements kernel.controllers.TDKLambda
     }
 
     private void configurePort(SerialPort port){
-        try {
-            port.setConfig(new PortConfig());
-        } catch (UnsupportedCommOperationException error){
-            error.printStackTrace();
-        }
+        port.setConfig(new PortConfig());
     }
 
     private static void writeEntryForNoPowerSupply(){

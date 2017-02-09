@@ -2,6 +2,7 @@ package kernel.controllers;
 
 import devices.PowerSupply;
 import gnu.io.PortInUseException;
+import gnu.io.UnsupportedCommOperationException;
 import kernel.Kernel;
 
 import java.io.IOException;
@@ -13,5 +14,6 @@ public interface TDKLambdaPowerSupplyFactory {
     Kernel getKernel();
     void setKernel(Kernel kernel);
     void setPortName(String portName);
-    PowerSupply getPowerSupply() throws PortInUseException, IOException;
+    PowerSupply getPowerSupply() throws PortInUseException, IOException,
+            UnsupportedCommOperationException;
 }
