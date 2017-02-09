@@ -2,10 +2,13 @@ package kernel.models;
 
 import devices.PowerSupply;
 import devices.TDKLambdaPowerSupply;
+import exceptions.DeviceAlreadyCreatedException;
 import gnu.io.PortInUseException;
 import gnu.io.UnsupportedCommOperationException;
 import kernel.serial_ports.PortConfiguration;
 import kernel.serial_ports.SerialPort;
+import kernel.views.*;
+import kernel.views.DeviceRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,20 +23,43 @@ import java.io.IOException;
  * correctly.
  */
 public class TDKLambdaPowerSupplyFactory implements kernel.controllers.TDKLambdaPowerSupplyFactory {
+    /**
+     * The application kernel
+     */
     @Autowired
     private Kernel kernel;
 
+    /**
+     * The name of the port that will be used to make the power supply
+     */
     private String portName;
+
+    /**
+     * The address of the device. This parameter is required by the TDK
+     * Lambda Power Supply. A valid ``ADR %d\r``, where ``%d`` is the
+     * address of the device, must be sent to the device before it can start
+     * receiving commands. This is a holdover from the fact that the TDK
+     * Lambda power supply can connect on both RS232 and RS485 lines
+     */
     private static final Integer deviceAddress = 6;
 
-    private static Logger logger = LoggerFactory.getLogger(
+    /**
+     * The application log
+     */
+    private static Logger log = LoggerFactory.getLogger(
             "kernel.models.TDKLambdaPowerSupplyFactory");
 
+    /**
+     * @return The kernel
+     */
     @Override
     public Kernel getKernel(){
         return kernel;
     }
 
+    /**
+     * @param kernel The kernel to which this factory will be attached
+     */
     @Override
     public void setKernel(Kernel kernel){
         this.kernel = kernel;
@@ -46,28 +72,36 @@ public class TDKLambdaPowerSupplyFactory implements kernel.controllers.TDKLambda
 
     @Override
     public PowerSupply getPowerSupply() throws PortInUseException,
-            IOException {
-        PowerSupply powerSupply;
+            IOException, UnsupportedCommOperationException,
+            DeviceAlreadyCreatedException {
 
         kernel.views.DeviceRegistry registry = kernel.getDeviceRegistryView();
 
         if (!registry.hasPowerSupply()){
-            writeEntryForNoPowerSupply();
-
-            kernel.controllers.DeviceRegistry registryController = kernel
-                    .getDeviceRegistryController();
-            powerSupply = createPowerSupply();
-            registryController.setPowerSupply(powerSupply);
-        } else {
-            powerSupply = registry.getPowerSupply();
-            writeEntryForSupply(powerSupply);
+            makePowerSupply();
         }
+        PowerSupply supply = registry.getPowerSupply();
+        writeEntryForSupply(supply);
 
-        return powerSupply;
+        return registry.getPowerSupply();
+    }
+
+    @Override
+    public void makePowerSupply() throws PortInUseException, IOException,
+            UnsupportedCommOperationException, DeviceAlreadyCreatedException {
+        assertPowerSupplyDoesNotExist();
+        writeEntryForNoPowerSupply();
+
+        kernel.controllers.DeviceRegistry registry = kernel
+                .getDeviceRegistryController();
+
+        PowerSupply supply = createPowerSupply();
+
+        registry.setPowerSupply(supply);
     }
 
     private PowerSupply createPowerSupply() throws PortInUseException,
-            IOException
+            IOException, UnsupportedCommOperationException
     {
         SerialPort port = kernel.getPortDriver().getPortByName(this.portName);
 
@@ -79,19 +113,25 @@ public class TDKLambdaPowerSupplyFactory implements kernel.controllers.TDKLambda
     }
 
     private void configurePort(SerialPort port){
-        try {
-            port.setConfig(new PortConfig());
-        } catch (UnsupportedCommOperationException error){
-            error.printStackTrace();
+        port.setConfig(new PortConfig());
+    }
+
+    private void assertPowerSupplyDoesNotExist() throws
+            DeviceAlreadyCreatedException {
+        DeviceRegistry registry = kernel.getDeviceRegistryView();
+        if (registry.hasPowerSupply()){
+            throw new DeviceAlreadyCreatedException(
+                    "A power supply has already been made"
+            );
         }
     }
 
     private static void writeEntryForNoPowerSupply(){
-        logger.debug("No Power Supply. Creating a new one");
+        log.debug("No Power Supply. Creating a new one");
     }
 
     private static void writeEntryForSupply(PowerSupply supply){
-        logger.debug(
+        log.debug(
                 String.format("Found Power supply %s", supply.toString())
         );
     }

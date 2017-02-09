@@ -17,7 +17,7 @@ public interface SerialPort {
     /**
      * Open the port
      */
-    void open() throws PortInUseException;
+    void open() throws PortInUseException, UnsupportedCommOperationException;
 
     /**
      * close the port and release it to the world
@@ -37,8 +37,6 @@ public interface SerialPort {
     /**
      * Set the configuration to a new value
      * @param newConfig a data structure representing the new values to be set
-     * @throws UnsupportedCommOperationException if it cannot be done
      */
-    void setConfig(PortConfiguration newConfig) throws
-            UnsupportedCommOperationException ;
+    void setConfig(PortConfiguration newConfig);
 }
