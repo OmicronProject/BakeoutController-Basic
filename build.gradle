@@ -51,9 +51,6 @@ dependencies {
     // JetBrains Annotations
     compile group: 'org.jetbrains', name: 'annotations', version: '13.0'
 
-    // Spring DI
-    compile 'org.springframework:spring-aop:3.2.18.RELEASE'
-
     // Spring Boot
     compile "org.springframework.boot:spring-boot-starter-web:1.4.3.RELEASE"
 
@@ -63,7 +60,6 @@ dependencies {
 
     // The production code uses the SLF4J logging API at compile time
     compile 'org.slf4j:slf4j-api:1.7.13'
-    compile group: 'ch.qos.logback', name: 'logback-core', version: '1.1.10'
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.1.10'
 
 
