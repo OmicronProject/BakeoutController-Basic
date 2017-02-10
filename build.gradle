@@ -51,6 +51,9 @@ dependencies {
     // JetBrains Annotations
     compile group: 'org.jetbrains', name: 'annotations', version: '13.0'
 
+    // MODBUS communication library for talking with the PVCi pressure gauge
+    compile "net.wimpi:jamod:1.2"
+
     // Spring Boot
     compile "org.springframework.boot:spring-boot-starter-web:1.4.3.RELEASE"
 
