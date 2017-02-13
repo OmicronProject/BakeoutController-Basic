@@ -2,16 +2,22 @@ package kernel.models;
 
 import devices.PVCiPressureGauge;
 import devices.PressureGauge;
-import exceptions.DeviceNotCreatedException;
 import kernel.Kernel;
 import kernel.modbus.ModbusConnector;
 import kernel.modbus.ModbusPortConfiguration;
 import kernel.modbus.StandaloneModbusPortConfiguration;
 import org.jetbrains.annotations.Contract;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class PVCiPressureGaugeFactory implements
         kernel.controllers.PVCiPressureGaugeFactory {
+
+    private static Logger log = LoggerFactory.getLogger(
+            PVCiPressureGaugeFactory.class
+    );
+
     private Integer address = 2;
 
     private String portName;
@@ -52,6 +58,30 @@ public class PVCiPressureGaugeFactory implements
 
     @Override
     public PressureGauge getPressureGauge() {
+        kernel.views.DeviceRegistry registry = kernel.getDeviceRegistryView();
+
+        if(!registry.hasPressureGauge()){
+            writeEntryforNoGauge();
+            makePressureGauge();
+        }
+
+        PressureGauge gauge = registry.getPressureGauge();
+
+        writeEntryForGauge(gauge);
+
+        return gauge;
+    }
+
+    @Override
+    public void makePressureGauge(){
+        kernel.controllers.DeviceRegistry registry = kernel
+                .getDeviceRegistryController();
+
+        registry.setPressureGauge(createInstance());
+    }
+
+    @Contract(" -> !null")
+    private PressureGauge createInstance(){
         return new PVCiPressureGauge(address, getConnection());
     }
 
@@ -74,5 +104,13 @@ public class PVCiPressureGaugeFactory implements
         config.setEncoding(ModbusPortConfiguration.ASCII_ENCODING);
 
         return config;
+    }
+
+    private static void writeEntryForGauge(PressureGauge gauge){
+        log.debug("Found Pressure gauge {}", gauge);
+    }
+
+    private static void writeEntryforNoGauge(){
+        log.debug("No pressure gauge found. Creating a new one.");
     }
 }

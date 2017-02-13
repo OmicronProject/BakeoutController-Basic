@@ -19,4 +19,6 @@ public interface PVCiPressureGaugeFactory {
     void setPortName(String portName);
 
     PressureGauge getPressureGauge();
+
+    void makePressureGauge();
 }

@@ -7,7 +7,6 @@ import gnu.io.PortInUseException;
 import gnu.io.UnsupportedCommOperationException;
 import kernel.serial_ports.PortConfiguration;
 import kernel.serial_ports.SerialPort;
-import kernel.views.*;
 import kernel.views.DeviceRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -83,7 +82,7 @@ public class TDKLambdaPowerSupplyFactory implements kernel.controllers.TDKLambda
         PowerSupply supply = registry.getPowerSupply();
         writeEntryForSupply(supply);
 
-        return registry.getPowerSupply();
+        return supply;
     }
 
     @Override
@@ -95,12 +94,12 @@ public class TDKLambdaPowerSupplyFactory implements kernel.controllers.TDKLambda
         kernel.controllers.DeviceRegistry registry = kernel
                 .getDeviceRegistryController();
 
-        PowerSupply supply = createPowerSupply();
+        PowerSupply supply = createPowerSupplyInstance();
 
         registry.setPowerSupply(supply);
     }
 
-    private PowerSupply createPowerSupply() throws PortInUseException,
+    private PowerSupply createPowerSupplyInstance() throws PortInUseException,
             IOException, UnsupportedCommOperationException
     {
         SerialPort port = kernel.getPortDriver().getPortByName(this.portName);
