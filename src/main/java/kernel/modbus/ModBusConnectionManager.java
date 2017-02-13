@@ -7,36 +7,51 @@ import net.wimpi.modbus.io.ModbusTransaction;
 import net.wimpi.modbus.msg.ModbusMessage;
 import net.wimpi.modbus.msg.ModbusRequest;
 import net.wimpi.modbus.msg.ModbusResponse;
-import net.wimpi.modbus.msg.ReadInputRegistersResponse;
 import net.wimpi.modbus.net.SerialConnection;
-import net.wimpi.modbus.procimg.InputRegister;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
-import java.lang.reflect.Array;
-import java.util.LinkedList;
-import java.util.List;
+
 
 /**
  * Manages connections to an RS232 port using MODBUS
  */
 public class ModBusConnectionManager implements ModbusConnector {
 
+    /**
+     * The application log
+     */
     private static final Logger log = LoggerFactory.getLogger(
             ModBusConnectionManager.class);
 
+    /**
+     * The configuration to be used when connecting to a MODBUS device over
+     * RS232.
+     */
     private ModbusPortConfiguration desiredPortConfiguration;
 
+    /**
+     * A thread responsible for closing the port if a shutdown request is sent
+     */
     private PortShutdownThread portShutdownThread;
 
+    /**
+     * The serial connection to use
+     */
     private SerialConnection connection;
 
+    /**
+     * @return The RS232 port config
+     */
     @Override
     public ModbusPortConfiguration getPortConfiguration(){
         return this.desiredPortConfiguration;
     }
 
+    /**
+     * @param portConfiguration The desired port configuration
+     */
     @Override
     public void setPortConfiguration(
             ModbusPortConfiguration portConfiguration
@@ -44,6 +59,10 @@ public class ModBusConnectionManager implements ModbusConnector {
         desiredPortConfiguration = portConfiguration;
     }
 
+    /**
+     * @return True if the port is open, otherwise false. If the connection
+     * is null, it is assumed that the connection is not open.
+     */
     @Override
     public Boolean isPortOpen(){
         if (connection == null){
@@ -53,12 +72,24 @@ public class ModBusConnectionManager implements ModbusConnector {
         }
     }
 
+    /**
+     * Closes the port and removes the shutdown thread
+     */
     @Override
     public void close(){
         connection.close();
         removeShutdownThread();
     }
 
+    /**
+     * @param request A transaction which, when executed, will retrieve the
+     *                value at a particular set of registers in the MODBUS
+     *                device
+     * @return The transaction
+     * @throws WrappedModbusException If the connection cannot be opened.
+     * @throws IllegalStateException If assertions like the device having a
+     * connection, and having a port configuration, fail.
+     */
     @Override
     public ModbusTransaction getTransactionForRequest(ModbusRequest request)
         throws WrappedModbusException, IllegalStateException {
@@ -73,6 +104,14 @@ public class ModBusConnectionManager implements ModbusConnector {
         return transaction;
     }
 
+    /**
+     * Helper method to retrieve a float from a MODBUS response.
+     *
+     * @param response The response to be parsed
+     * @return The 32-bit IEEE floating point number contained in the response
+     * @throws ClassCastException If the message cannot be cast to a response
+     * @throws IOException If the message cannot be read
+     */
     @Override
     public Float parseFloatFromResponse(ModbusMessage response) throws
             ClassCastException, IOException {
@@ -94,7 +133,15 @@ public class ModBusConnectionManager implements ModbusConnector {
 
     }
 
-
+    /**
+     * Open the serial connection, and add the shutdown thread to the
+     * runtime environment
+     *
+     * @throws IllegalStateException If assertions required to open the port
+     * fail
+     * @throws WrappedModbusException If opening the port throws an
+     * {@link Exception}
+     */
     private void openConnection() throws IllegalStateException,
             WrappedModbusException {
         assertPortClosed();

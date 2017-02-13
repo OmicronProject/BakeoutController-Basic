@@ -4,9 +4,6 @@ import devices.PressureGauge;
 import exceptions.DeviceNotCreatedException;
 import kernel.Kernel;
 
-/**
- * Created by mkononen on 10/02/17.
- */
 public interface PVCiPressureGaugeFactory {
 
     Kernel getKernel();
@@ -21,5 +18,5 @@ public interface PVCiPressureGaugeFactory {
 
     void setPortName(String portName);
 
-    PressureGauge getPressureGauge() throws DeviceNotCreatedException;
+    PressureGauge getPressureGauge();
 }

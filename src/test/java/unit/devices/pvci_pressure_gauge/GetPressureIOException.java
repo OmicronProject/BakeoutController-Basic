@@ -1,5 +1,6 @@
 package unit.devices.pvci_pressure_gauge;
 
+import devices.PVCiPressureGauge;
 import exceptions.WrappedModbusException;
 import net.wimpi.modbus.io.ModbusTransaction;
 import net.wimpi.modbus.msg.ModbusResponse;
@@ -12,7 +13,9 @@ import org.junit.Test;
 import java.io.IOException;
 
 /**
- * Created by mkononen on 13/02/17.
+ * Contains unit tests for {@link PVCiPressureGauge#getPressure()} where an
+ * {@link IOException is thrown}. Checks that the {@link IOException} is
+ * wrapped into a {@link WrappedModbusException}
  */
 public class GetPressureIOException extends PVCiPressureGaugeTestCase {
     private ModbusTransaction mockTransaction = context.mock(

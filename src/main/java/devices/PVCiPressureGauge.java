@@ -3,13 +3,10 @@ package devices;
 import exceptions.WrappedModbusException;
 import kernel.modbus.ModbusConnector;
 import net.wimpi.modbus.ModbusException;
-import net.wimpi.modbus.io.BytesInputStream;
-import net.wimpi.modbus.io.BytesOutputStream;
 import net.wimpi.modbus.io.ModbusTransaction;
 import net.wimpi.modbus.msg.ModbusMessage;
 import net.wimpi.modbus.msg.ReadInputRegistersRequest;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

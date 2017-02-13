@@ -10,9 +10,6 @@ import kernel.modbus.StandaloneModbusPortConfiguration;
 import org.jetbrains.annotations.Contract;
 import org.springframework.beans.factory.annotation.Autowired;
 
-/**
- * Created by mkononen on 10/02/17.
- */
 public class PVCiPressureGaugeFactory implements
         kernel.controllers.PVCiPressureGaugeFactory {
     private Integer address = 2;
@@ -54,7 +51,7 @@ public class PVCiPressureGaugeFactory implements
     }
 
     @Override
-    public PressureGauge getPressureGauge() throws DeviceNotCreatedException {
+    public PressureGauge getPressureGauge() {
         return new PVCiPressureGauge(address, getConnection());
     }
 

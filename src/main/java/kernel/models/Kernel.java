@@ -32,6 +32,9 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
 
     private static final Logger log = LoggerFactory.getLogger(Kernel.class);
 
+    private kernel.controllers.PVCiPressureGaugeFactory
+            pvCiPressureGaugeFactory;
+
     /**
      * @param portDriver The driver to be used for managing the RS232 serial
      *                   port
@@ -45,6 +48,8 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
 
         ModbusCoupler.getReference().setMaster(Boolean.TRUE);
         ModbusCoupler.getReference().setUnitID(1);
+
+        createPVCIPressureGaugeFactory();
     }
 
     /**
@@ -104,10 +109,21 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
         return new ModBusConnectionManager();
     }
 
+    @Override
+    public kernel.controllers.PVCiPressureGaugeFactory
+    getPressureGaugeFactory(){
+        return this.pvCiPressureGaugeFactory;
+    }
+
     private void createTDKLambdaPowerSupplyFactory(){
         this.tdkLambdaPowerSupplyFactory = new kernel.models
                 .TDKLambdaPowerSupplyFactory();
         this.tdkLambdaPowerSupplyFactory.setKernel(this);
+    }
+
+    private void createPVCIPressureGaugeFactory(){
+        this.pvCiPressureGaugeFactory = new PVCiPressureGaugeFactory();
+        this.pvCiPressureGaugeFactory.setKernel(this);
     }
 
     /**

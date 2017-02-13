@@ -23,4 +23,6 @@ public interface Kernel {
     TDKLambdaPowerSupplyFactory getPowerSupplyFactory();
 
     ModbusConnector getModbusConnector();
+
+    PVCiPressureGaugeFactory getPressureGaugeFactory();
 }
