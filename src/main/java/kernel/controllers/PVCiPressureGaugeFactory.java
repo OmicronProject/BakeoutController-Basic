@@ -1,7 +1,6 @@
 package kernel.controllers;
 
 import devices.PressureGauge;
-import exceptions.DeviceNotCreatedException;
 import kernel.Kernel;
 
 public interface PVCiPressureGaugeFactory {

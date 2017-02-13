@@ -2,7 +2,6 @@ package unit.kernel.models.pvci_pressure_gauge_factory;
 
 import devices.PressureGauge;
 import kernel.models.PVCiPressureGaugeFactory;
-import kernel.views.DeviceRegistry;
 import org.jmock.Expectations;
 import org.junit.Before;
 import org.junit.Test;
