@@ -96,20 +96,4 @@ public class PVCiPressureGauge implements PressureGauge {
 
         return request;
     }
-
-    @NotNull
-    private Float parseResponse(ModbusMessage response) throws IOException {
-        ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
-        DataOutput writer = new DataOutputStream(byteBuffer);
-
-        response.writeTo(writer);
-
-        log.debug("Response is {} long. Message is {}",
-                response.getDataLength(), response.getHexMessage());
-
-        DataInput reader = new DataInputStream(
-                new ByteArrayInputStream(byteBuffer.toByteArray()));
-
-        return reader.readFloat();
-    }
 }
