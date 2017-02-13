@@ -5,8 +5,8 @@ package exceptions;
  * API isn't specific on what goes down when an exception is thrown, so I
  * went ahead and wrapped it in this.
  */
-public class WrappedExceptionFromModbus extends Exception {
-    public WrappedExceptionFromModbus(Throwable error){
+public class WrappedModbusException extends Exception {
+    public WrappedModbusException(Throwable error){
         super(error);
     }
 }

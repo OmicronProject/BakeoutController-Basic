@@ -1,9 +1,12 @@
 package kernel.models;
 
 import kernel.controllers.TDKLambdaPowerSupplyFactory;
+import kernel.modbus.ModBusConnectionManager;
+import kernel.modbus.ModbusConnector;
 import kernel.serial_ports.PortDriver;
 import kernel.serial_ports.SerialPort;
 import kernel.views.CommPortReporter;
+import net.wimpi.modbus.ModbusCoupler;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -39,6 +42,9 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
         createTDKLambdaPowerSupplyFactory();
 
         log.info("Started kernel {}", this.toString());
+
+        ModbusCoupler.getReference().setMaster(Boolean.TRUE);
+        ModbusCoupler.getReference().setUnitID(1);
     }
 
     /**
@@ -90,6 +96,12 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
     @Override
     public TDKLambdaPowerSupplyFactory getPowerSupplyFactory(){
         return this.tdkLambdaPowerSupplyFactory;
+    }
+
+    @Contract(" -> !null")
+    @Override
+    public ModbusConnector getModbusConnector(){
+        return new ModBusConnectionManager();
     }
 
     private void createTDKLambdaPowerSupplyFactory(){

@@ -1,20 +1,19 @@
 package devices;
 
-import exceptions.WrappedExceptionFromModbus;
-import gnu.io.RXTXPort;
-import net.wimpi.modbus.Modbus;
-import net.wimpi.modbus.ModbusCoupler;
+import exceptions.WrappedModbusException;
+import kernel.modbus.ModbusConnector;
 import net.wimpi.modbus.ModbusException;
-import net.wimpi.modbus.io.ModbusSerialTransaction;
+import net.wimpi.modbus.io.BytesInputStream;
+import net.wimpi.modbus.io.BytesOutputStream;
 import net.wimpi.modbus.io.ModbusTransaction;
-import net.wimpi.modbus.msg.ModbusRequest;
-import net.wimpi.modbus.msg.ModbusResponse;
+import net.wimpi.modbus.msg.ModbusMessage;
 import net.wimpi.modbus.msg.ReadInputRegistersRequest;
-import net.wimpi.modbus.net.SerialConnection;
-import net.wimpi.modbus.util.SerialParameters;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.*;
 
 /**
  * Contains an implementation of the PVCi IGC3 ion pressure gauge
@@ -32,29 +31,6 @@ public class PVCiPressureGauge implements PressureGauge {
             (PVCiPressureGauge.class);
 
     /**
-     * The baud rate to be used for communicating with the gauge
-     */
-    private static final Integer baudRate = 19200;
-
-    /**
-     * The number of data bits to be used in communication
-     */
-    private static final Integer dataBits = RXTXPort.DATABITS_8;
-
-    /**
-     * The number of stop bits to be used in the connection
-     */
-    private static final Integer stopBits = RXTXPort.STOPBITS_1;
-
-    /**
-     * The number of parity bits to use
-     * @implNote The MODBUS protocol already contains a CRC check, so
-     * checking parity at the RS232 level is redundant, unless you're really
-     * paranoid.
-     */
-    private static final Integer parityBits = RXTXPort.PARITY_NONE;
-
-    /**
      * The address (0x9A in hexadecimal) where pressure information is stored
      */
     private static final Integer gaugePressureAddress = 154;
@@ -68,95 +44,51 @@ public class PVCiPressureGauge implements PressureGauge {
     private static final Integer gaugePressureWordsTorRead = 2;
 
     /**
-     * The name of the port at which the PVCi pressure gauge resides
-     */
-    private final String portName;
-
-    /**
      * The device address
      */
     private final Integer address;
 
-    /**
-     * A thread that cleans up the serial connection. If a termination
-     * signal is sent to this application, this thread is responsible for
-     * closing the serial connection and freeing the port.
-     */
-    private PortShutdownThread shutdownThread;
+    private final ModbusConnector connection;
 
-    /**
-     * The RS232 port over which the pressure gauge is connected to the device
-     */
-    private SerialConnection serialConnection;
-
-    public PVCiPressureGauge(String portName, Integer address){
-        this.portName = portName;
+    public PVCiPressureGauge(Integer address, ModbusConnector connection){
         this.address = address;
-
-        ModbusCoupler.getReference().setUnitID(1);
-        ModbusCoupler.getReference().setMaster(Boolean.TRUE);
+        this.connection = connection;
+        log.debug(
+                "Created PVCi pressure gauge with address {} and conn {}",
+                address, connection);
     }
 
     @Override
-    public Float getPressure() throws WrappedExceptionFromModbus,
+    public Float getPressure() throws WrappedModbusException,
             ModbusException {
+
         ReadInputRegistersRequest pressureRequest = getReadRegisterRequest(
                 gaugePressureAddress, gaugePressureWordsTorRead
         );
 
-        SerialConnection connection;
+        ModbusTransaction transaction = connection.getTransactionForRequest(
+                pressureRequest);
 
-        try {
-            connection = getSerialConnection();
-        } catch (Exception connectionError) {
-            throw new WrappedExceptionFromModbus(connectionError);
-        }
-
-        ModbusTransaction transaction = getModbusTransaction(
-                pressureRequest, connection);
+        log.debug(
+                "PVCi Pressure gauge {} executing transaction {}",
+                this.toString(), transaction.toString());
 
         transaction.execute();
 
-        ModbusResponse response = transaction.getResponse();
+        ModbusMessage response = transaction.getResponse();
 
-        return Float.parseFloat(response.getHexMessage());
-    }
+        log.debug(
+                "Received response {} from transaction {}",
+                response.getHexMessage(), transaction.toString());
 
-    private SerialParameters getSerialParameters(){
-        SerialParameters parameters = new SerialParameters();
-
-        parameters.setPortName(portName);
-        parameters.setBaudRate(baudRate);
-        parameters.setDatabits(dataBits);
-        parameters.setStopbits(stopBits);
-        parameters.setParity(parityBits);
-        parameters.setEncoding(Modbus.SERIAL_ENCODING_ASCII);
-
-        return parameters;
-    }
-
-    @Contract(" -> !null")
-    private SerialConnection buildSerialConnection(){
-        return new SerialConnection(getSerialParameters());
-    }
-
-    private SerialConnection getSerialConnection() throws Exception {
-        if (serialConnection == null) {
-            serialConnection = buildSerialConnection();
+        Float pressure;
+        try {
+            pressure = parseResponse(response);
+        } catch (IOException error) {
+            throw new WrappedModbusException(error);
         }
 
-        if (!serialConnection.isOpen()) {
-            serialConnection.open();
-            shutdownThread = new PortShutdownThread(serialConnection);
-            Runtime.getRuntime().addShutdownHook(shutdownThread);
-        }
-
-        return serialConnection;
-    }
-
-    private void closeSerialConnection(){
-        serialConnection.close();
-        Runtime.getRuntime().removeShutdownHook(shutdownThread);
+        return pressure;
     }
 
     @Contract("_, _ -> !null")
@@ -170,36 +102,19 @@ public class PVCiPressureGauge implements PressureGauge {
         return request;
     }
 
-    private ModbusTransaction getModbusTransaction(
-            ModbusRequest request, SerialConnection connection){
-        ModbusTransaction transaction = new ModbusSerialTransaction
-                (connection);
+    @NotNull
+    private Float parseResponse(ModbusMessage response) throws IOException {
+        ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+        DataOutput writer = new DataOutputStream(byteBuffer);
 
-        transaction.setRequest(request);
+        response.writeTo(writer);
 
-        return transaction;
+        log.debug("Response is {} long. Message is {}",
+                response.getDataLength(), response.getHexMessage());
+
+        DataInput reader = new DataInputStream(
+                new ByteArrayInputStream(byteBuffer.toByteArray()));
+
+        return reader.readFloat();
     }
-
-
-
-    private class PortShutdownThread extends Thread {
-        private final Logger log = LoggerFactory.getLogger
-                (PortShutdownThread.class);
-
-        private final SerialConnection connection;
-
-        public PortShutdownThread(SerialConnection connection){
-            this.connection = connection;
-        }
-
-        @Override
-        public void run(){
-            log.info("Connection {} caught shutdown signal. Closing",
-                    connection.toString());
-            connection.close();
-            log.info("MODBUS Connection {} successfully closed",
-                    connection.toString());
-        }
-    }
-
 }

@@ -10,6 +10,7 @@ import org.junit.Rule;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import unit.kernel.modbus.ModbusTestCase;
+import unit.kernel.modbus.StandaloneModbusPortConfigurationGenerator;
 
 import static org.junit.Assert.assertEquals;
 

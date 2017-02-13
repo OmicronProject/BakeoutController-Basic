@@ -1,6 +1,7 @@
 package kernel;
 
 import kernel.controllers.*;
+import kernel.modbus.ModbusConnector;
 import kernel.serial_ports.PortDriver;
 import kernel.views.CommPortReporter;
 
@@ -20,4 +21,6 @@ public interface Kernel {
     DeviceRegistry getDeviceRegistryController();
 
     TDKLambdaPowerSupplyFactory getPowerSupplyFactory();
+
+    ModbusConnector getModbusConnector();
 }

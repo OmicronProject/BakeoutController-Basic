@@ -1,4 +1,4 @@
-package unit.kernel.modbus.standalone_modbus_port_configuration;
+package unit.kernel.modbus;
 
 import com.pholser.junit.quickcheck.generator.GenerationStatus;
 import com.pholser.junit.quickcheck.generator.Generator;

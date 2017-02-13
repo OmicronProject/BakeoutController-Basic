@@ -9,5 +9,5 @@ import net.wimpi.modbus.Modbus;
 public interface ModbusController {
     String SERIAL_ENCODING_ASCII = Modbus.SERIAL_ENCODING_ASCII;
 
-    ModbusPortConfiguration getSerialPortConfiguration();
+
 }
