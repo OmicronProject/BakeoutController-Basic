@@ -9,12 +9,14 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import kernel.Kernel;
+import kernel.controllers.PVCiPressureGaugeFactory;
 import kernel.controllers.TDKLambdaPowerSupplyFactory;
 import kernel.views.CommPortReporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import ui.Controller;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Controls the device setup
@@ -25,7 +27,9 @@ public class DeviceSetupController {
     @Autowired
     private Kernel kernel;
 
-    @FXML private ComboBox<String> portSelector;
+    @FXML private ComboBox<String> tdkPortSelector;
+
+    @FXML private ComboBox<String> pvciPortSelector;
 
     @FXML private Text statusReportField;
 
@@ -37,19 +41,27 @@ public class DeviceSetupController {
     @FXML
     public void handleGoButtonClicked(){
         configurePowerSupply();
+        configurePressureGauge();
     }
 
     private void initializePortList(){
-        ObservableList<String> portsInBox = portSelector.getItems();
+        ObservableList<String> portsInBox = tdkPortSelector.getItems();
+        ObservableList<String> portsInPVCiSelector = pvciPortSelector
+                .getItems();
+
         CommPortReporter reporter = kernel.getCommPortReporter();
 
-        portsInBox.addAll(reporter.getSerialPortNames());
+        List<String> serialPortNames = reporter.getSerialPortNames();
 
-        portSelector.getSelectionModel().select(0);
+        portsInBox.addAll(serialPortNames);
+        portsInPVCiSelector.addAll(serialPortNames);
+
+        tdkPortSelector.getSelectionModel().select(0);
+        pvciPortSelector.getSelectionModel().select(0);
     }
 
     private void configurePowerSupply(){
-        String portName = portSelector.getSelectionModel().getSelectedItem();
+        String portName = tdkPortSelector.getSelectionModel().getSelectedItem();
 
         TDKLambdaPowerSupplyFactory factory = kernel.getPowerSupplyFactory();
         factory.setPortName(portName);
@@ -102,5 +114,15 @@ public class DeviceSetupController {
         statusReportField.setId(
                 "device-created-exception-message"
         );
+    }
+
+    private void configurePressureGauge(){
+        String portName = pvciPortSelector.getSelectionModel()
+                .getSelectedItem();
+
+        PVCiPressureGaugeFactory factory = kernel.getPressureGaugeFactory();
+
+        factory.setPortName(portName);
+        factory.setAddress(11);
     }
 }

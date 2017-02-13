@@ -36,20 +36,34 @@
         <GridPane.rowIndex>2</GridPane.rowIndex>
         <GridPane.columnIndex>0</GridPane.columnIndex>
     </Text>
-    <ComboBox id="port-selector" fx:id="portSelector">
+    <ComboBox id="port-selector" fx:id="tdkPortSelector">
         <GridPane.rowIndex>2</GridPane.rowIndex>
         <GridPane.columnIndex>1</GridPane.columnIndex>
     </ComboBox>
 
-    <TilePane id="status-reporter">
+    <Text text="Enter the address for the Pressure Gauge">
         <GridPane.rowIndex>3</GridPane.rowIndex>
+        <GridPane.columnIndex>0</GridPane.columnIndex>
+        <GridPane.columnSpan>2</GridPane.columnSpan>
+    </Text>
+    <Text text="Address">
+        <GridPane.rowIndex>4</GridPane.rowIndex>
+        <GridPane.columnIndex>0</GridPane.columnIndex>
+    </Text>
+    <ComboBox id="pvci-address-selector" fx:id="pvciPortSelector">
+        <GridPane.rowIndex>4</GridPane.rowIndex>
+        <GridPane.columnIndex>1</GridPane.columnIndex>
+    </ComboBox>
+
+    <TilePane id="status-reporter">
+        <GridPane.rowIndex>5</GridPane.rowIndex>
         <GridPane.columnIndex>0</GridPane.columnIndex>
         <Text text="Status" id="status-bar-title"/>
         <Text id="status-report" fx:id="statusReportField" />
     </TilePane>
 
     <TilePane>
-        <GridPane.rowIndex>3</GridPane.rowIndex>
+        <GridPane.rowIndex>5</GridPane.rowIndex>
         <GridPane.columnIndex>1</GridPane.columnIndex>
         <Button id="go-button" text="Go" onAction="#handleGoButtonClicked"/>
     </TilePane>

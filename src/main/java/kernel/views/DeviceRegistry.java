@@ -1,6 +1,7 @@
 package kernel.views;
 
 import devices.PowerSupply;
+import devices.PressureGauge;
 import devices.RS232Device;
 
 /**
@@ -10,4 +11,8 @@ public interface DeviceRegistry {
     PowerSupply getPowerSupply();
 
     Boolean hasPowerSupply();
+
+    PressureGauge getPressureGauge();
+
+    Boolean hasPressureGauge();
 }

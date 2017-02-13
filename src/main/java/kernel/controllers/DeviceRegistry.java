@@ -1,6 +1,7 @@
 package kernel.controllers;
 
 import devices.PowerSupply;
+import devices.PressureGauge;
 import devices.RS232Device;
 
 /**
@@ -8,4 +9,6 @@ import devices.RS232Device;
  */
 public interface DeviceRegistry {
     void setPowerSupply(PowerSupply powerSupply);
+
+    void setPressureGauge(PressureGauge pressureGauge);
 }
