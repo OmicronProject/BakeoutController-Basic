@@ -62,6 +62,9 @@ public final class GetPressure extends PVCiPressureGaugeTestCase {
                     with(any(ReadInputRegistersRequest.class))
             );
             will(returnValue(mockTransaction));
+
+            oneOf(mockModbusConnector).parseFloatFromResponse(mockResponse);
+            will(returnValue(expectedAnswer));
         }
 
         private void expectationsForTransaction() throws ModbusException {

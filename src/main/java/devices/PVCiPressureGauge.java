@@ -65,25 +65,20 @@ public class PVCiPressureGauge implements PressureGauge {
         ReadInputRegistersRequest pressureRequest = getReadRegisterRequest(
                 gaugePressureAddress, gaugePressureWordsTorRead
         );
-
         ModbusTransaction transaction = connection.getTransactionForRequest(
                 pressureRequest);
-
         log.debug(
                 "PVCi Pressure gauge {} executing transaction {}",
                 this.toString(), transaction.toString());
-
         transaction.execute();
-
         ModbusMessage response = transaction.getResponse();
-
         log.debug(
                 "Received response {} from transaction {}",
                 response.getHexMessage(), transaction.toString());
 
         Float pressure;
         try {
-            pressure = parseResponse(response);
+            pressure = connection.parseFloatFromResponse(response);
         } catch (IOException error) {
             throw new WrappedModbusException(error);
         }

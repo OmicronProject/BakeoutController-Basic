@@ -4,15 +4,27 @@ package kernel.modbus;
 import exceptions.WrappedModbusException;
 import net.wimpi.modbus.io.ModbusSerialTransaction;
 import net.wimpi.modbus.io.ModbusTransaction;
+import net.wimpi.modbus.msg.ModbusMessage;
 import net.wimpi.modbus.msg.ModbusRequest;
+import net.wimpi.modbus.msg.ModbusResponse;
+import net.wimpi.modbus.msg.ReadInputRegistersResponse;
 import net.wimpi.modbus.net.SerialConnection;
+import net.wimpi.modbus.procimg.InputRegister;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.*;
+import java.lang.reflect.Array;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Manages connections to an RS232 port using MODBUS
  */
 public class ModBusConnectionManager implements ModbusConnector {
+
+    private static final Logger log = LoggerFactory.getLogger(
+            ModBusConnectionManager.class);
 
     private ModbusPortConfiguration desiredPortConfiguration;
 
@@ -60,6 +72,28 @@ public class ModBusConnectionManager implements ModbusConnector {
 
         return transaction;
     }
+
+    @Override
+    public Float parseFloatFromResponse(ModbusMessage response) throws
+            ClassCastException, IOException {
+        ModbusResponse inputRegistersResponse = (ModbusResponse) response;
+        ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+        DataOutput writer = new DataOutputStream(byteBuffer);
+        log.debug(
+                "Received response {}. Parsing to float",
+                inputRegistersResponse.toString()
+        );
+
+        inputRegistersResponse.writeData(writer);
+
+        DataInput reader = new DataInputStream(
+                new ByteArrayInputStream(byteBuffer.toByteArray())
+        );
+
+        return reader.readFloat();
+
+    }
+
 
     private void openConnection() throws IllegalStateException,
             WrappedModbusException {
