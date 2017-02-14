@@ -55,7 +55,7 @@
         <GridPane.columnIndex>1</GridPane.columnIndex>
     </ComboBox>
 
-    <TilePane id="status-reporter">
+    <TilePane id="status-reporter" styleClass="status-field">
         <GridPane.rowIndex>5</GridPane.rowIndex>
         <GridPane.columnIndex>0</GridPane.columnIndex>
         <Text text="Status" id="status-bar-title"/>

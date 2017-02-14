@@ -4,6 +4,10 @@ import devices.PressureGauge;
 import kernel.controllers.DeviceRegistry;
 import kernel.modbus.ModbusPortConfiguration;
 import kernel.models.PVCiPressureGaugeFactory;
+import net.wimpi.modbus.io.ModbusTransaction;
+import net.wimpi.modbus.msg.ModbusResponse;
+import net.wimpi.modbus.msg.ReadInputRegistersRequest;
+import net.wimpi.modbus.msg.ReadInputRegistersResponse;
 import org.jmock.Expectations;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,8 +30,12 @@ public final class GetPressureGaugeNotInRegistry extends
     private PressureGauge mockPressureGauge = context.mock(
             PressureGauge.class);
 
+    private ModbusTransaction mockTransaction = context.mock(
+            ModbusTransaction.class
+    );
+
     @Before
-    public void setContext(){
+    public void setContext() throws Exception {
         context.checking(new ExpectationsForTest());
     }
 
@@ -37,7 +45,7 @@ public final class GetPressureGaugeNotInRegistry extends
     }
 
     private class ExpectationsForTest extends Expectations {
-        public ExpectationsForTest(){
+        public ExpectationsForTest() throws Exception {
             oneOf(mockKernel).getDeviceRegistryView();
             will(returnValue(mockRegistry));
 
@@ -60,6 +68,21 @@ public final class GetPressureGaugeNotInRegistry extends
 
             oneOf(mockRegistry).getPressureGauge();
             will(returnValue(mockPressureGauge));
+
+            oneOf(mockConnector).getTransactionForRequest(
+                    with(any(ReadInputRegistersRequest.class))
+            );
+            will(returnValue(mockTransaction));
+
+            oneOf(mockTransaction).getResponse();
+            will(returnValue(new ReadInputRegistersResponse()));
+
+            oneOf(mockTransaction).execute();
+
+            oneOf(mockConnector).parseStringFromResponse(with(any
+                    (ModbusResponse.class)));
+            will(returnValue("iGC3"));
+
         }
     }
 }
