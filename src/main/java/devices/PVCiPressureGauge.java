@@ -2,7 +2,6 @@ package devices;
 
 import exceptions.WrappedModbusException;
 import kernel.modbus.ModbusConnector;
-import net.wimpi.modbus.Modbus;
 import net.wimpi.modbus.ModbusException;
 import net.wimpi.modbus.io.ModbusTransaction;
 import net.wimpi.modbus.msg.ModbusMessage;

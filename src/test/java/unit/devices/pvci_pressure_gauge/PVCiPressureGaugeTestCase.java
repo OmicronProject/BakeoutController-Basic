@@ -6,13 +6,10 @@ import kernel.modbus.ModbusConnector;
 import net.wimpi.modbus.io.ModbusTransaction;
 import net.wimpi.modbus.msg.ModbusMessage;
 import net.wimpi.modbus.msg.ModbusRequest;
-import net.wimpi.modbus.msg.ModbusResponse;
 import net.wimpi.modbus.msg.ReadInputRegistersResponse;
 import org.jmock.Expectations;
 import org.junit.Before;
 import unit.devices.DevicesTestCase;
-
-import java.io.IOException;
 
 /**
  * Base class for unit tests of {@link devices.PVCiPressureGauge}

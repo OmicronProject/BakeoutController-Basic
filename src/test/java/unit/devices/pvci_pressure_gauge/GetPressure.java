@@ -2,7 +2,6 @@ package unit.devices.pvci_pressure_gauge;
 
 import devices.PVCiPressureGauge;
 import net.wimpi.modbus.ModbusException;
-import net.wimpi.modbus.io.ModbusTransaction;
 import net.wimpi.modbus.msg.ModbusResponse;
 import net.wimpi.modbus.msg.ReadInputRegistersRequest;
 import net.wimpi.modbus.msg.ReadInputRegistersResponse;
