@@ -8,6 +8,8 @@ import org.jmock.Expectations;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
+
 import static org.junit.Assert.assertNotNull;
 
 /**
@@ -30,7 +32,7 @@ public final class GetPressureGaugeNotInRegistry extends
     }
 
     @Test
-    public void getPressureGauge(){
+    public void getPressureGauge() throws IOException {
         assertNotNull(factory.getPressureGauge());
     }
 

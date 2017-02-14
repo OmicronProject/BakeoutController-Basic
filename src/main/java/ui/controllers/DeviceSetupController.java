@@ -124,5 +124,18 @@ public class DeviceSetupController {
 
         factory.setPortName(portName);
         factory.setAddress(11);
+
+        try {
+            factory.makePressureGauge();
+        } catch (IOException error){
+            handlePVCiIOException();
+        }
+    }
+
+    private void handlePVCiIOException(){
+        writeErrorMessage(
+                "Unable to establish communication with Pressure Gauge",
+                "pvci-io-exception-message"
+        );
     }
 }

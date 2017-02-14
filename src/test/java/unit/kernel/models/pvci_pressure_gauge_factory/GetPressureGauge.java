@@ -22,7 +22,7 @@ public final class GetPressureGauge extends PVCiPressureGaugeFactoryTestCase {
     }
 
     @Test
-    public void getPressureGauge(){
+    public void getPressureGauge() throws Exception{
         assertNotNull(factory.getPressureGauge());
     }
 

@@ -3,6 +3,8 @@ package kernel.controllers;
 import devices.PressureGauge;
 import kernel.Kernel;
 
+import java.io.IOException;
+
 /**
  * Responsible for creating instances of {@link PressureGauge}
  */
@@ -40,11 +42,12 @@ public interface PVCiPressureGaugeFactory {
 
     /**
      * @return An instance of the pressure gauge
+     * @throws IOException if the instance could not be created
      */
-    PressureGauge getPressureGauge();
+    PressureGauge getPressureGauge() throws IOException ;
 
     /**
      * Create a pressure gauge and write it to the device registry
      */
-    void makePressureGauge();
+    void makePressureGauge() throws IOException ;
 }

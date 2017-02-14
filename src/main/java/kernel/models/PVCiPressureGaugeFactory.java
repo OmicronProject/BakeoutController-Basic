@@ -11,6 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.IOException;
+
 /**
  * Implements a factory for creating instances of {@link PressureGauge}
  */
@@ -98,7 +100,7 @@ public class PVCiPressureGaugeFactory implements
      * @return The current pressure gauge
      */
     @Override
-    public PressureGauge getPressureGauge() {
+    public PressureGauge getPressureGauge() throws IOException {
         kernel.views.DeviceRegistry registry = kernel.getDeviceRegistryView();
 
         if(!registry.hasPressureGauge()){
@@ -118,7 +120,7 @@ public class PVCiPressureGaugeFactory implements
      * registry.
      */
     @Override
-    public void makePressureGauge(){
+    public void makePressureGauge() throws IOException {
         kernel.controllers.DeviceRegistry registry = kernel
                 .getDeviceRegistryController();
 
@@ -129,7 +131,7 @@ public class PVCiPressureGaugeFactory implements
      * @return A new instance of {@link PressureGauge}
      */
     @Contract(" -> !null")
-    private PressureGauge createInstance(){
+    private PressureGauge createInstance() throws IOException {
         return new PVCiPressureGauge(address, getConnection());
     }
 

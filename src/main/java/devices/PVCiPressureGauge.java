@@ -2,6 +2,7 @@ package devices;
 
 import exceptions.WrappedModbusException;
 import kernel.modbus.ModbusConnector;
+import net.wimpi.modbus.Modbus;
 import net.wimpi.modbus.ModbusException;
 import net.wimpi.modbus.io.ModbusTransaction;
 import net.wimpi.modbus.msg.ModbusMessage;
@@ -40,6 +41,10 @@ public class PVCiPressureGauge implements PressureGauge {
      */
     private static final Integer gaugePressureWordsTorRead = 2;
 
+    private static final Integer unitIDAddress = 0;
+
+    private static final Integer unitIDNumberofWords = 2;
+
     /**
      * The device address
      */
@@ -55,12 +60,19 @@ public class PVCiPressureGauge implements PressureGauge {
      *                requests are sent to the device with this address.
      * @param connection The connection manager to use.
      */
-    public PVCiPressureGauge(Integer address, ModbusConnector connection){
+    public PVCiPressureGauge(Integer address, ModbusConnector connection)
+            throws IOException {
         this.address = address;
         this.connection = connection;
         log.debug(
                 "Created PVCi pressure gauge with address {} and conn {}",
                 address, connection);
+
+        try {
+            this.checkUnitID();
+        } catch (Exception error){
+            throw new IOException(error);
+        }
     }
 
     /**
@@ -110,5 +122,31 @@ public class PVCiPressureGauge implements PressureGauge {
         request.setHeadless();
 
         return request;
+    }
+
+    private void checkUnitID() throws WrappedModbusException,
+            ModbusException, IOException {
+        ReadInputRegistersRequest request = getReadRegisterRequest(
+            unitIDAddress, unitIDNumberofWords
+        );
+
+        ModbusTransaction transaction = connection.getTransactionForRequest(
+                request);
+
+        log.info("Checking for device. Attempting to read unit ID using " +
+                "transaction {}", transaction);
+
+        transaction.execute();
+
+        ModbusMessage response = transaction.getResponse();
+
+        log.debug("Received response {} from transaction {}",
+                response.getHexMessage(), transaction.toString());
+
+        if (connection.parseStringFromResponse(response) == null){
+            throw new IOException(
+                    "Unable to create pressure gauge. No response from unit"
+            );
+        }
     }
 }

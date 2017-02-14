@@ -14,7 +14,7 @@ import static org.junit.Assert.fail;
  * Contains a test for {@link DeviceSetupController#handleGoButtonClicked()}
  * if a {@link IOException} is thrown
  */
-public final class IOExceptionTest extends HandleGoButtonClickedTestCase {
+public final class PowerSupplyIOExceptionTest extends HandleGoButtonClickedTestCase {
     private static final String queryForMessage = "#io-exception-message";
 
     @Contract(" -> !null")
@@ -49,6 +49,7 @@ public final class IOExceptionTest extends HandleGoButtonClickedTestCase {
             try {
                 oneOf(factory).makePowerSupply();
                 will(throwException(new IOException("Inordinate")));
+                oneOf(pressureGaugeFactory).makePressureGauge();
             } catch (Exception error){
                 error.printStackTrace();
             }

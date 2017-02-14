@@ -16,9 +16,6 @@ import static org.junit.Assert.assertEquals;
  * Contains unit tests for {@link PVCiPressureGauge#getPressure()}
  */
 public final class GetPressure extends PVCiPressureGaugeTestCase {
-    private ModbusTransaction mockTransaction = context.mock(
-            ModbusTransaction.class
-    );
 
     private ModbusResponse mockResponse = new ReadInputRegistersResponse();
 

@@ -53,6 +53,9 @@ public interface ModbusConnector {
     Float parseFloatFromResponse(ModbusMessage response) throws
             ClassCastException, IOException;
 
+    String parseStringFromResponse(ModbusMessage response) throws
+            ClassCastException, IOException;
+
     /**
      * Close the connection
      */

@@ -133,6 +133,27 @@ public class ModBusConnectionManager implements ModbusConnector {
 
     }
 
+    @Override
+    public String parseStringFromResponse(ModbusMessage response) throws
+            ClassCastException, IOException {
+        ModbusResponse inputRegistersResponse = (ModbusResponse) response;
+
+        ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+        DataOutput writer = new DataOutputStream(byteBuffer);
+        log.debug(
+                "Received response {}. Parsing to string",
+                inputRegistersResponse.toString()
+        );
+
+        inputRegistersResponse.writeData(writer);
+
+        DataInput reader = new DataInputStream(
+                new ByteArrayInputStream(byteBuffer.toByteArray())
+        );
+
+        return reader.readLine();
+    }
+
     /**
      * Open the serial connection, and add the shutdown thread to the
      * runtime environment

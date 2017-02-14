@@ -38,6 +38,7 @@ public final class HappyPath extends
         private void expectationsForGetPowerSupply(){
             try {
                 oneOf(factory).makePowerSupply();
+                oneOf(pressureGaugeFactory).makePressureGauge();
             } catch (Exception error){
                 error.printStackTrace();
             }
