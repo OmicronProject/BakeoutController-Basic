@@ -1,6 +1,7 @@
 package ui.controllers;
 
 import devices.PowerSupply;
+import devices.PressureGauge;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
@@ -25,6 +26,7 @@ public class DeviceListController {
     @FXML public void handleRefreshButtonClicked(){
         DeviceRegistry registry = kernel.getDeviceRegistryView();
         lookupPowerSupply(registry);
+        lookupPressureGauge(registry);
     }
 
     private void lookupPowerSupply(DeviceRegistry registry){
@@ -36,6 +38,19 @@ public class DeviceListController {
             deviceList.getChildren().add(entry);
         } else {
             deviceList.getChildren().add(new NoPowerSupplyText());
+        }
+    }
+
+    private void lookupPressureGauge(DeviceRegistry registry){
+        if(registry.hasPressureGauge()){
+            PressureGauge gauge = registry.getPressureGauge();
+
+            PressureGaugeEntry entry = new PressureGaugeEntry(
+                    gauge.getClass());
+
+            deviceList.getChildren().add(entry);
+        } else {
+            deviceList.getChildren().addAll(new NoPressureGaugeText());
         }
     }
 
@@ -61,6 +76,32 @@ public class DeviceListController {
 
         protected NoPowerSupplyText(){
             this.setText("No Power Supply");
+            this.setFill(Color.RED);
+            this.setId(id);
+        }
+    }
+
+    private class PressureGaugeEntry extends TilePane {
+        private static final String id = "pressure-gauge-message";
+        private Text text;
+
+        protected PressureGaugeEntry(Class type){
+            this.setAlignment(Pos.CENTER);
+
+            text = new Text();
+            text.setText(type.toString());
+
+            this.getChildren().addAll(text);
+
+            this.setId(id);
+        }
+    }
+
+    private class NoPressureGaugeText extends Text {
+        private static final String id = "no-pressure-gauge-message";
+
+        protected NoPressureGaugeText(){
+            this.setText("No Pressure Gauge");
             this.setFill(Color.RED);
             this.setId(id);
         }

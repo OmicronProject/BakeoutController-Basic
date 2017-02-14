@@ -45,8 +45,16 @@ public class PVCiPressureGauge implements PressureGauge {
      */
     private final Integer address;
 
+    /**
+     * The helper that manages Modbus connections.
+     */
     private final ModbusConnector connection;
 
+    /**
+     * @param address The device address, numbered from 1 to 99. MODBUS
+     *                requests are sent to the device with this address.
+     * @param connection The connection manager to use.
+     */
     public PVCiPressureGauge(Integer address, ModbusConnector connection){
         this.address = address;
         this.connection = connection;
@@ -55,9 +63,19 @@ public class PVCiPressureGauge implements PressureGauge {
                 address, connection);
     }
 
+    /**
+     *
+     * @return The current pressure, in millibars.
+     * @throws WrappedModbusException If the getter to get the transaction
+     * for the request fails
+     * @throws ModbusException If the transaction to get the pressure cannot
+     * be executed
+     * @throws IOException If the result of the transaction to get pressure
+     * cannot be parsed
+     */
     @Override
     public Float getPressure() throws WrappedModbusException,
-            ModbusException {
+            ModbusException, IOException {
 
         ReadInputRegistersRequest pressureRequest = getReadRegisterRequest(
                 gaugePressureAddress, gaugePressureWordsTorRead
@@ -73,16 +91,16 @@ public class PVCiPressureGauge implements PressureGauge {
                 "Received response {} from transaction {}",
                 response.getHexMessage(), transaction.toString());
 
-        Float pressure;
-        try {
-            pressure = connection.parseFloatFromResponse(response);
-        } catch (IOException error) {
-            throw new WrappedModbusException(error);
-        }
-
-        return pressure;
+        return connection.parseFloatFromResponse(response);
     }
 
+    /**
+     * Create a request to read the desired register
+     * @param registerNumber The number of the register that must be read
+     * @param numberofWordsToRead The number of 16-bit words to read,
+     *                            starting at the register number
+     * @return A request to read the registers, that jamod can parse.
+     */
     @Contract("_, _ -> !null")
     private ReadInputRegistersRequest getReadRegisterRequest(
             Integer registerNumber, Integer numberofWordsToRead){
