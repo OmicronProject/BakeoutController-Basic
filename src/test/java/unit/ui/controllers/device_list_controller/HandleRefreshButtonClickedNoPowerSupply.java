@@ -1,6 +1,7 @@
 package unit.ui.controllers.device_list_controller;
 
 import devices.PowerSupply;
+import devices.PressureGauge;
 import javafx.scene.text.Text;
 import kernel.views.DeviceRegistry;
 import org.jmock.Expectations;
@@ -45,6 +46,10 @@ public final class HandleRefreshButtonClickedNoPowerSupply extends
             oneOf(applicationContext.getBean(DeviceRegistry.class))
                     .getPowerSupply();
             will(returnValue(applicationContext.getBean(PowerSupply.class)));
+
+            oneOf(applicationContext.getBean(DeviceRegistry.class))
+                    .hasPressureGauge();
+            will(returnValue(Boolean.FALSE));
         }
     }
 }
