@@ -1,7 +1,6 @@
 package unit.ui.controllers.device_list_controller;
 
 import devices.PowerSupply;
-import devices.PressureGauge;
 import javafx.scene.text.Text;
 import kernel.views.DeviceRegistry;
 import org.jmock.Expectations;

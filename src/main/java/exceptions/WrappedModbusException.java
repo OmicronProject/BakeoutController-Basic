@@ -7,6 +7,11 @@ package exceptions;
  * went ahead and wrapped it in this.
  */
 public class WrappedModbusException extends Exception {
+    /**
+     *
+     * @param error The exception thrown by the MODBUS library, that this
+     *              exception is to wrap
+     */
     public WrappedModbusException(Throwable error){
         super(error);
     }

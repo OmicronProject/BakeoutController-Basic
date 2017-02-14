@@ -64,10 +64,14 @@ public class TDKLambdaPowerSupplyFactory implements kernel.controllers.TDKLambda
         this.kernel = kernel;
     }
 
+    /**
+     * @param portName The name of the serial port that is to be used when
+     */
     @Override
     public void setPortName(String portName){
         this.portName = portName;
     }
+
 
     @Override
     public PowerSupply getPowerSupply() throws PortInUseException,

@@ -33,13 +33,31 @@ public interface ModbusPortConfiguration extends PortConfiguration {
      */
     void setPortName(String portName);
 
+    /**
+     * @return An instance of {@link SerialParameters} that MODBUS can then
+     * parse in order to establish a connection.
+     */
     SerialParameters getSerialParameters();
 
+    /**
+     * @param baudRate The desired Baud rate
+     * @throws IllegalArgumentException If the baud rate is less than 0, or
+     * some un-allowed value
+     */
     void setBaudRate(int baudRate) throws IllegalArgumentException;
 
+    /**
+     * @param dataBits The data bits in an RS232 frame
+     */
     void setDataBits(int dataBits);
 
+    /**
+     * @param stopBits The number of stop bits in the RS232 connection
+     */
     void setStopBits(int stopBits);
 
+    /**
+     * @param parityBits The number of parity bits
+     */
     void setParityBits(int parityBits);
 }

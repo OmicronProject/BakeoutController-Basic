@@ -160,14 +160,20 @@ public class ModBusConnectionManager implements ModbusConnector {
         }
     }
 
-
+    /**
+     * @throws IllegalStateException if the port is not open
+     */
     private void assertPortClosed() throws IllegalStateException {
         if (!this.isPortOpen()){
             throw new IllegalStateException("MODBUS port is not open.");
         }
     }
 
-    private void assertHasPortConfiguration(){
+    /**
+     * @throws IllegalStateException if this manager has no desired port
+     * configuration set.
+     */
+    private void assertHasPortConfiguration() throws IllegalStateException {
         if (desiredPortConfiguration == null){
             throw new IllegalStateException(
                     "Attempted to open a port without configuration being set"
@@ -175,25 +181,50 @@ public class ModBusConnectionManager implements ModbusConnector {
         }
     }
 
+    /**
+     * Construct the shutdown thread and add it to the list of shutdown
+     * hooks that are executed when a termination signal is sent to the
+     * application
+     */
     private void createShutdownThread(){
         portShutdownThread = new PortShutdownThread(connection);
         Runtime.getRuntime().addShutdownHook(portShutdownThread);
     }
 
+    /**
+     * If the port is closed, remove this thread from the list of shutdown
+     * hooks.
+     */
     private void removeShutdownThread(){
         Runtime.getRuntime().removeShutdownHook(portShutdownThread);
     }
 
+    /**
+     * The thread to execute when the port is open. This thread catches a
+     * shutdown signal, and closes the port.
+     */
     private class PortShutdownThread extends Thread {
+        /**
+         * The thread's log
+         */
         private final Logger log = LoggerFactory.getLogger
                 (PortShutdownThread.class);
 
+        /**
+         * The connection to manage
+         */
         private final SerialConnection connection;
 
+        /**
+         * @param connection The connection to manage
+         */
         public PortShutdownThread(SerialConnection connection){
             this.connection = connection;
         }
 
+        /**
+         * Execute the thread, and log relevant parameters.
+         */
         @Override
         public void run(){
             log.info("Connection {} caught shutdown signal. Closing",
