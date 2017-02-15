@@ -16,6 +16,9 @@ public abstract class DeviceListControllerTestCase extends
     protected static final String queryForDeviceListTab =
             "#device-list";
 
+    protected static final String queryForPressureGaugeMessage =
+            "#pressure-gauge-message";
+
     @Before
     public void navigateToDeviceListTab(){
         clickOn(queryForDeviceListTab);

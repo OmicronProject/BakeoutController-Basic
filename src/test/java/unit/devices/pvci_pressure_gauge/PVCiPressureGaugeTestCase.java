@@ -23,7 +23,7 @@ public abstract class PVCiPressureGaugeTestCase extends DevicesTestCase {
             ModbusTransaction.class
     );
 
-    private final ModbusMessage mockResponse = new
+    protected final ModbusMessage mockResponse = new
             ReadInputRegistersResponse();
 
     protected static final Integer address = 11;

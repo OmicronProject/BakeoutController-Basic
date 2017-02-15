@@ -12,7 +12,8 @@ import java.util.Optional;
 import static org.junit.Assert.fail;
 
 /**
- * Created by mkononen on 07/02/17.
+ * Contains unit tests for handling the refresh button being clicked when
+ * there is a power supply present in the device registry
  */
 public final class HandleRefreshButtonClickedPowerSupply extends
         DeviceListControllerTestCase {
