@@ -12,7 +12,8 @@ import static org.junit.Assert.fail;
 /**
  * Checks that the {@link PortInUseException} handler works correctly.
  */
-public class PortInUseExceptionTest extends HandleGoButtonClickedTestCase {
+public final class PortInUseExceptionTest extends
+        HandleGoButtonClickedTestCase {
     private static final String queryForMessage =
             "#port-in-use-exception-message";
 
@@ -48,6 +49,7 @@ public class PortInUseExceptionTest extends HandleGoButtonClickedTestCase {
             try {
                 oneOf(factory).makePowerSupply();
                 will(throwException(new PortInUseException()));
+                oneOf(pressureGaugeFactory).makePressureGauge();
             } catch (Exception error){
                 error.printStackTrace();
             }

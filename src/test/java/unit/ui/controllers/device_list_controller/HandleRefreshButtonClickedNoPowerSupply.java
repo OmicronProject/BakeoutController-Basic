@@ -45,6 +45,10 @@ public final class HandleRefreshButtonClickedNoPowerSupply extends
             oneOf(applicationContext.getBean(DeviceRegistry.class))
                     .getPowerSupply();
             will(returnValue(applicationContext.getBean(PowerSupply.class)));
+
+            oneOf(applicationContext.getBean(DeviceRegistry.class))
+                    .hasPressureGauge();
+            will(returnValue(Boolean.FALSE));
         }
     }
 }

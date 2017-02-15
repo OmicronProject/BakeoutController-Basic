@@ -1,6 +1,7 @@
 package unit.ui.controllers.device_setup_controller.handle_go_button_clicked;
 
 import javafx.scene.control.ComboBox;
+import kernel.controllers.PVCiPressureGaugeFactory;
 import kernel.controllers.TDKLambdaPowerSupplyFactory;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
@@ -35,16 +36,23 @@ public abstract class HandleGoButtonClickedTestCase extends
 
     protected abstract class ExpectationsForMockFactory extends Expectations {
         protected final TDKLambdaPowerSupplyFactory factory;
+        protected final PVCiPressureGaugeFactory pressureGaugeFactory;
 
         public ExpectationsForMockFactory(){
             factory = applicationContext.getBean(
                     TDKLambdaPowerSupplyFactory.class
             );
+            pressureGaugeFactory = applicationContext.getBean(
+                    PVCiPressureGaugeFactory.class
+            );
+
             expectationsForSetPortName();
         }
 
         private void expectationsForSetPortName(){
             oneOf(factory).setPortName(expectedPortName);
+            oneOf(pressureGaugeFactory).setPortName(expectedPortName);
+            oneOf(pressureGaugeFactory).setAddress(with(any(Integer.class)));
         }
     }
 }

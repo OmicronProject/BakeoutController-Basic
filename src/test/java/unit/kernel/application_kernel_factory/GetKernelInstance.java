@@ -5,6 +5,7 @@ import kernel.ApplicationKernelFactory;
 import kernel.Kernel;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**
@@ -24,6 +25,20 @@ public final class GetKernelInstance extends
         constructKernelFactory();
         Kernel kernel = this.applicationKernelBootstrapper.getKernelInstance();
         assertNotNull(kernel);
+    }
+
+    @Test
+    public void isKernelSingleton(){
+        constructKernelFactory();
+
+        Kernel firstKernelGet = this.applicationKernelBootstrapper
+                .getKernelInstance();
+        Kernel secondKernelGet = this.applicationKernelBootstrapper
+                .getKernelInstance();
+
+        assertEquals(
+                firstKernelGet, secondKernelGet
+        );
     }
 
     private void constructKernelFactory(){

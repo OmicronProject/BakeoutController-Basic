@@ -2,6 +2,7 @@ package unit.ui;
 
 import devices.PowerSupply;
 import kernel.Kernel;
+import kernel.controllers.PVCiPressureGaugeFactory;
 import kernel.views.DeviceRegistry;
 import kernel.controllers.TDKLambdaPowerSupplyFactory;
 import kernel.views.CommPortReporter;
@@ -81,6 +82,12 @@ public class TestingConfiguration {
 
     @Bean
     @Scope("singleton")
+    public PVCiPressureGaugeFactory pvCiPressureGaugeFactory(){
+        return mockingContext().mock(PVCiPressureGaugeFactory.class);
+    }
+
+    @Bean
+    @Scope("singleton")
     public DeviceRegistry deviceRegistryView(){
         if(mockDeviceRegistryView == null){
             mockDeviceRegistryView = mockingContext().mock(
@@ -133,6 +140,7 @@ public class TestingConfiguration {
             expectationsForPortReporter();
             expectationsForSerialPortNames();
             expectationsForFactory();
+            expectationsForPressureGaugeFactory();
             expectationsForDeviceRegistryView();
         }
 
@@ -161,6 +169,11 @@ public class TestingConfiguration {
         private void expectationsForDeviceRegistryView(){
             allowing(mockKernel).getDeviceRegistryView();
             will(returnValue(deviceRegistryView()));
+        }
+
+        private void expectationsForPressureGaugeFactory(){
+            allowing(mockKernel).getPressureGaugeFactory();
+            will(returnValue(pvCiPressureGaugeFactory()));
         }
     }
 }

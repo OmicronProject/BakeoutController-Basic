@@ -51,6 +51,9 @@ dependencies {
     // JetBrains Annotations
     compile group: 'org.jetbrains', name: 'annotations', version: '13.0'
 
+    // MODBUS communication library for talking with the PVCi pressure gauge
+    compile "net.wimpi:jamod:1.2"
+
     // Spring Boot
     compile "org.springframework.boot:spring-boot-starter-web:1.4.3.RELEASE"
 
@@ -77,6 +80,13 @@ dependencies {
 
     // Add Jmock 2 to stub out interfaces for fast unit testing
     testCompile group: 'org.jmock', name: 'jmock-junit4', version: '2+'
+
+    // Quickcheck is awesome for generative unit testing. Import it here
+    testCompile group: 'com.pholser', name: 'junit-quickcheck-core', version:
+    '0.7'
+    // Quickcheck also needs some generators to create data types
+    testCompile group: 'com.pholser', name: 'junit-quickcheck-generators',
+            version: '0.7'
 }
 
 /**

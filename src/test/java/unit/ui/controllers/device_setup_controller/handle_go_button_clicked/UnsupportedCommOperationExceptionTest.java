@@ -50,6 +50,8 @@ public final class UnsupportedCommOperationExceptionTest extends
             try {
                 oneOf(factory).makePowerSupply();
                 will(throwException(new UnsupportedCommOperationException()));
+
+                oneOf(pressureGaugeFactory).makePressureGauge();
             } catch (Exception error){
                 error.printStackTrace();
             }

@@ -7,6 +7,9 @@ import java.io.IOException;
  * "OK", and the OK response is not received
  */
 public class ResponseNotOKException extends IOException {
+    /**
+     * @param message A brief message explaining why the exception was thrown
+     */
     public ResponseNotOKException(String message){
         super(message);
     }
