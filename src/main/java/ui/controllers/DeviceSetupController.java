@@ -45,7 +45,7 @@ public class DeviceSetupController {
 
     @FXML
     public void handleGoButtonClicked(){
-        // configurePowerSupply();
+        configurePowerSupply();
         configurePressureGauge();
     }
 

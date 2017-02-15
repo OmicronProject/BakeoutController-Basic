@@ -41,6 +41,10 @@ public class ModBusConnectionManager implements ModbusConnector {
      */
     private SerialConnection connection;
 
+    private static final Integer recieveTimeOut = 4000;
+
+    private static final Integer numberOfRetries = 1;
+
     /**
      * @return The RS232 port config
      */
@@ -105,11 +109,12 @@ public class ModBusConnectionManager implements ModbusConnector {
         } else {
             log.debug("Port {} is open, using for connection", this);
         }
-        connection.setReceiveTimeout(4000);
+        connection.setReceiveTimeout(recieveTimeOut);
 
         ModbusSerialTransaction transaction = new ModbusSerialTransaction();
         transaction.setSerialConnection(connection);
         transaction.setRequest(request);
+        transaction.setRetries(numberOfRetries);
 
         return transaction;
     }
