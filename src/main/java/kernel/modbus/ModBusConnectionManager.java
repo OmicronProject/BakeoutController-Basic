@@ -93,9 +93,19 @@ public class ModBusConnectionManager implements ModbusConnector {
     @Override
     public ModbusTransaction getTransactionForRequest(ModbusRequest request)
         throws WrappedModbusException, IllegalStateException {
+
+        log.debug(
+                "Creating transaction for request {}", request.getHexMessage()
+        );
+
         if (!isPortOpen()){
+            log.debug("Port {} is not open. Opening now", this);
             openConnection();
+            log.debug("Port {} successfully opened", this);
+        } else {
+            log.debug("Port {} is open, using for connection", this);
         }
+        connection.setReceiveTimeout(4000);
 
         ModbusSerialTransaction transaction = new ModbusSerialTransaction();
         transaction.setSerialConnection(connection);
@@ -185,7 +195,7 @@ public class ModBusConnectionManager implements ModbusConnector {
      * @throws IllegalStateException if the port is not open
      */
     private void assertPortClosed() throws IllegalStateException {
-        if (!this.isPortOpen()){
+        if (this.isPortOpen()){
             throw new IllegalStateException("MODBUS port is not open.");
         }
     }

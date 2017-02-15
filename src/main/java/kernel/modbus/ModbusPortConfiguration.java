@@ -11,6 +11,8 @@ public interface ModbusPortConfiguration extends PortConfiguration {
 
     String ASCII_ENCODING = Modbus.SERIAL_ENCODING_ASCII;
 
+    String RTU_ENCODING = Modbus.SERIAL_ENCODING_RTU;
+
     int BAUD_RATE_19200 = 19200;
 
     /**

@@ -135,7 +135,10 @@ public class PVCiPressureGauge implements PressureGauge {
         log.info("Checking for device. Attempting to read unit ID using " +
                 "transaction {}", transaction);
 
+        transaction.setRetries(1);
         transaction.execute();
+
+        log.info("Check Unit ID transaction successfully completed");
 
         ModbusMessage response = transaction.getResponse();
 
