@@ -1,7 +1,7 @@
 package unit.devices.pvci_pressure_gauge;
 
+import com.ghgande.j2mod.modbus.msg.ModbusRequest;
 import devices.PVCiPressureGauge;
-import net.wimpi.modbus.msg.ModbusRequest;
 import org.jmock.Expectations;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,11 +32,6 @@ public final class ConstructorWithNoCommunication extends
                     with(any(ModbusRequest.class))
             );
             will(returnValue(mockTransaction));
-
-            oneOf(mockTransaction).execute();
-
-            oneOf(mockTransaction).getResponse();
-            will(returnValue(mockResponse));
 
             oneOf(mockModbusConnector).parseStringFromResponse(mockResponse);
             will(returnValue(null));

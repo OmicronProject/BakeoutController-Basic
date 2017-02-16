@@ -1,13 +1,13 @@
 package kernel.modbus;
 
 
+import com.ghgande.j2mod.modbus.io.ModbusSerialTransaction;
+import com.ghgande.j2mod.modbus.io.ModbusTransaction;
+import com.ghgande.j2mod.modbus.msg.ModbusMessage;
+import com.ghgande.j2mod.modbus.msg.ModbusRequest;
+import com.ghgande.j2mod.modbus.msg.ModbusResponse;
+import com.ghgande.j2mod.modbus.net.SerialConnection;
 import exceptions.WrappedModbusException;
-import net.wimpi.modbus.io.ModbusSerialTransaction;
-import net.wimpi.modbus.io.ModbusTransaction;
-import net.wimpi.modbus.msg.ModbusMessage;
-import net.wimpi.modbus.msg.ModbusRequest;
-import net.wimpi.modbus.msg.ModbusResponse;
-import net.wimpi.modbus.net.SerialConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -109,7 +109,7 @@ public class ModBusConnectionManager implements ModbusConnector {
         } else {
             log.debug("Port {} is open, using for connection", this);
         }
-        connection.setReceiveTimeout(recieveTimeOut);
+        connection.setTimeout(recieveTimeOut);
 
         ModbusSerialTransaction transaction = new ModbusSerialTransaction();
         transaction.setSerialConnection(connection);

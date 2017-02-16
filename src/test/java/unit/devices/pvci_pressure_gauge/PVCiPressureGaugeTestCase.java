@@ -1,12 +1,14 @@
 package unit.devices.pvci_pressure_gauge;
 
+import com.ghgande.j2mod.modbus.io.ModbusSerialTransaction;
+import com.ghgande.j2mod.modbus.io.ModbusTransaction;
+import com.ghgande.j2mod.modbus.msg.ModbusMessage;
+import com.ghgande.j2mod.modbus.msg.ModbusRequest;
+import com.ghgande.j2mod.modbus.msg.ModbusResponse;
+import com.ghgande.j2mod.modbus.msg.ReadMultipleRegistersResponse;
 import devices.PVCiPressureGauge;
 import devices.PressureGauge;
 import kernel.modbus.ModbusConnector;
-import net.wimpi.modbus.io.ModbusTransaction;
-import net.wimpi.modbus.msg.ModbusMessage;
-import net.wimpi.modbus.msg.ModbusRequest;
-import net.wimpi.modbus.msg.ReadInputRegistersResponse;
 import org.jmock.Expectations;
 import org.junit.Before;
 import unit.devices.DevicesTestCase;
@@ -19,12 +21,10 @@ public abstract class PVCiPressureGaugeTestCase extends DevicesTestCase {
             ModbusConnector.class
     );
 
-    protected final ModbusTransaction mockTransaction = context.mock(
-            ModbusTransaction.class
-    );
+    protected final ModbusTransaction mockTransaction = new MockTransaction();
 
-    protected final ModbusMessage mockResponse = new
-            ReadInputRegistersResponse();
+    protected final ModbusResponse mockResponse = new
+            ReadMultipleRegistersResponse();
 
     protected static final Integer address = 11;
 
@@ -40,6 +40,18 @@ public abstract class PVCiPressureGaugeTestCase extends DevicesTestCase {
         context.checking(new ExpectationsForConstruction());
     }
 
+    private class MockTransaction extends ModbusSerialTransaction {
+        @Override
+        public void execute(){
+            // Don't actually run anything
+        }
+
+        @Override
+        public ModbusResponse getResponse(){
+            return mockResponse;
+        }
+    }
+
     private class ExpectationsForConstruction extends Expectations {
         public ExpectationsForConstruction() throws Exception {
             oneOf(mockModbusConnector).getTransactionForRequest(
@@ -47,12 +59,9 @@ public abstract class PVCiPressureGaugeTestCase extends DevicesTestCase {
             );
             will(returnValue(mockTransaction));
 
-            oneOf(mockTransaction).execute();
-
-            oneOf(mockTransaction).getResponse();
-            will(returnValue(mockResponse));
-
-            oneOf(mockModbusConnector).parseStringFromResponse(mockResponse);
+            oneOf(mockModbusConnector).parseStringFromResponse(
+                    with(any(ModbusResponse.class))
+            );
             will(returnValue("IGC3"));
         }
     }
