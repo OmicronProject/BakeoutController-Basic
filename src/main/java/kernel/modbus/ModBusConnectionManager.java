@@ -1,13 +1,13 @@
 package kernel.modbus;
 
 
+import com.ghgande.j2mod.modbus.io.ModbusSerialTransaction;
+import com.ghgande.j2mod.modbus.io.ModbusTransaction;
+import com.ghgande.j2mod.modbus.msg.ModbusMessage;
+import com.ghgande.j2mod.modbus.msg.ModbusRequest;
+import com.ghgande.j2mod.modbus.msg.ModbusResponse;
+import com.ghgande.j2mod.modbus.net.SerialConnection;
 import exceptions.WrappedModbusException;
-import net.wimpi.modbus.io.ModbusSerialTransaction;
-import net.wimpi.modbus.io.ModbusTransaction;
-import net.wimpi.modbus.msg.ModbusMessage;
-import net.wimpi.modbus.msg.ModbusRequest;
-import net.wimpi.modbus.msg.ModbusResponse;
-import net.wimpi.modbus.net.SerialConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,6 +40,10 @@ public class ModBusConnectionManager implements ModbusConnector {
      * The serial connection to use
      */
     private SerialConnection connection;
+
+    private static final Integer recieveTimeOut = 4000;
+
+    private static final Integer numberOfRetries = 1;
 
     /**
      * @return The RS232 port config
@@ -93,13 +97,24 @@ public class ModBusConnectionManager implements ModbusConnector {
     @Override
     public ModbusTransaction getTransactionForRequest(ModbusRequest request)
         throws WrappedModbusException, IllegalStateException {
+
+        log.debug(
+                "Creating transaction for request {}", request.getHexMessage()
+        );
+
         if (!isPortOpen()){
+            log.debug("Port {} is not open. Opening now", this);
             openConnection();
+            log.debug("Port {} successfully opened", this);
+        } else {
+            log.debug("Port {} is open, using for connection", this);
         }
+        connection.setTimeout(recieveTimeOut);
 
         ModbusSerialTransaction transaction = new ModbusSerialTransaction();
         transaction.setSerialConnection(connection);
         transaction.setRequest(request);
+        transaction.setRetries(numberOfRetries);
 
         return transaction;
     }
@@ -185,7 +200,7 @@ public class ModBusConnectionManager implements ModbusConnector {
      * @throws IllegalStateException if the port is not open
      */
     private void assertPortClosed() throws IllegalStateException {
-        if (!this.isPortOpen()){
+        if (this.isPortOpen()){
             throw new IllegalStateException("MODBUS port is not open.");
         }
     }

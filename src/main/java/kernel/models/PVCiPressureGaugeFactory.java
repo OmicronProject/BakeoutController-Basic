@@ -158,7 +158,7 @@ public class PVCiPressureGaugeFactory implements
         config.setDataBits(ModbusPortConfiguration.DATABITS_8);
         config.setStopBits(ModbusPortConfiguration.STOPBITS_1);
         config.setParityBits(ModbusPortConfiguration.PARITY_NONE);
-        config.setEncoding(ModbusPortConfiguration.ASCII_ENCODING);
+        config.setEncoding(ModbusPortConfiguration.RTU_ENCODING);
 
         return config;
     }

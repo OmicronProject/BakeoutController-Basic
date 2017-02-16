@@ -1,13 +1,12 @@
 package unit.kernel.models.pvci_pressure_gauge_factory;
 
+import com.ghgande.j2mod.modbus.io.ModbusSerialTransaction;
+import com.ghgande.j2mod.modbus.io.ModbusTransaction;
+import com.ghgande.j2mod.modbus.msg.*;
 import devices.PressureGauge;
 import kernel.controllers.DeviceRegistry;
 import kernel.modbus.ModbusPortConfiguration;
 import kernel.models.PVCiPressureGaugeFactory;
-import net.wimpi.modbus.io.ModbusTransaction;
-import net.wimpi.modbus.msg.ModbusResponse;
-import net.wimpi.modbus.msg.ReadInputRegistersRequest;
-import net.wimpi.modbus.msg.ReadInputRegistersResponse;
 import org.jmock.Expectations;
 import org.junit.Before;
 import org.junit.Test;
@@ -30,9 +29,7 @@ public final class GetPressureGaugeNotInRegistry extends
     private PressureGauge mockPressureGauge = context.mock(
             PressureGauge.class);
 
-    private ModbusTransaction mockTransaction = context.mock(
-            ModbusTransaction.class
-    );
+    private ModbusTransaction mockTransaction = new MockTransaction();
 
     @Before
     public void setContext() throws Exception {
@@ -42,6 +39,18 @@ public final class GetPressureGaugeNotInRegistry extends
     @Test
     public void getPressureGauge() throws IOException {
         assertNotNull(factory.getPressureGauge());
+    }
+
+    private class MockTransaction extends ModbusSerialTransaction {
+        @Override
+        public void execute(){
+            // Don't actually run anything
+        }
+
+        @Override
+        public ModbusResponse getResponse(){
+            return new ReadWriteMultipleResponse();
+        }
     }
 
     private class ExpectationsForTest extends Expectations {
@@ -70,14 +79,9 @@ public final class GetPressureGaugeNotInRegistry extends
             will(returnValue(mockPressureGauge));
 
             oneOf(mockConnector).getTransactionForRequest(
-                    with(any(ReadInputRegistersRequest.class))
+                    with(any(ReadWriteMultipleRequest.class))
             );
             will(returnValue(mockTransaction));
-
-            oneOf(mockTransaction).getResponse();
-            will(returnValue(new ReadInputRegistersResponse()));
-
-            oneOf(mockTransaction).execute();
 
             oneOf(mockConnector).parseStringFromResponse(with(any
                     (ModbusResponse.class)));

@@ -6,7 +6,6 @@ import kernel.modbus.ModbusConnector;
 import kernel.serial_ports.PortDriver;
 import kernel.serial_ports.SerialPort;
 import kernel.views.CommPortReporter;
-import net.wimpi.modbus.ModbusCoupler;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -46,10 +45,8 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
 
         log.info("Started kernel {}", this.toString());
 
-        ModbusCoupler.getReference().setMaster(Boolean.TRUE);
-        ModbusCoupler.getReference().setUnitID(1);
-
         createPVCIPressureGaugeFactory();
+
     }
 
     /**

@@ -1,8 +1,8 @@
 package kernel.modbus;
 
+import com.ghgande.j2mod.modbus.Modbus;
+import com.ghgande.j2mod.modbus.util.SerialParameters;
 import kernel.serial_ports.PortConfiguration;
-import net.wimpi.modbus.Modbus;
-import net.wimpi.modbus.util.SerialParameters;
 
 /**
  * A wrapper to configure serial ports using the MODBUS protocol
@@ -10,6 +10,8 @@ import net.wimpi.modbus.util.SerialParameters;
 public interface ModbusPortConfiguration extends PortConfiguration {
 
     String ASCII_ENCODING = Modbus.SERIAL_ENCODING_ASCII;
+
+    String RTU_ENCODING = Modbus.SERIAL_ENCODING_RTU;
 
     int BAUD_RATE_19200 = 19200;
 

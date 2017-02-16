@@ -1,9 +1,9 @@
 package kernel.modbus;
 
+import com.ghgande.j2mod.modbus.io.ModbusTransaction;
+import com.ghgande.j2mod.modbus.msg.ModbusMessage;
+import com.ghgande.j2mod.modbus.msg.ModbusRequest;
 import exceptions.WrappedModbusException;
-import net.wimpi.modbus.io.ModbusTransaction;
-import net.wimpi.modbus.msg.ModbusMessage;
-import net.wimpi.modbus.msg.ModbusRequest;
 
 import java.io.IOException;
 
@@ -45,7 +45,7 @@ public interface ModbusConnector {
      * @param response The response received from the transaction
      * @return The data cast into a floating point number
      * @throws ClassCastException If the {@link ModbusMessage} cannot be
-     * cast to a {@link net.wimpi.modbus.msg.ModbusResponse}. This is a
+     * cast to a {@link com.ghgande.j2mod.modbus.msg.ModbusResponse}. This is a
      * required step in order to get the response's output stream
      * @throws IOException If the output stream from the response cannot be
      * parsed into a float

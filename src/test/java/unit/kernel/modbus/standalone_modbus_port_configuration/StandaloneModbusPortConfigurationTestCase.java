@@ -1,11 +1,11 @@
 package unit.kernel.modbus.standalone_modbus_port_configuration;
 
+import com.ghgande.j2mod.modbus.util.SerialParameters;
 import com.pholser.junit.quickcheck.From;
 import com.pholser.junit.quickcheck.Property;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
 import kernel.modbus.ModbusPortConfiguration;
 import kernel.modbus.StandaloneModbusPortConfiguration;
-import net.wimpi.modbus.util.SerialParameters;
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;

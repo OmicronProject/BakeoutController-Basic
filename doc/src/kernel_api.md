@@ -19,6 +19,8 @@ implementations of these interfaces. The root interface is
 * [Kernel](@ref kernel.Kernel)
     - [Kernel.getCommPortReporter](@ref kernel.Kernel#getCommPortReporter) 
     returns [kernel.views.CommPortReporter](@ref kerne.views.CommPortReporter)
+    - [Kernel.getPortDriver](@ref kernel.Kernel#getPortDriver) returns a 
+    driver for making bare RS232 serial port connections
     
 * [CommPortReporter](@ref kernel.views.CommPortReporter) reports on the 
-state of available serial ports in this application
+state of available serial ports in this application.

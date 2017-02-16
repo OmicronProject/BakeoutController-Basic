@@ -12,6 +12,8 @@ import kernel.Kernel;
 import kernel.controllers.PVCiPressureGaugeFactory;
 import kernel.controllers.TDKLambdaPowerSupplyFactory;
 import kernel.views.CommPortReporter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import ui.Controller;
 
@@ -23,6 +25,9 @@ import java.util.List;
  */
 @Controller
 public class DeviceSetupController {
+
+    private static final Logger log = LoggerFactory.getLogger
+            (DeviceSetupController.class);
 
     @Autowired
     private Kernel kernel;
@@ -123,16 +128,17 @@ public class DeviceSetupController {
         PVCiPressureGaugeFactory factory = kernel.getPressureGaugeFactory();
 
         factory.setPortName(portName);
-        factory.setAddress(11);
+        factory.setAddress(2);
 
         try {
             factory.makePressureGauge();
         } catch (IOException error){
-            handlePVCiIOException();
+            handlePVCiIOException(error);
         }
     }
 
-    private void handlePVCiIOException(){
+    private void handlePVCiIOException(Throwable error){
+        log.error("Setup thew exception", error);
         writeErrorMessage(
                 "Unable to establish communication with Pressure Gauge",
                 "pvci-io-exception-message"

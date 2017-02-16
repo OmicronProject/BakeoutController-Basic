@@ -1,11 +1,12 @@
 package devices;
 
+import com.ghgande.j2mod.modbus.ModbusException;
+import com.ghgande.j2mod.modbus.io.ModbusTransaction;
+import com.ghgande.j2mod.modbus.msg.ModbusMessage;
+import com.ghgande.j2mod.modbus.msg.ModbusRequest;
+import com.ghgande.j2mod.modbus.msg.ReadWriteMultipleRequest;
 import exceptions.WrappedModbusException;
 import kernel.modbus.ModbusConnector;
-import net.wimpi.modbus.ModbusException;
-import net.wimpi.modbus.io.ModbusTransaction;
-import net.wimpi.modbus.msg.ModbusMessage;
-import net.wimpi.modbus.msg.ReadInputRegistersRequest;
 import org.jetbrains.annotations.Contract;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,7 +44,7 @@ public class PVCiPressureGauge implements PressureGauge {
     private static final Integer unitIDAddress = 0;
 
     private static final Integer unitIDNumberofWords = 2;
-
+    
     /**
      * The device address
      */
@@ -88,7 +89,7 @@ public class PVCiPressureGauge implements PressureGauge {
     public Float getPressure() throws WrappedModbusException,
             ModbusException, IOException {
 
-        ReadInputRegistersRequest pressureRequest = getReadRegisterRequest(
+        ModbusRequest pressureRequest = getReadRegisterRequest(
                 gaugePressureAddress, gaugePressureWordsTorRead
         );
         ModbusTransaction transaction = connection.getTransactionForRequest(
@@ -113,10 +114,16 @@ public class PVCiPressureGauge implements PressureGauge {
      * @return A request to read the registers, that jamod can parse.
      */
     @Contract("_, _ -> !null")
-    private ReadInputRegistersRequest getReadRegisterRequest(
+    private ReadWriteMultipleRequest getReadRegisterRequest(
             Integer registerNumber, Integer numberofWordsToRead){
-        ReadInputRegistersRequest request = new ReadInputRegistersRequest
-                (registerNumber, numberofWordsToRead);
+        ReadWriteMultipleRequest request = new
+                ReadWriteMultipleRequest();
+
+        request.setReadReference(registerNumber);
+        request.setReadWordCount(numberofWordsToRead);
+        request.setWriteReference(0);
+        request.setWriteWordCount(0);
+
         request.setUnitID(address);
         request.setHeadless();
 
@@ -125,7 +132,7 @@ public class PVCiPressureGauge implements PressureGauge {
 
     private void checkUnitID() throws WrappedModbusException,
             ModbusException, IOException {
-        ReadInputRegistersRequest request = getReadRegisterRequest(
+        ModbusRequest request = getReadRegisterRequest(
             unitIDAddress, unitIDNumberofWords
         );
 
@@ -136,6 +143,8 @@ public class PVCiPressureGauge implements PressureGauge {
                 "transaction {}", transaction);
 
         transaction.execute();
+
+        log.info("Check Unit ID transaction successfully completed");
 
         ModbusMessage response = transaction.getResponse();
 

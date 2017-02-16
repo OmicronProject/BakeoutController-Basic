@@ -1,6 +1,7 @@
 package kernel.modbus;
 
-import net.wimpi.modbus.util.SerialParameters;
+
+import com.ghgande.j2mod.modbus.util.SerialParameters;
 
 /**
  * Contains methods required to configure a MODBUS serial port

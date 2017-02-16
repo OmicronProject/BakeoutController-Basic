@@ -1,7 +1,7 @@
 package devices;
 
+import com.ghgande.j2mod.modbus.ModbusException;
 import exceptions.WrappedModbusException;
-import net.wimpi.modbus.ModbusException;
 
 import java.io.IOException;
 
