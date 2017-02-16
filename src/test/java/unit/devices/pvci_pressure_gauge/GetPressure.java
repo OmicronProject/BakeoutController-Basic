@@ -1,6 +1,5 @@
 package unit.devices.pvci_pressure_gauge;
 
-import com.ghgande.j2mod.modbus.msg.ReadMultipleRegistersRequest;
 import com.ghgande.j2mod.modbus.msg.ReadWriteMultipleRequest;
 import devices.PVCiPressureGauge;
 import org.jmock.Expectations;
