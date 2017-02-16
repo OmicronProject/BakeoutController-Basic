@@ -1,0 +1,7 @@
+<map id="unit.ui.user_interface_launcher.ApplicationContextConstructor" name="unit.ui.user_interface_launcher.ApplicationContextConstructor">
+<area shape="rect" id="node2" href="$classunit_1_1ui_1_1user__interface__launcher_1_1UserInterfaceLauncherTestCase.html" title="unit.ui.user_interface\l_launcher.UserInterfaceLauncher\lTestCase" alt="" coords="442,288,657,344"/>
+<area shape="rect" id="node3" href="$classunit_1_1ui_1_1UserInterfaceTestCase.html" title="unit.ui.UserInterfaceTestCase" alt="" coords="261,199,459,225"/>
+<area shape="rect" id="node4" href="$classunit_1_1UnitTestCase.html" title="unit.UnitTestCase" alt="" coords="68,102,196,129"/>
+<area shape="rect" id="node8" href="$classui_1_1JavaFXGraphicalUserInterfaceLauncher.html" title="ui.JavaFXGraphicalUserInterface\lLauncher" alt="" coords="221,95,435,136"/>
+<area shape="rect" id="node10" href="$interfaceui_1_1UserInterfaceLauncher.html" title="ui.UserInterfaceLauncher" alt="" coords="372,5,540,32"/>
+</map>

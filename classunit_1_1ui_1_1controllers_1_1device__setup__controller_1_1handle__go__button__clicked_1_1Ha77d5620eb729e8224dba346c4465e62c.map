@@ -1,0 +1,4 @@
+<map id="unit.ui.controllers.device_setup_controller.handle_go_button_clicked.HandleGoButtonClickedTestCase.ExpectationsForMockFactory" name="unit.ui.controllers.device_setup_controller.handle_go_button_clicked.HandleGoButtonClickedTestCase.ExpectationsForMockFactory">
+<area shape="rect" id="node3" href="$interfacekernel_1_1controllers_1_1TDKLambdaPowerSupplyFactory.html" title="kernel.controllers.TDKLambda\lPowerSupplyFactory" alt="" coords="10,57,209,98"/>
+<area shape="rect" id="node4" href="$interfacekernel_1_1controllers_1_1PVCiPressureGaugeFactory.html" title="kernel.controllers.PVCiPressure\lGaugeFactory" alt="" coords="5,122,213,163"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="unit.kernel.models.device_registry.SetPowerSupply" name="unit.kernel.models.device_registry.SetPowerSupply">
+<area shape="rect" id="node2" href="$classunit_1_1kernel_1_1models_1_1device__registry_1_1DeviceRegistryTestCase.html" title="unit.kernel.models.device\l_registry.DeviceRegistryTestCase" alt="" coords="5,319,228,360"/>
+<area shape="rect" id="node3" href="$classunit_1_1kernel_1_1models_1_1ModelsTestCase.html" title="unit.kernel.models.Models\lTestCase" alt="" coords="29,229,204,271"/>
+<area shape="rect" id="node4" href="$classunit_1_1kernel_1_1KernelTestCase.html" title="unit.kernel.KernelTestCase" alt="" coords="27,155,207,181"/>
+<area shape="rect" id="node5" href="$classunit_1_1UnitTestCase.html" title="unit.UnitTestCase" alt="" coords="53,80,181,107"/>
+</map>

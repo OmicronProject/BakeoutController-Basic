@@ -1,0 +1,8 @@
+<map id="unit.main.app_configuration.AppConfigurationTestCase" name="unit.main.app_configuration.AppConfigurationTestCase">
+<area shape="rect" id="node5" href="$classunit_1_1main_1_1app__configuration_1_1GetApplicationName.html" title="unit.main.app_configuration.\lGetApplicationName" alt="" coords="787,5,972,47"/>
+<area shape="rect" id="node6" href="$classunit_1_1main_1_1app__configuration_1_1Kernel.html" title="unit.main.app_configuration.\lKernel" alt="" coords="787,71,972,112"/>
+<area shape="rect" id="node7" href="$classunit_1_1main_1_1app__configuration_1_1PortDriver.html" title="unit.main.app_configuration.\lPortDriver" alt="" coords="787,136,972,177"/>
+<area shape="rect" id="node8" href="$classunit_1_1main_1_1app__configuration_1_1PortWrapper.html" title="unit.main.app_configuration.\lPortWrapper" alt="" coords="787,201,972,243"/>
+<area shape="rect" id="node2" href="$classunit_1_1main_1_1MainTestCase.html" title="unit.main.MainTestCase" alt="" coords="341,111,505,138"/>
+<area shape="rect" id="node3" href="$classunit_1_1UnitTestCase.html" title="unit.UnitTestCase" alt="" coords="165,111,293,138"/>
+</map>

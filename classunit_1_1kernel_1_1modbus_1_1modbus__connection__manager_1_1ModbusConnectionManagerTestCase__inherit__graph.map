@@ -1,0 +1,6 @@
+<map id="unit.kernel.modbus.modbus_connection_manager.ModbusConnectionManagerTestCase" name="unit.kernel.modbus.modbus_connection_manager.ModbusConnectionManagerTestCase">
+<area shape="rect" id="node6" href="$classunit_1_1kernel_1_1modbus_1_1modbus__connection__manager_1_1QuickCheckProperties.html" title="unit.kernel.modbus.modbus\l_connection_manager.QuickCheck\lProperties" alt="" coords="25,423,251,479"/>
+<area shape="rect" id="node2" href="$classunit_1_1kernel_1_1modbus_1_1ModbusTestCase.html" title="unit.kernel.modbus.Modbus\lTestCase" alt="" coords="47,229,229,271"/>
+<area shape="rect" id="node3" href="$classunit_1_1kernel_1_1KernelTestCase.html" title="unit.kernel.KernelTestCase" alt="" coords="48,155,228,181"/>
+<area shape="rect" id="node4" href="$classunit_1_1UnitTestCase.html" title="unit.UnitTestCase" alt="" coords="74,80,202,107"/>
+</map>

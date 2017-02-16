@@ -1,0 +1,6 @@
+<map id="devices.RS232Device" name="devices.RS232Device">
+<area shape="rect" id="node4" href="$interfacedevices_1_1PowerSupply.html" title="devices.PowerSupply" alt="" coords="231,80,379,107"/>
+<area shape="rect" id="node5" href="$interfacedevices_1_1PressureGauge.html" title="devices.PressureGauge" alt="" coords="403,80,564,107"/>
+<area shape="rect" id="node3" href="$classdevices_1_1TDKLambdaPowerSupply.html" title="devices.TDKLambdaPowerSupply" alt="" coords="69,155,290,181"/>
+<area shape="rect" id="node6" href="$classdevices_1_1PVCiPressureGauge.html" title="devices.PVCiPressureGauge" alt="" coords="387,155,579,181"/>
+</map>

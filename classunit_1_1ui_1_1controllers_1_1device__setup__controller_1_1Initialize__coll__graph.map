@@ -1,0 +1,8 @@
+<map id="unit.ui.controllers.device_setup_controller.Initialize" name="unit.ui.controllers.device_setup_controller.Initialize">
+<area shape="rect" id="node2" href="$classunit_1_1ui_1_1controllers_1_1device__setup__controller_1_1DeviceSetupControllerTestCase.html" title="unit.ui.controllers.device\l_setup_controller.DeviceSetupController\lTestCase" alt="" coords="123,365,379,421"/>
+<area shape="rect" id="node3" href="$classunit_1_1ui_1_1controllers_1_1ControllersTestCase.html" title="unit.ui.controllers.Controllers\lTestCase" alt="" coords="157,275,345,316"/>
+<area shape="rect" id="node4" href="$classunit_1_1ui_1_1UserInterfaceTestCase.html" title="unit.ui.UserInterfaceTestCase" alt="" coords="152,199,349,225"/>
+<area shape="rect" id="node5" href="$classunit_1_1UnitTestCase.html" title="unit.UnitTestCase" alt="" coords="32,102,160,129"/>
+<area shape="rect" id="node9" href="$classui_1_1JavaFXGraphicalUserInterfaceLauncher.html" title="ui.JavaFXGraphicalUserInterface\lLauncher" alt="" coords="341,95,555,136"/>
+<area shape="rect" id="node11" href="$interfaceui_1_1UserInterfaceLauncher.html" title="ui.UserInterfaceLauncher" alt="" coords="397,5,565,32"/>
+</map>

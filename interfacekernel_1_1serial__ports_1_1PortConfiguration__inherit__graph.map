@@ -1,0 +1,6 @@
+<map id="kernel.serial_ports.PortConfiguration" name="kernel.serial_ports.PortConfiguration">
+<area shape="rect" id="node2" href="$interfacekernel_1_1modbus_1_1ModbusPortConfiguration.html" title="kernel.modbus.ModbusPort\lConfiguration" alt="" coords="215,5,396,47"/>
+<area shape="rect" id="node4" href="$classkernel_1_1serial__ports_1_1RXTXPortConfiguration.html" title="kernel.serial_ports.RXTXPort\lConfiguration" alt="" coords="209,71,401,112"/>
+<area shape="rect" id="node5" href="$classkernel_1_1serial__ports_1_1RXTXPortWrapper.html" title="kernel.serial_ports.RXTXPort\lWrapper" alt="" coords="209,136,401,177"/>
+<area shape="rect" id="node3" href="$classkernel_1_1modbus_1_1StandaloneModbusPortConfiguration.html" title="kernel.modbus.Standalone\lModbusPortConfiguration" alt="" coords="449,5,625,47"/>
+</map>

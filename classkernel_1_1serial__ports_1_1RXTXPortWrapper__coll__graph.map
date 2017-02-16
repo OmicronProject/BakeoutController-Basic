@@ -1,0 +1,5 @@
+<map id="kernel.serial_ports.RXTXPortWrapper" name="kernel.serial_ports.RXTXPortWrapper">
+<area shape="rect" id="node2" href="$interfacekernel_1_1serial__ports_1_1SerialPort.html" title="kernel.serial_ports.SerialPort" alt="" coords="5,5,195,32"/>
+<area shape="rect" id="node3" href="$interfacekernel_1_1serial__ports_1_1PortCommunicator.html" title="kernel.serial_ports.Port\lCommunicator" alt="" coords="22,57,178,98"/>
+<area shape="rect" id="node4" href="$interfacekernel_1_1serial__ports_1_1PortConfiguration.html" title="kernel.serial_ports.Port\lConfiguration" alt="" coords="22,122,178,163"/>
+</map>

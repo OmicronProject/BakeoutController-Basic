@@ -1,0 +1,7 @@
+<map id="unit.ui.controllers.device_setup_controller.handle_go_button_clicked.UnsupportedCommOperationExceptionTest" name="unit.ui.controllers.device_setup_controller.handle_go_button_clicked.UnsupportedCommOperationExceptionTest">
+<area shape="rect" id="node2" href="$classunit_1_1ui_1_1controllers_1_1device__setup__controller_1_1handle__go__button__clicked_1_1HandleGoButtonClickedTestCase.html" title="unit.ui.controllers.device\l_setup_controller.handle\l_go_button_clicked.HandleGoButton\lClickedTestCase" alt="" coords="1127,5,1361,76"/>
+<area shape="rect" id="node3" href="$classunit_1_1ui_1_1controllers_1_1device__setup__controller_1_1DeviceSetupControllerTestCase.html" title="unit.ui.controllers.device\l_setup_controller.DeviceSetupController\lTestCase" alt="" coords="823,13,1079,69"/>
+<area shape="rect" id="node4" href="$classunit_1_1ui_1_1controllers_1_1ControllersTestCase.html" title="unit.ui.controllers.Controllers\lTestCase" alt="" coords="587,20,775,61"/>
+<area shape="rect" id="node5" href="$classunit_1_1ui_1_1UserInterfaceTestCase.html" title="unit.ui.UserInterfaceTestCase" alt="" coords="341,27,539,54"/>
+<area shape="rect" id="node6" href="$classunit_1_1UnitTestCase.html" title="unit.UnitTestCase" alt="" coords="165,27,293,54"/>
+</map>

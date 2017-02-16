@@ -1,0 +1,10 @@
+<map id="unit.kernel.models.pvci_pressure_gauge_factory.QuickCheckProperties" name="unit.kernel.models.pvci_pressure_gauge_factory.QuickCheckProperties">
+<area shape="rect" id="node2" href="$classunit_1_1kernel_1_1models_1_1pvci__pressure__gauge__factory_1_1PVCiPressureGaugeFactoryTestCase.html" title="unit.kernel.models.pvci\l_pressure_gauge_factory.PVCi\lPressureGaugeFactoryTestCase" alt="" coords="983,147,1196,203"/>
+<area shape="rect" id="node3" href="$classunit_1_1kernel_1_1models_1_1ModelsTestCase.html" title="unit.kernel.models.Models\lTestCase" alt="" coords="641,23,816,65"/>
+<area shape="rect" id="node4" href="$classunit_1_1kernel_1_1KernelTestCase.html" title="unit.kernel.KernelTestCase" alt="" coords="391,31,571,57"/>
+<area shape="rect" id="node5" href="$classunit_1_1UnitTestCase.html" title="unit.UnitTestCase" alt="" coords="213,31,341,57"/>
+<area shape="rect" id="node8" href="$interfacekernel_1_1controllers_1_1PVCiPressureGaugeFactory.html" title="kernel.controllers.PVCiPressure\lGaugeFactory" alt="" coords="625,89,833,130"/>
+<area shape="rect" id="node9" href="$interfacekernel_1_1controllers_1_1DeviceRegistry.html" title="kernel.controllers.Device\lRegistry" alt="" coords="645,154,812,195"/>
+<area shape="rect" id="node10" href="$interfacekernel_1_1modbus_1_1ModbusConnector.html" title="kernel.modbus.ModbusConnector" alt="" coords="620,220,837,247"/>
+<area shape="rect" id="node11" href="$interfacekernel_1_1Kernel.html" title="kernel.Kernel" alt="" coords="679,271,778,297"/>
+</map>

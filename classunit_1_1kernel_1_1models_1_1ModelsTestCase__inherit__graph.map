@@ -1,0 +1,26 @@
+<map id="unit.kernel.models.ModelsTestCase" name="unit.kernel.models.ModelsTestCase">
+<area shape="rect" id="node5" href="$classunit_1_1kernel_1_1models_1_1device__registry_1_1DeviceRegistryTestCase.html" title="unit.kernel.models.device\l_registry.DeviceRegistryTestCase" alt="" coords="792,235,1015,276"/>
+<area shape="rect" id="node13" href="$classunit_1_1kernel_1_1models_1_1kernel_1_1KernelTestCase.html" title="unit.kernel.models.kernel.\lKernelTestCase" alt="" coords="818,692,989,733"/>
+<area shape="rect" id="node22" href="$classunit_1_1kernel_1_1models_1_1pvci__pressure__gauge__factory_1_1PVCiPressureGaugeFactoryTestCase.html" title="unit.kernel.models.pvci\l_pressure_gauge_factory.PVCi\lPressureGaugeFactoryTestCase" alt="" coords="797,1043,1010,1099"/>
+<area shape="rect" id="node2" href="$classunit_1_1kernel_1_1KernelTestCase.html" title="unit.kernel.KernelTestCase" alt="" coords="341,699,521,726"/>
+<area shape="rect" id="node3" href="$classunit_1_1UnitTestCase.html" title="unit.UnitTestCase" alt="" coords="165,699,293,726"/>
+<area shape="rect" id="node6" href="$classunit_1_1kernel_1_1models_1_1device__registry_1_1Constructor.html" title="unit.kernel.models.device\l_registry.Constructor" alt="" coords="1119,5,1289,47"/>
+<area shape="rect" id="node7" href="$classunit_1_1kernel_1_1models_1_1device__registry_1_1GetPowerSupply.html" title="unit.kernel.models.device\l_registry.GetPowerSupply" alt="" coords="1117,71,1291,112"/>
+<area shape="rect" id="node8" href="$classunit_1_1kernel_1_1models_1_1device__registry_1_1GetPressureGauge.html" title="unit.kernel.models.device\l_registry.GetPressureGauge" alt="" coords="1111,136,1297,177"/>
+<area shape="rect" id="node9" href="$classunit_1_1kernel_1_1models_1_1device__registry_1_1HasPowerSupply.html" title="unit.kernel.models.device\l_registry.HasPowerSupply" alt="" coords="1115,201,1293,243"/>
+<area shape="rect" id="node10" href="$classunit_1_1kernel_1_1models_1_1device__registry_1_1HasPressureGauge.html" title="unit.kernel.models.device\l_registry.HasPressureGauge" alt="" coords="1109,267,1299,308"/>
+<area shape="rect" id="node11" href="$classunit_1_1kernel_1_1models_1_1device__registry_1_1SetPowerSupply.html" title="unit.kernel.models.device\l_registry.SetPowerSupply" alt="" coords="1117,332,1291,373"/>
+<area shape="rect" id="node12" href="$classunit_1_1kernel_1_1models_1_1device__registry_1_1SetPressureGauge.html" title="unit.kernel.models.device\l_registry.SetPressureGauge" alt="" coords="1111,397,1297,439"/>
+<area shape="rect" id="node14" href="$classunit_1_1kernel_1_1models_1_1kernel_1_1GetCommPortReporter.html" title="unit.kernel.models.kernel.\lGetCommPortReporter" alt="" coords="1119,463,1289,504"/>
+<area shape="rect" id="node15" href="$classunit_1_1kernel_1_1models_1_1kernel_1_1GetDeviceRegistryController.html" title="unit.kernel.models.kernel.\lGetDeviceRegistryController" alt="" coords="1109,528,1299,569"/>
+<area shape="rect" id="node16" href="$classunit_1_1kernel_1_1models_1_1kernel_1_1GetDeviceRegistryView.html" title="unit.kernel.models.kernel.\lGetDeviceRegistryView" alt="" coords="1119,593,1289,635"/>
+<area shape="rect" id="node17" href="$classunit_1_1kernel_1_1models_1_1kernel_1_1GetModbusConnector.html" title="unit.kernel.models.kernel.\lGetModbusConnector" alt="" coords="1119,659,1289,700"/>
+<area shape="rect" id="node18" href="$classunit_1_1kernel_1_1models_1_1kernel_1_1GetPortDriver.html" title="unit.kernel.models.kernel.\lGetPortDriver" alt="" coords="1119,724,1289,765"/>
+<area shape="rect" id="node19" href="$classunit_1_1kernel_1_1models_1_1kernel_1_1GetPowerSupplyFactory.html" title="unit.kernel.models.kernel.\lGetPowerSupplyFactory" alt="" coords="1119,789,1289,831"/>
+<area shape="rect" id="node20" href="$classunit_1_1kernel_1_1models_1_1kernel_1_1GetSerialPortNames.html" title="unit.kernel.models.kernel.\lGetSerialPortNames" alt="" coords="1119,855,1289,896"/>
+<area shape="rect" id="node21" href="$classunit_1_1kernel_1_1models_1_1kernel_1_1IsPortInUse.html" title="unit.kernel.models.kernel.\lIsPortInUse" alt="" coords="1119,920,1289,961"/>
+<area shape="rect" id="node23" href="$classunit_1_1kernel_1_1models_1_1pvci__pressure__gauge__factory_1_1GetKernel.html" title="unit.kernel.models.pvci\l_pressure_gauge_factory.GetKernel" alt="" coords="1089,985,1319,1027"/>
+<area shape="rect" id="node24" href="$classunit_1_1kernel_1_1models_1_1pvci__pressure__gauge__factory_1_1GetPressureGauge.html" title="unit.kernel.models.pvci\l_pressure_gauge_factory.GetPressureGauge" alt="" coords="1063,1051,1345,1092"/>
+<area shape="rect" id="node25" href="$classunit_1_1kernel_1_1models_1_1pvci__pressure__gauge__factory_1_1GetPressureGaugeNotInRegistry.html" title="unit.kernel.models.pvci\l_pressure_gauge_factory.GetPressure\lGaugeNotInRegistry" alt="" coords="1081,1115,1327,1171"/>
+<area shape="rect" id="node26" href="$classunit_1_1kernel_1_1models_1_1pvci__pressure__gauge__factory_1_1QuickCheckProperties.html" title="unit.kernel.models.pvci\l_pressure_gauge_factory.Quick\lCheckProperties" alt="" coords="1101,1195,1307,1251"/>
+</map>

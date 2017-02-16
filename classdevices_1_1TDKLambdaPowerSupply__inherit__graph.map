@@ -1,0 +1,4 @@
+<map id="devices.TDKLambdaPowerSupply" name="devices.TDKLambdaPowerSupply">
+<area shape="rect" id="node3" href="$interfacedevices_1_1RS232Device.html" title="devices.RS232Device" alt="" coords="129,5,281,32"/>
+<area shape="rect" id="node4" href="$interfacedevices_1_1PowerSupply.html" title="devices.PowerSupply" alt="" coords="231,80,379,107"/>
+</map>

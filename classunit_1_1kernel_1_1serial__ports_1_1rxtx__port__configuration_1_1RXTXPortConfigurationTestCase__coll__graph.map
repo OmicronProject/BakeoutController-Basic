@@ -1,0 +1,8 @@
+<map id="unit.kernel.serial_ports.rxtx_port_configuration.RXTXPortConfigurationTestCase" name="unit.kernel.serial_ports.rxtx_port_configuration.RXTXPortConfigurationTestCase">
+<area shape="rect" id="node2" href="$classunit_1_1kernel_1_1serial__ports_1_1SerialPortsTestCase.html" title="unit.kernel.serial\l_ports.SerialPortsTestCase" alt="" coords="787,82,970,123"/>
+<area shape="rect" id="node3" href="$classunit_1_1kernel_1_1KernelTestCase.html" title="unit.kernel.KernelTestCase" alt="" coords="410,31,590,57"/>
+<area shape="rect" id="node4" href="$classunit_1_1UnitTestCase.html" title="unit.UnitTestCase" alt="" coords="213,31,341,57"/>
+<area shape="rect" id="node7" href="$interfacekernel_1_1serial__ports_1_1comm__port__wrapper_1_1PortIdentifierGetter.html" title="kernel.serial_ports.comm\l_port_wrapper.PortIdentifierGetter" alt="" coords="391,82,609,123"/>
+<area shape="rect" id="node8" href="$classkernel_1_1serial__ports_1_1RXTXPortConfiguration.html" title="kernel.serial_ports.RXTXPort\lConfiguration" alt="" coords="783,147,975,189"/>
+<area shape="rect" id="node9" href="$interfacekernel_1_1serial__ports_1_1PortConfiguration.html" title="kernel.serial_ports.Port\lConfiguration" alt="" coords="422,147,578,189"/>
+</map>

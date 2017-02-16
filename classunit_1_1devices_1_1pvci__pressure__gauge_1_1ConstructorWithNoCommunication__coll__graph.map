@@ -1,0 +1,10 @@
+<map id="unit.devices.pvci_pressure_gauge.ConstructorWithNoCommunication" name="unit.devices.pvci_pressure_gauge.ConstructorWithNoCommunication">
+<area shape="rect" id="node2" href="$classunit_1_1devices_1_1pvci__pressure__gauge_1_1PVCiPressureGaugeTestCase.html" title="unit.devices.pvci_pressure\l_gauge.PVCiPressureGaugeTestCase" alt="" coords="1083,205,1329,246"/>
+<area shape="rect" id="node3" href="$classunit_1_1devices_1_1DevicesTestCase.html" title="unit.devices.DevicesTestCase" alt="" coords="683,111,884,137"/>
+<area shape="rect" id="node4" href="$classunit_1_1UnitTestCase.html" title="unit.UnitTestCase" alt="" coords="305,56,433,83"/>
+<area shape="rect" id="node7" href="$interfaceunit_1_1devices_1_1DeviceCommunicator.html" title="unit.devices.DeviceCommunicator" alt="" coords="257,111,480,137"/>
+<area shape="rect" id="node8" href="$interfacekernel_1_1serial__ports_1_1PortCommunicator.html" title="kernel.serial_ports.Port\lCommunicator" alt="" coords="5,107,161,149"/>
+<area shape="rect" id="node9" href="$interfacedevices_1_1PressureGauge.html" title="devices.PressureGauge" alt="" coords="703,161,864,188"/>
+<area shape="rect" id="node10" href="$interfacedevices_1_1RS232Device.html" title="devices.RS232Device" alt="" coords="293,161,445,188"/>
+<area shape="rect" id="node13" href="$interfacekernel_1_1modbus_1_1ModbusConnector.html" title="kernel.modbus.ModbusConnector" alt="" coords="675,313,892,340"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="devices.PVCiPressureGauge" name="devices.PVCiPressureGauge">
+<area shape="rect" id="node2" href="$interfacedevices_1_1PressureGauge.html" title="devices.PressureGauge" alt="" coords="21,80,182,107"/>
+<area shape="rect" id="node3" href="$interfacedevices_1_1RS232Device.html" title="devices.RS232Device" alt="" coords="25,5,177,32"/>
+</map>

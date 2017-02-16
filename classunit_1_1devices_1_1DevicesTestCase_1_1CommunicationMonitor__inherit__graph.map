@@ -1,0 +1,4 @@
+<map id="unit.devices.DevicesTestCase.CommunicationMonitor" name="unit.devices.DevicesTestCase.CommunicationMonitor">
+<area shape="rect" id="node2" href="$interfaceunit_1_1devices_1_1DeviceCommunicator.html" title="unit.devices.DeviceCommunicator" alt="" coords="5,95,228,121"/>
+<area shape="rect" id="node3" href="$interfacekernel_1_1serial__ports_1_1PortCommunicator.html" title="kernel.serial_ports.Port\lCommunicator" alt="" coords="39,5,195,47"/>
+</map>

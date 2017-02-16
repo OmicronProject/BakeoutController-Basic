@@ -1,0 +1,5 @@
+<map id="unit.kernel.application_kernel_factory.GetKernelInstance" name="unit.kernel.application_kernel_factory.GetKernelInstance">
+<area shape="rect" id="node2" href="$classunit_1_1kernel_1_1application__kernel__factory_1_1ApplicationKernelBootstrapperTestCase.html" title="unit.kernel.application\l_kernel_factory.ApplicationKernel\lBootstrapperTestCase" alt="" coords="9,229,225,285"/>
+<area shape="rect" id="node3" href="$classunit_1_1kernel_1_1KernelTestCase.html" title="unit.kernel.KernelTestCase" alt="" coords="27,155,207,181"/>
+<area shape="rect" id="node4" href="$classunit_1_1UnitTestCase.html" title="unit.UnitTestCase" alt="" coords="53,80,181,107"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="unit.ui.controllers.device_list_controller.HandleRefreshButtonClickedNoPowerSupply" name="unit.ui.controllers.device_list_controller.HandleRefreshButtonClickedNoPowerSupply">
+<area shape="rect" id="node2" href="$classunit_1_1ui_1_1controllers_1_1device__list__controller_1_1DeviceListControllerTestCase.html" title="unit.ui.controllers.device\l_list_controller.DeviceListController\lTestCase" alt="" coords="9,319,237,375"/>
+<area shape="rect" id="node3" href="$classunit_1_1ui_1_1controllers_1_1ControllersTestCase.html" title="unit.ui.controllers.Controllers\lTestCase" alt="" coords="29,229,217,271"/>
+<area shape="rect" id="node4" href="$classunit_1_1ui_1_1UserInterfaceTestCase.html" title="unit.ui.UserInterfaceTestCase" alt="" coords="24,155,221,181"/>
+<area shape="rect" id="node5" href="$classunit_1_1UnitTestCase.html" title="unit.UnitTestCase" alt="" coords="59,80,187,107"/>
+</map>

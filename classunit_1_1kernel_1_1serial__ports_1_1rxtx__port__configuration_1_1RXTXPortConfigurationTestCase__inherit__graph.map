@@ -1,0 +1,9 @@
+<map id="unit.kernel.serial_ports.rxtx_port_configuration.RXTXPortConfigurationTestCase" name="unit.kernel.serial_ports.rxtx_port_configuration.RXTXPortConfigurationTestCase">
+<area shape="rect" id="node6" href="$classunit_1_1kernel_1_1serial__ports_1_1rxtx__port__configuration_1_1GetBaudRate.html" title="unit.kernel.serial\l_ports.rxtx_port_configuration.\lGetBaudRate" alt="" coords="1064,5,1263,61"/>
+<area shape="rect" id="node7" href="$classunit_1_1kernel_1_1serial__ports_1_1rxtx__port__configuration_1_1GetDataBits.html" title="unit.kernel.serial\l_ports.rxtx_port_configuration.\lGetDataBits" alt="" coords="1064,85,1263,141"/>
+<area shape="rect" id="node8" href="$classunit_1_1kernel_1_1serial__ports_1_1rxtx__port__configuration_1_1GetParityBits.html" title="unit.kernel.serial\l_ports.rxtx_port_configuration.\lGetParityBits" alt="" coords="1064,165,1263,221"/>
+<area shape="rect" id="node9" href="$classunit_1_1kernel_1_1serial__ports_1_1rxtx__port__configuration_1_1GetStopBits.html" title="unit.kernel.serial\l_ports.rxtx_port_configuration.\lGetStopBits" alt="" coords="1064,245,1263,301"/>
+<area shape="rect" id="node2" href="$classunit_1_1kernel_1_1serial__ports_1_1SerialPortsTestCase.html" title="unit.kernel.serial\l_ports.SerialPortsTestCase" alt="" coords="569,133,752,174"/>
+<area shape="rect" id="node3" href="$classunit_1_1kernel_1_1KernelTestCase.html" title="unit.kernel.KernelTestCase" alt="" coords="341,140,521,167"/>
+<area shape="rect" id="node4" href="$classunit_1_1UnitTestCase.html" title="unit.UnitTestCase" alt="" coords="165,140,293,167"/>
+</map>

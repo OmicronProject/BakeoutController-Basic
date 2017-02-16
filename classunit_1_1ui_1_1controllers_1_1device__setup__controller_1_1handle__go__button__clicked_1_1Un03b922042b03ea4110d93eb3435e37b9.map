@@ -1,0 +1,9 @@
+<map id="unit.ui.controllers.device_setup_controller.handle_go_button_clicked.UnsupportedCommOperationExceptionTest" name="unit.ui.controllers.device_setup_controller.handle_go_button_clicked.UnsupportedCommOperationExceptionTest">
+<area shape="rect" id="node2" href="$classunit_1_1ui_1_1controllers_1_1device__setup__controller_1_1handle__go__button__clicked_1_1HandleGoButtonClickedTestCase.html" title="unit.ui.controllers.device\l_setup_controller.handle\l_go_button_clicked.HandleGoButton\lClickedTestCase" alt="" coords="1508,111,1743,182"/>
+<area shape="rect" id="node3" href="$classunit_1_1ui_1_1controllers_1_1device__setup__controller_1_1DeviceSetupControllerTestCase.html" title="unit.ui.controllers.device\l_setup_controller.DeviceSetupController\lTestCase" alt="" coords="1129,77,1385,133"/>
+<area shape="rect" id="node4" href="$classunit_1_1ui_1_1controllers_1_1ControllersTestCase.html" title="unit.ui.controllers.Controllers\lTestCase" alt="" coords="892,85,1080,126"/>
+<area shape="rect" id="node5" href="$classunit_1_1ui_1_1UserInterfaceTestCase.html" title="unit.ui.UserInterfaceTestCase" alt="" coords="645,92,843,119"/>
+<area shape="rect" id="node6" href="$classunit_1_1UnitTestCase.html" title="unit.UnitTestCase" alt="" coords="313,41,441,68"/>
+<area shape="rect" id="node10" href="$classui_1_1JavaFXGraphicalUserInterfaceLauncher.html" title="ui.JavaFXGraphicalUserInterface\lLauncher" alt="" coords="269,143,484,185"/>
+<area shape="rect" id="node12" href="$interfaceui_1_1UserInterfaceLauncher.html" title="ui.UserInterfaceLauncher" alt="" coords="5,172,173,199"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="kernel.modbus.StandaloneModbusPortConfiguration" name="kernel.modbus.StandaloneModbusPortConfiguration">
+<area shape="rect" id="node2" href="$interfacekernel_1_1modbus_1_1ModbusPortConfiguration.html" title="kernel.modbus.ModbusPort\lConfiguration" alt="" coords="5,95,187,136"/>
+<area shape="rect" id="node3" href="$interfacekernel_1_1serial__ports_1_1PortConfiguration.html" title="kernel.serial_ports.Port\lConfiguration" alt="" coords="18,5,174,47"/>
+</map>
