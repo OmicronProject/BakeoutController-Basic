@@ -7,10 +7,12 @@
 <?import javafx.scene.chart.NumberAxis?>
 
 <?import javafx.scene.layout.TilePane?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.layout.HBox?>
-<GridPane styleClass="root">
+<GridPane styleClass="root"
+          xmlns="http://javafx.com/javafx/8.0.112"
+          xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="ui.controllers.ResultController">
 
     <Text styleClass="tab-title" text="Result">
         <GridPane.columnIndex>0</GridPane.columnIndex>
@@ -27,6 +29,14 @@
         <GridPane styleClass="live-status">
             <GridPane.rowIndex>1</GridPane.rowIndex>
             <GridPane.columnIndex>0</GridPane.columnIndex>
+
+            <TilePane styleClass="pressure-status">
+                <Text text="Pressure"
+                      styleClass="instrument-descriptor" />
+                <Text id="pressure"
+                      styleClass="reported-variable"
+                      fx:id="reportedPressure"/>
+            </TilePane>
         </GridPane>
     </GridPane>
 

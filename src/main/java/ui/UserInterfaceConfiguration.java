@@ -4,6 +4,7 @@ import javafx.stage.Stage;
 import org.springframework.context.annotation.*;
 import ui.controllers.DeviceListController;
 import ui.controllers.DeviceSetupController;
+import ui.controllers.ResultController;
 import ui.controllers.modals.NewStepController;
 import ui.controllers.SequenceController;
 
@@ -69,6 +70,12 @@ public class UserInterfaceConfiguration {
     @Scope("prototype")
     public DeviceListController deviceListController(){
         return new DeviceListController();
+    }
+
+    @Bean
+    @Scope("prototype")
+    public ResultController resultController(){
+        return new ResultController();
     }
 
     /**

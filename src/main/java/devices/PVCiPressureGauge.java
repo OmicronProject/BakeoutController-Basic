@@ -88,6 +88,7 @@ public class PVCiPressureGauge implements PressureGauge {
     @Override
     public Float getPressure() throws WrappedModbusException,
             ModbusException, IOException {
+        log.debug("Method to get pressure was called");
 
         ModbusRequest pressureRequest = getReadRegisterRequest(
                 gaugePressureAddress, gaugePressureWordsTorRead
