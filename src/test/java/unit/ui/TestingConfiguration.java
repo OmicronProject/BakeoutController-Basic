@@ -211,6 +211,9 @@ public class TestingConfiguration {
             allowing(variableProviderRegistry()).getPressureProvider();
             will(returnValue(pressureProvider()));
 
+            allowing(variableProviderRegistry()).hasPressureProvider();
+            will(returnValue(Boolean.TRUE));
+
             allowing(pressureProvider()).setPollingInterval(
                     with(any(Duration.class))
             );
