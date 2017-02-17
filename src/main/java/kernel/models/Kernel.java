@@ -1,6 +1,7 @@
 package kernel.models;
 
 import kernel.controllers.TDKLambdaPowerSupplyFactory;
+import kernel.controllers.variables.VariableProviderRegistry;
 import kernel.modbus.ModBusConnectionManager;
 import kernel.modbus.ModbusConnector;
 import kernel.serial_ports.PortDriver;
@@ -26,6 +27,8 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
 
     private DeviceRegistry deviceRegistry;
 
+    private kernel.models.VariableProviderRegistry variableProviders;
+
     private kernel.controllers.TDKLambdaPowerSupplyFactory
             tdkLambdaPowerSupplyFactory;
 
@@ -46,7 +49,7 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
         log.info("Started kernel {}", this.toString());
 
         createPVCIPressureGaugeFactory();
-
+        createVariableProviderRegistry();
     }
 
     /**
@@ -112,6 +115,19 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
         return this.pvCiPressureGaugeFactory;
     }
 
+    @Contract(pure = true)
+    @Override
+    public kernel.views.VariableProviderRegistry getVariableProvidersView(){
+        return this.variableProviders;
+    }
+
+    @Contract(pure = true)
+    @Override
+    public VariableProviderRegistry
+            getVariableProvidersController(){
+        return this.variableProviders;
+    }
+
     private void createTDKLambdaPowerSupplyFactory(){
         this.tdkLambdaPowerSupplyFactory = new kernel.models
                 .TDKLambdaPowerSupplyFactory();
@@ -121,6 +137,10 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
     private void createPVCIPressureGaugeFactory(){
         this.pvCiPressureGaugeFactory = new PVCiPressureGaugeFactory();
         this.pvCiPressureGaugeFactory.setKernel(this);
+    }
+
+    private void createVariableProviderRegistry(){
+        this.variableProviders = new kernel.models.VariableProviderRegistry();
     }
 
     /**

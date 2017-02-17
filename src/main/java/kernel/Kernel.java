@@ -1,9 +1,10 @@
 package kernel;
 
 import kernel.controllers.*;
+import kernel.controllers.DeviceRegistry;
 import kernel.modbus.ModbusConnector;
 import kernel.serial_ports.PortDriver;
-import kernel.views.CommPortReporter;
+import kernel.views.*;
 
 /**
  * Describes the main application kernel
@@ -25,4 +26,9 @@ public interface Kernel {
     ModbusConnector getModbusConnector();
 
     PVCiPressureGaugeFactory getPressureGaugeFactory();
+
+    kernel.views.VariableProviderRegistry getVariableProvidersView();
+
+    kernel.controllers.variables.VariableProviderRegistry
+    getVariableProvidersController();
 }

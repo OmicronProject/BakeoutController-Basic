@@ -5,8 +5,10 @@ import com.ghgande.j2mod.modbus.io.ModbusTransaction;
 import com.ghgande.j2mod.modbus.msg.*;
 import devices.PressureGauge;
 import kernel.controllers.DeviceRegistry;
+import kernel.controllers.variables.VariableProviderRegistry;
 import kernel.modbus.ModbusPortConfiguration;
 import kernel.models.PVCiPressureGaugeFactory;
+import kernel.views.variables.VariableProvider;
 import org.jmock.Expectations;
 import org.junit.Before;
 import org.junit.Test;
@@ -30,6 +32,10 @@ public final class GetPressureGaugeNotInRegistry extends
             PressureGauge.class);
 
     private ModbusTransaction mockTransaction = new MockTransaction();
+
+    private VariableProviderRegistry mockVariableRegistry = context.mock(
+            VariableProviderRegistry.class
+    );
 
     @Before
     public void setContext() throws Exception {
@@ -55,6 +61,14 @@ public final class GetPressureGaugeNotInRegistry extends
 
     private class ExpectationsForTest extends Expectations {
         public ExpectationsForTest() throws Exception {
+            expectationsForKernel();
+            expectationsForDeviceRegistry();
+            expectationsForModbusConnector();
+            expectationsForMockController();
+            expectationsForVariableRegistry();
+        }
+
+        private void expectationsForKernel(){
             oneOf(mockKernel).getDeviceRegistryView();
             will(returnValue(mockRegistry));
 
@@ -64,19 +78,22 @@ public final class GetPressureGaugeNotInRegistry extends
             oneOf(mockKernel).getModbusConnector();
             will(returnValue(mockConnector));
 
+            oneOf(mockKernel).getVariableProvidersController();
+            will(returnValue(mockVariableRegistry));
+        }
+
+        private void expectationsForDeviceRegistry(){
             oneOf(mockRegistry).hasPressureGauge();
             will(returnValue(Boolean.FALSE));
 
-            oneOf(mockController).setPressureGauge(
-                    with(any(PressureGauge.class))
-            );
+            oneOf(mockRegistry).getPressureGauge();
+            will(returnValue(mockPressureGauge));
+        }
 
+        private void expectationsForModbusConnector() throws Exception {
             oneOf(mockConnector).setPortConfiguration(
                     with(any(ModbusPortConfiguration.class))
             );
-
-            oneOf(mockRegistry).getPressureGauge();
-            will(returnValue(mockPressureGauge));
 
             oneOf(mockConnector).getTransactionForRequest(
                     with(any(ReadWriteMultipleRequest.class))
@@ -87,6 +104,18 @@ public final class GetPressureGaugeNotInRegistry extends
                     (ModbusResponse.class)));
             will(returnValue("iGC3"));
 
+        }
+
+        private void expectationsForMockController() throws Exception {
+            oneOf(mockController).setPressureGauge(
+                    with(any(PressureGauge.class))
+            );
+        }
+
+        private void expectationsForVariableRegistry(){
+            oneOf(mockVariableRegistry).setPressureProvider(
+                    with(any(VariableProvider.class))
+            );
         }
     }
 }
