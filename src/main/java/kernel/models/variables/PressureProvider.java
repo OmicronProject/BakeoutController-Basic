@@ -98,12 +98,9 @@ public class PressureProvider implements VariableProvider<Pressure> {
         private final Logger log = LoggerFactory.getLogger(
                 PressurePollingTask.class
         );
-
-        private Boolean taskGuard = Boolean.TRUE;
-
         @Override
         public void run(){
-            while (taskGuard) {
+            while (true) {
                 Float pressureValue = getPressure();
                 Pressure dataPoint = makeDataPoint(pressureValue);
                 pressures.add(dataPoint);
@@ -163,7 +160,7 @@ public class PressureProvider implements VariableProvider<Pressure> {
 
         private void waitForPollingInterval(){
             try {
-                wait(pollingInterval.toMillis());
+                Thread.sleep(pollingInterval.toMillis());
             } catch (InterruptedException error){
                 log.debug("Thread interrupted");
                 isPollingThreadAlive = Boolean.FALSE;
