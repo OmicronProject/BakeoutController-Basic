@@ -6,6 +6,9 @@ import kernel.Kernel;
 import kernel.modbus.ModbusConnector;
 import kernel.modbus.ModbusPortConfiguration;
 import kernel.modbus.StandaloneModbusPortConfiguration;
+import kernel.models.variables.PressureProvider;
+import kernel.views.variables.Pressure;
+import kernel.views.variables.VariableProvider;
 import org.jetbrains.annotations.Contract;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -132,7 +135,14 @@ public class PVCiPressureGaugeFactory implements
      */
     @Contract(" -> !null")
     private PressureGauge createInstance() throws IOException {
-        return new PVCiPressureGauge(address, getConnection());
+        PressureGauge gauge = new PVCiPressureGauge(address, getConnection());
+
+        VariableProvider<Pressure> provider = new PressureProvider(
+                gauge, kernel
+        );
+        kernel.getVariableProvidersController().setPressureProvider(provider);
+
+        return gauge;
     }
 
     /**

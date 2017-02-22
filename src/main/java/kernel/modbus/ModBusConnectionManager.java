@@ -8,6 +8,7 @@ import com.ghgande.j2mod.modbus.msg.ModbusRequest;
 import com.ghgande.j2mod.modbus.msg.ModbusResponse;
 import com.ghgande.j2mod.modbus.net.SerialConnection;
 import exceptions.WrappedModbusException;
+import org.jetbrains.annotations.Contract;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -140,8 +141,10 @@ public class ModBusConnectionManager implements ModbusConnector {
 
         inputRegistersResponse.writeData(writer);
 
+        byte[] dataToRead = processByteArray(byteBuffer.toByteArray());
+
         DataInput reader = new DataInputStream(
-                new ByteArrayInputStream(byteBuffer.toByteArray())
+                new ByteArrayInputStream(dataToRead)
         );
 
         return reader.readFloat();
@@ -233,6 +236,19 @@ public class ModBusConnectionManager implements ModbusConnector {
      */
     private void removeShutdownThread(){
         Runtime.getRuntime().removeShutdownHook(portShutdownThread);
+    }
+
+    @Contract(pure = true)
+    private byte[] processByteArray(byte[] inputBytes){
+        byte[] outputBytes = new byte[inputBytes.length - 1];
+
+        for (int index = 0; index < outputBytes.length; index++){
+            outputBytes[index] = inputBytes[
+                    inputBytes.length - 1 - index
+            ];
+        }
+
+        return outputBytes;
     }
 
     /**
