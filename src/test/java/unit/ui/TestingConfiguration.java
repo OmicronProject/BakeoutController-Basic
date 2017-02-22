@@ -132,7 +132,7 @@ public class TestingConfiguration {
      */
     @Bean
     @Scope("singleton")
-    public Kernel kernel(){
+    public Kernel kernel() throws Exception {
         mockKernel = mockingContext().mock(Kernel.class);
         mockingContext().checking(new ExpectationsForKernel());
         return mockKernel;
@@ -160,7 +160,7 @@ public class TestingConfiguration {
         /**
          * Set up the required behaviours
          */
-        public ExpectationsForKernel(){
+        public ExpectationsForKernel() throws Exception {
             expectationsForPortReporter();
             expectationsForSerialPortNames();
             expectationsForFactory();
@@ -207,7 +207,7 @@ public class TestingConfiguration {
             will(returnValue(variableProviderRegistry()));
         }
 
-        private void expectationsForGetPressureProvider(){
+        private void expectationsForGetPressureProvider() throws Exception {
             allowing(variableProviderRegistry()).getPressureProvider();
             will(returnValue(pressureProvider()));
 

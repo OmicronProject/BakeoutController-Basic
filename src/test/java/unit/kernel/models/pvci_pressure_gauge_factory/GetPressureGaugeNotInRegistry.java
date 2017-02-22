@@ -5,6 +5,7 @@ import com.ghgande.j2mod.modbus.io.ModbusTransaction;
 import com.ghgande.j2mod.modbus.msg.*;
 import devices.PressureGauge;
 import kernel.controllers.DeviceRegistry;
+import kernel.controllers.TaskRunner;
 import kernel.controllers.variables.VariableProviderRegistry;
 import kernel.modbus.ModbusPortConfiguration;
 import kernel.models.PVCiPressureGaugeFactory;
@@ -37,6 +38,10 @@ public final class GetPressureGaugeNotInRegistry extends
             VariableProviderRegistry.class
     );
 
+    private TaskRunner mockTaskRunner = context.mock(
+            TaskRunner.class
+    );
+
     @Before
     public void setContext() throws Exception {
         context.checking(new ExpectationsForTest());
@@ -66,6 +71,7 @@ public final class GetPressureGaugeNotInRegistry extends
             expectationsForModbusConnector();
             expectationsForMockController();
             expectationsForVariableRegistry();
+            expectationsForTaskRunner();
         }
 
         private void expectationsForKernel(){
@@ -80,6 +86,9 @@ public final class GetPressureGaugeNotInRegistry extends
 
             oneOf(mockKernel).getVariableProvidersController();
             will(returnValue(mockVariableRegistry));
+
+            oneOf(mockKernel).getTaskRunner();
+            will(returnValue(mockTaskRunner));
         }
 
         private void expectationsForDeviceRegistry(){
@@ -116,6 +125,10 @@ public final class GetPressureGaugeNotInRegistry extends
             oneOf(mockVariableRegistry).setPressureProvider(
                     with(any(VariableProvider.class))
             );
+        }
+
+        private void expectationsForTaskRunner(){
+            oneOf(mockTaskRunner).execute(with(any(Runnable.class)));
         }
     }
 }

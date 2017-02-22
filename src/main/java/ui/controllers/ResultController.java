@@ -1,5 +1,6 @@
 package ui.controllers;
 
+import exceptions.NonNegativeDurationException;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
@@ -57,7 +58,13 @@ public class ResultController {
     private void configureVariableProvider(){
         VariableProvider<Pressure> provider = kernel
                 .getVariableProvidersView().getPressureProvider();
-        provider.setPollingInterval(pressurePollingInterval);
+
+        try {
+            provider.setPollingInterval(pressurePollingInterval);
+        } catch (NonNegativeDurationException error){
+            error.printStackTrace();
+        }
+
         provider.addOnChangeListener(
                 new PressureChangeHandler(reportedPressure, pressureSeries)
         );

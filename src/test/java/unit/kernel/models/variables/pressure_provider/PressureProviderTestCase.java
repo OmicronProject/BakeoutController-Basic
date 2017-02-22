@@ -1,6 +1,8 @@
 package unit.kernel.models.variables.pressure_provider;
 
 import devices.PressureGauge;
+import kernel.Kernel;
+import kernel.controllers.TaskRunner;
 import kernel.models.variables.PressureProvider;
 import kernel.views.variables.Pressure;
 import kernel.views.variables.VariableProvider;
@@ -17,6 +19,14 @@ public abstract class PressureProviderTestCase extends VariablesTestCase {
             PressureGauge.class
     );
 
+    protected final Kernel mockKernel = context.mock(
+            Kernel.class
+    );
+
+    protected final TaskRunner mockTaskRunner = context.mock(
+            TaskRunner.class
+    );
+
     protected VariableProvider<Pressure> provider;
 
     protected abstract ExpectationsForPressureProvider getExpectations()
@@ -29,7 +39,7 @@ public abstract class PressureProviderTestCase extends VariablesTestCase {
     }
 
     private void setProvider(){
-        provider = new PressureProvider(pressureGauge);
+        provider = new PressureProvider(pressureGauge, mockKernel);
     }
 
     private void setContext() throws Exception {
@@ -39,10 +49,21 @@ public abstract class PressureProviderTestCase extends VariablesTestCase {
     protected class ExpectationsForPressureProvider extends Expectations {
         public ExpectationsForPressureProvider() throws Exception {
             expectationsForPressureGauge();
+            expectationsForKernel();
+            expectationsForTaskRunner();
         }
 
         private void expectationsForPressureGauge() throws Exception {
             allowing(pressureGauge).getPressure();
+        }
+
+        private void expectationsForKernel(){
+            oneOf(mockKernel).getTaskRunner();
+            will(returnValue(mockTaskRunner));
+        }
+
+        private void expectationsForTaskRunner(){
+            oneOf(mockTaskRunner).execute(with(any(Runnable.class)));
         }
     }
 }

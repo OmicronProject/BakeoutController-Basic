@@ -1,6 +1,7 @@
 package kernel.models;
 
 import kernel.controllers.TDKLambdaPowerSupplyFactory;
+import kernel.controllers.TaskRunner;
 import kernel.controllers.variables.VariableProviderRegistry;
 import kernel.modbus.ModBusConnectionManager;
 import kernel.modbus.ModbusConnector;
@@ -13,6 +14,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * Contains methods for working with application hardware, getting the
@@ -36,6 +39,8 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
 
     private kernel.controllers.PVCiPressureGaugeFactory
             pvCiPressureGaugeFactory;
+
+    private TaskRunner runner = new kernel.models.TaskRunner();
 
     /**
      * @param portDriver The driver to be used for managing the RS232 serial
@@ -126,6 +131,16 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
     public VariableProviderRegistry
             getVariableProvidersController(){
         return this.variableProviders;
+    }
+
+    @Override
+    public TaskRunner getTaskRunner(){
+        return this.runner;
+    }
+
+    @Override
+    public void setTaskRunner(TaskRunner runner){
+        this.runner = runner;
     }
 
     private void createTDKLambdaPowerSupplyFactory(){

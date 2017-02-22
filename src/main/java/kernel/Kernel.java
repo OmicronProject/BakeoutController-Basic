@@ -31,4 +31,8 @@ public interface Kernel {
 
     kernel.controllers.variables.VariableProviderRegistry
     getVariableProvidersController();
+
+    TaskRunner getTaskRunner();
+
+    void setTaskRunner(TaskRunner runner);
 }

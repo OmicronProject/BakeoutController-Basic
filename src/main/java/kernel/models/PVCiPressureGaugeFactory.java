@@ -137,7 +137,9 @@ public class PVCiPressureGaugeFactory implements
     private PressureGauge createInstance() throws IOException {
         PressureGauge gauge = new PVCiPressureGauge(address, getConnection());
 
-        VariableProvider<Pressure> provider = new PressureProvider(gauge);
+        VariableProvider<Pressure> provider = new PressureProvider(
+                gauge, kernel
+        );
         kernel.getVariableProvidersController().setPressureProvider(provider);
 
         return gauge;

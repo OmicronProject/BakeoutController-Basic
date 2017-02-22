@@ -1,6 +1,8 @@
 package kernel.models.variables;
 
 import devices.PressureGauge;
+import exceptions.NonNegativeDurationException;
+import kernel.Kernel;
 import kernel.views.variables.Pressure;
 import kernel.views.variables.VariableChangeEventListener;
 import kernel.views.variables.VariableProvider;
@@ -20,7 +22,8 @@ public class PressureProvider implements VariableProvider<Pressure> {
 
     private final List<Pressure> pressures = new LinkedList<>();
 
-    private final Set<VariableChangeEventListener<Pressure>> listeners;
+    private final Set<VariableChangeEventListener<Pressure>> listeners = new
+            HashSet<>();
 
     private volatile Integer numberOfDataPoints = 10;
 
@@ -28,14 +31,11 @@ public class PressureProvider implements VariableProvider<Pressure> {
 
     private volatile Duration pollingInterval = Duration.ofMillis(1000);
 
-    public PressureProvider(PressureGauge gauge){
+    public PressureProvider(PressureGauge gauge, Kernel kernel){
         this.pressureGauge = gauge;
-
-        Thread pollingThread = new PressurePollingThread();
-        listeners = new HashSet<>();
-
+        Runnable pressureTask = new PressurePollingTask();
         isPollingThreadAlive = Boolean.TRUE;
-        pollingThread.start();
+        kernel.getTaskRunner().execute(pressureTask);
     }
 
     @Override
@@ -59,7 +59,7 @@ public class PressureProvider implements VariableProvider<Pressure> {
     }
 
     @Override
-    public void setNumberOfDataPoints(Integer numberOfDataPoints){
+    public void setNumberOfDataPoints(Integer numberOfDataPoints) {
         this.numberOfDataPoints = numberOfDataPoints;
     }
 
@@ -74,7 +74,11 @@ public class PressureProvider implements VariableProvider<Pressure> {
     }
 
     @Override
-    public void setPollingInterval(Duration pollingInterval){
+    public void setPollingInterval(Duration pollingInterval) throws
+            NonNegativeDurationException {
+        if (pollingInterval.isNegative()){
+            throw new NonNegativeDurationException(pollingInterval);
+        }
         this.pollingInterval = pollingInterval;
     }
 
@@ -90,14 +94,16 @@ public class PressureProvider implements VariableProvider<Pressure> {
         listeners.remove(listener);
     }
 
-    private class PressurePollingThread extends Thread {
+    private class PressurePollingTask implements Runnable {
         private final Logger log = LoggerFactory.getLogger(
-                PressurePollingThread.class
+                PressurePollingTask.class
         );
+
+        private Boolean taskGuard = Boolean.TRUE;
 
         @Override
         public void run(){
-            while (this.isAlive()) {
+            while (taskGuard) {
                 Float pressureValue = getPressure();
                 Pressure dataPoint = makeDataPoint(pressureValue);
                 pressures.add(dataPoint);
@@ -157,7 +163,7 @@ public class PressureProvider implements VariableProvider<Pressure> {
 
         private void waitForPollingInterval(){
             try {
-                sleep(pollingInterval.toMillis());
+                wait(pollingInterval.toMillis());
             } catch (InterruptedException error){
                 log.debug("Thread interrupted");
                 isPollingThreadAlive = Boolean.FALSE;
