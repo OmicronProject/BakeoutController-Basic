@@ -5,6 +5,7 @@ import devices.TDKLambdaPowerSupply;
 import exceptions.DeviceAlreadyCreatedException;
 import gnu.io.PortInUseException;
 import gnu.io.UnsupportedCommOperationException;
+import kernel.models.variables.VoltageProvider;
 import kernel.serial_ports.PortConfiguration;
 import kernel.serial_ports.SerialPort;
 import kernel.views.DeviceRegistry;
@@ -112,7 +113,14 @@ public class TDKLambdaPowerSupplyFactory implements kernel.controllers.TDKLambda
 
         port.open();
 
-        return new TDKLambdaPowerSupply(port.getCommunicator(), deviceAddress);
+        PowerSupply supply = new TDKLambdaPowerSupply(port.getCommunicator(),
+            deviceAddress);
+
+        kernel.getVariableProvidersController().setVoltageProvider(
+                new VoltageProvider(supply, kernel)
+        );
+
+        return supply;
     }
 
     private void configurePort(SerialPort port){

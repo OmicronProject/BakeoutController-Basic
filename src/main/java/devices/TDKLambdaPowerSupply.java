@@ -58,6 +58,14 @@ public class TDKLambdaPowerSupply extends AbstractRS232Device
     }
 
     /**
+     * @return The currently-measured voltage going out of the power supply
+     * @throws IOException If the command cannot be written
+     */
+    @Override public Double getMeasuredVoltage() throws IOException {
+        return this.writeWithDoubleResponse(GET_MEASURED_VOLTAGE_COMMAND);
+    }
+
+    /**
      * @param newVoltage The voltage to which the device output is to be set
      * @throws IOException If the command to set this voltage could not be
      * sent to the device

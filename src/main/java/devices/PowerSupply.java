@@ -69,6 +69,8 @@ public interface PowerSupply extends RS232Device {
      */
     String ON = "1";
 
+    String GET_MEASURED_VOLTAGE_COMMAND = "MV?\r";
+
     /**
      * Bring the device to a known safe state
      * @throws IOException if the command could not be sent
@@ -80,6 +82,12 @@ public interface PowerSupply extends RS232Device {
      * @throws IOException if the command could not be sent
      */
     Double getVoltage() throws IOException;
+
+    /**
+     * @return The measured voltage
+     * @throws IOException If the value cannot be retrieved
+     */
+    Double getMeasuredVoltage() throws IOException;
 
     /**
      * @param newVoltage The voltage to which the device output is to be set

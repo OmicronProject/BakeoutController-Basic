@@ -2,6 +2,7 @@ package kernel.models;
 
 import kernel.views.variables.Pressure;
 import kernel.views.variables.VariableProvider;
+import kernel.views.variables.Voltage;
 
 /**
  * Responsible for storing variable providers
@@ -9,6 +10,8 @@ import kernel.views.variables.VariableProvider;
 public class VariableProviderRegistry implements
         CombinedVariableProviderRegistry {
     private VariableProvider<Pressure> pressureVariableProvider;
+
+    private VariableProvider<Voltage> voltageVariableProvider;
 
     @Override
     public VariableProvider<Pressure> getPressureProvider(){
@@ -23,5 +26,20 @@ public class VariableProviderRegistry implements
     @Override
     public Boolean hasPressureProvider(){
         return pressureVariableProvider != null;
+    }
+
+    @Override
+    public VariableProvider<Voltage> getVoltageProvider(){
+        return voltageVariableProvider;
+    }
+
+    @Override
+    public void setVoltageProvider(VariableProvider<Voltage> voltageProvider){
+        this.voltageVariableProvider = voltageProvider;
+    }
+
+    @Override
+    public Boolean hasVoltageProvider(){
+        return voltageVariableProvider != null;
     }
 }
