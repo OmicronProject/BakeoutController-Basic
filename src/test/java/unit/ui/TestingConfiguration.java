@@ -7,9 +7,7 @@ import kernel.views.DeviceRegistry;
 import kernel.controllers.TDKLambdaPowerSupplyFactory;
 import kernel.views.CommPortReporter;
 import kernel.views.VariableProviderRegistry;
-import kernel.views.variables.Pressure;
-import kernel.views.variables.VariableChangeEventListener;
-import kernel.views.variables.VariableProvider;
+import kernel.views.variables.*;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.jmock.integration.junit4.JUnit4Mockery;
@@ -123,8 +121,14 @@ public class TestingConfiguration {
 
     @Bean
     @Scope("singleton")
-    public VariableProvider<Pressure> pressureProvider(){
-        return mockingContext().mock(VariableProvider.class);
+    public PressureProvider pressureProvider(){
+        return mockingContext().mock(PressureProvider.class);
+    }
+
+    @Bean
+    @Scope("singleton")
+    public VoltageProvider voltageProvider(){
+        return mockingContext().mock(VoltageProvider.class);
     }
 
     /**
@@ -168,6 +172,7 @@ public class TestingConfiguration {
             expectationsForDeviceRegistryView();
             expectationsForVariableProvider();
             expectationsForGetPressureProvider();
+            expectationsForGetVoltageProvider();
         }
 
         /**
@@ -218,6 +223,21 @@ public class TestingConfiguration {
                     with(any(Duration.class))
             );
             allowing(pressureProvider()).addOnChangeListener(
+                    with(any(VariableChangeEventListener.class))
+            );
+        }
+
+        private void expectationsForGetVoltageProvider() throws Exception {
+            allowing(variableProviderRegistry()).getVoltageProvider();
+            will(returnValue(voltageProvider()));
+            allowing(variableProviderRegistry()).hasVoltageProvider();
+            will(returnValue(Boolean.TRUE));
+
+            allowing(voltageProvider()).setPollingInterval(
+                    with(any(Duration.class))
+            );
+
+            allowing(voltageProvider()).addOnChangeListener(
                     with(any(VariableChangeEventListener.class))
             );
         }
