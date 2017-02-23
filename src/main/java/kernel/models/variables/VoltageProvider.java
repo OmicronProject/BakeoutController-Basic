@@ -1,6 +1,7 @@
 package kernel.models.variables;
 
 import devices.PowerSupply;
+import exceptions.NonNegativeDurationException;
 import kernel.Kernel;
 import kernel.views.variables.VariableChangeEventListener;
 import kernel.views.variables.VariableProvider;
@@ -62,7 +63,11 @@ public class VoltageProvider implements VariableProvider<Voltage> {
     }
 
     @Override
-    public void setPollingInterval(Duration interval){
+    public void setPollingInterval(Duration interval) throws
+            NonNegativeDurationException {
+        if (interval.isNegative()){
+            throw new NonNegativeDurationException(interval);
+        }
         pollingInterval = interval;
     }
 

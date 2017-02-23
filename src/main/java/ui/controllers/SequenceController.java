@@ -10,8 +10,6 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import ui.Controller;
 
-import javax.annotation.PostConstruct;
-
 /**
  * Controls routing and dialogues for the sequence tab
  */
@@ -31,7 +29,10 @@ public class SequenceController {
         voltageSlider.valueProperty().addListener(
                 new ChangeListener<Number>() {
                     @Override
-                    public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                    public void changed(
+                            ObservableValue<? extends Number> observableValue,
+                            Number number, Number t1
+                    ) {
                         handleSliderChanged();
                     }
                 }
@@ -42,10 +43,14 @@ public class SequenceController {
         voltageSlider.setValue(parseTextFieldToDouble());
     }
 
-    public void handleSliderChanged(){
+    @FXML public void handleSliderChanged(){
         Double sliderValue = voltageSlider.getValue();
 
         voltageTextField.setText(sliderValue.toString());
+    }
+
+    @FXML public void handleGoButtonClicked(){
+
     }
 
     @NotNull
