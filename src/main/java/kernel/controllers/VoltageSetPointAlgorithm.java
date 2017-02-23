@@ -3,12 +3,16 @@ package kernel.controllers;
 /**
  * Created by mkononen on 23/02/17.
  */
-public interface VoltageSetPointAlgorithm {
-    Float getDesiredVoltage();
+public interface VoltageSetPointAlgorithm extends ControlAlgorithm {
+    Double getDesiredVoltage();
 
-    void setDesiredVoltage(Float desiredVoltage);
+    void setDesiredVoltage(Double desiredVoltage);
 
-    Float getUpperPressureBound();
+    Float getPressureUpperBound();
 
-    void setUpperPressureBound(Float upperPressureBound);
+    void setPressureUpperBound(Float pressureUpperBound);
+
+    Integer getMaximumIterations();
+
+    void setMaximumIterations(Integer maximumIterations);
 }
