@@ -10,3 +10,7 @@
 .live-chart-controls {
     -fx-orientation: vertical;
 }
+
+.chart-panel {
+    -fx-orientation: horizontal
+}
