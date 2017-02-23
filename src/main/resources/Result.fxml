@@ -7,14 +7,10 @@
 <?import javafx.scene.chart.NumberAxis?>
 
 <?import javafx.scene.layout.TilePane?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Button?>
 
 <?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.Tab?>
+
 <GridPane styleClass="root"
           xmlns="http://javafx.com/javafx/8.0.112"
           xmlns:fx="http://javafx.com/fxml/1"
@@ -56,13 +52,11 @@
         </GridPane>
     </GridPane>
 
-    <GridPane styleClass="chart-panel">
+    <TilePane styleClass="chart-panel">
         <GridPane.columnIndex>0</GridPane.columnIndex>
         <GridPane.rowIndex>2</GridPane.rowIndex>
 
         <LineChart styleClass="live-chart" fx:id="pressureChart">
-            <GridPane.rowIndex>0</GridPane.rowIndex>
-            <GridPane.columnIndex>0</GridPane.columnIndex>
             <xAxis>
                 <CategoryAxis label="Date" animated="false"/>
             </xAxis>
@@ -72,8 +66,6 @@
         </LineChart>
         <LineChart styleClass="top-chart, live-chart"
                    fx:id="voltageChart">
-            <GridPane.columnIndex>0</GridPane.columnIndex>
-            <GridPane.rowIndex>1</GridPane.rowIndex>
             <xAxis>
                 <CategoryAxis label="Date" animated="false"
                               styleClass="voltage-x-axis"/>
@@ -83,12 +75,12 @@
                             styleClass="voltage-y-axis"/>
             </yAxis>
         </LineChart>
+    </TilePane>
 
         <Button text="Refresh" onAction="#handleRefreshButtonClicked">
             <GridPane.columnIndex>0</GridPane.columnIndex>
             <GridPane.rowIndex>3</GridPane.rowIndex>
         </Button>
-    </GridPane>
 
     <stylesheets>
         <URL value="@css/Result.css" />
