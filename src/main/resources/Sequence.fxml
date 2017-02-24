@@ -47,8 +47,7 @@
     <TilePane styleClass="sequence-control-button-panel">
         <GridPane.columnIndex>0</GridPane.columnIndex>
         <GridPane.rowIndex>1</GridPane.rowIndex>
-        <Button text="Refresh" />
-        <Button text="Go" onAction="#handleGoButtonClicked"/>
+        <Button text="Go" onAction="#handleGoButtonClicked" fx:id="goButton"/>
     </TilePane>
 
     <stylesheets>
