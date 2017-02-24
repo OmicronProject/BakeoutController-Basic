@@ -6,12 +6,21 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Contains methods for working with the power supply
  */
 public class TDKLambdaPowerSupply extends AbstractRS232Device
         implements PowerSupply {
+
+    /**
+     * A lock for communicating with the device, locked when a response is
+     * expected.
+     */
+    private static final Lock portCommunicatorLock = new ReentrantLock();
+
     /**
      * The device address
      */
@@ -160,10 +169,14 @@ public class TDKLambdaPowerSupply extends AbstractRS232Device
      */
     private Double writeWithDoubleResponse(String commandToWrite) throws
             IOException {
+        portCommunicatorLock.lock();
+
         this.write(commandToWrite);
         log.debug("Writing command {} to power supply.", commandToWrite);
         String response = this.read();
         log.debug("Received response {} from power supply", response);
+
+        portCommunicatorLock.unlock();
 
         return Double.parseDouble(response);
     }
@@ -175,6 +188,8 @@ public class TDKLambdaPowerSupply extends AbstractRS232Device
      */
     private void writeWithOKResponse(String commandToWrite) throws
             IOException {
+        portCommunicatorLock.lock();
+
         this.write(commandToWrite);
         log.debug(
                 String.format(
@@ -194,5 +209,7 @@ public class TDKLambdaPowerSupply extends AbstractRS232Device
             throw new ResponseNotOKException("Did not receive response of " +
                 String.format("%s", PowerSupply.OK_RESPONSE));
         }
+
+        portCommunicatorLock.unlock();
     }
 }
