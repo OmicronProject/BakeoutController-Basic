@@ -152,7 +152,7 @@ public class VoltageSetPointAlgorithm implements kernel.controllers.VoltageSetPo
 
         private final Double voltageIncrement = 0.1;
 
-        private final Duration waitTime = Duration.ofSeconds(10);
+        private final Duration waitTime = Duration.ofSeconds(5);
 
         private final Float maximumPressure;
 
@@ -171,7 +171,7 @@ public class VoltageSetPointAlgorithm implements kernel.controllers.VoltageSetPo
 
         @Override
         public void run(){
-            log.debug("Started setpoint task, with starting voltage {}",
+            log.info("Started setpoint task, with starting voltage {}",
                     startingVoltage);
             Double measuredVoltage = startingVoltage;
             Integer iterationNumber = 0;
@@ -181,8 +181,14 @@ public class VoltageSetPointAlgorithm implements kernel.controllers.VoltageSetPo
             while (shouldLoop(measuredVoltage, iterationNumber)) {
                 try {
                     measuredVoltage = getVoltage();
+                    log.debug("Measured voltage is {}", measuredVoltage);
+
                     setDeviceVoltage(measuredVoltage + voltageIncrement);
+                    log.debug("Set output voltage to {}", measuredVoltage +
+                            voltageIncrement);
                 } catch (IOException error){
+                    log.error("IOException detected while attempting to set " +
+                            "voltage", error);
                     handleIOException(error);
                     break;
                 }
