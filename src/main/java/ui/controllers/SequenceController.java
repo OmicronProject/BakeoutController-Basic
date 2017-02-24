@@ -1,64 +1,61 @@
 package ui.controllers;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.stage.Window;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
+import kernel.Kernel;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import ui.AutowiredFXMLStage;
 import ui.Controller;
-import ui.FXMLLoader;
-import ui.FXMLStage;
-
-import javax.annotation.PostConstruct;
-import java.io.IOException;
-import java.net.URL;
 
 /**
  * Controls routing and dialogues for the sequence tab
  */
 @Controller
 public class SequenceController {
-    /**
-     * The location of the markup for the new step form
-     */
-    private final URL newStepFormLocation = getClass().getResource(
-            "/modals/NewStep.fxml"
-    );
-
-    /**
-     * The stage for the new form
-     */
-    private FXMLStage newStepFormStage;
-
-    /**
-     * The root application stage
-     */
     @Autowired
-    private FXMLStage applicationStage;
+    private Kernel kernel;
 
-    /**
-     * The FXML Loader to use for loading the markup in the new step form
-     */
-    @Autowired
-    private FXMLLoader fxmlLoader;
+    @FXML
+    private TextField voltageTextField;
 
-    @PostConstruct
-    public void setUp() throws IOException {
-        configureNewStepFormStage();
-    }
+    @FXML
+    private Slider voltageSlider;
 
-    @FXML public void displayNewStepForm(){
-        newStepFormStage.show();
-    }
-
-    private void configureNewStepFormStage() throws IOException {
-        newStepFormStage = new AutowiredFXMLStage(
-            newStepFormLocation, castStageToWindow(applicationStage)
+    @FXML
+    public void initialize(){
+        voltageSlider.valueProperty().addListener(
+                new ChangeListener<Number>() {
+                    @Override
+                    public void changed(
+                            ObservableValue<? extends Number> observableValue,
+                            Number number, Number t1
+                    ) {
+                        handleSliderChanged();
+                    }
+                }
         );
-        newStepFormStage.setFXMLLoader(fxmlLoader);
-        newStepFormStage.loadFXML();
     }
 
-    private static Window castStageToWindow(FXMLStage stage){
-        return (Window) stage;
+    @FXML public void handleTextFieldChanged() {
+        voltageSlider.setValue(parseTextFieldToDouble());
+    }
+
+    @FXML public void handleSliderChanged(){
+        Double sliderValue = voltageSlider.getValue();
+
+        voltageTextField.setText(sliderValue.toString());
+    }
+
+    @FXML public void handleGoButtonClicked(){
+
+    }
+
+    @NotNull
+    private Double parseTextFieldToDouble(){
+        CharSequence seq = voltageTextField.getCharacters();
+        return Double.parseDouble(seq.toString());
     }
 }

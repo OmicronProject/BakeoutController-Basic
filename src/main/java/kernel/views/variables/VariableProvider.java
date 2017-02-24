@@ -9,7 +9,7 @@ import java.util.List;
  * Provides a measured variable of a type T as a function of time. A data
  * series is built up by polling.
  */
-public interface VariableProvider<T> {
+public interface VariableProvider<T extends Variable> {
     List<T> getValues();
 
     Duration getLengthOfHistory();

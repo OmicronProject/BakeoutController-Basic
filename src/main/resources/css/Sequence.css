@@ -23,3 +23,11 @@
 .sequence-control-button-panel {
     -fx-alignment: baseline-right;
 }
+
+.form-field {
+    -fx-background-color: #FFFFFF;
+}
+
+.section {
+    -fx-font-weight: bold;
+}

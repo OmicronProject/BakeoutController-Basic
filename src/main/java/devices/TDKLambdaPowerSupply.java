@@ -17,8 +17,9 @@ public class TDKLambdaPowerSupply extends AbstractRS232Device
      */
     private final int deviceAddress;
 
-    private static Logger logger = LoggerFactory.getLogger("devices" +
-            ".TDKLambdaPowerSupply");
+    private static final Logger log = LoggerFactory.getLogger(
+            TDKLambdaPowerSupply.class
+    );
 
     /**
      *
@@ -55,6 +56,14 @@ public class TDKLambdaPowerSupply extends AbstractRS232Device
      */
     @Override public Double getVoltage() throws IOException {
         return this.writeWithDoubleResponse(GET_VOLTAGE_COMMAND);
+    }
+
+    /**
+     * @return The currently-measured voltage going out of the power supply
+     * @throws IOException If the command cannot be written
+     */
+    @Override public Double getMeasuredVoltage() throws IOException {
+        return this.writeWithDoubleResponse(GET_MEASURED_VOLTAGE_COMMAND);
     }
 
     /**
@@ -152,7 +161,9 @@ public class TDKLambdaPowerSupply extends AbstractRS232Device
     private Double writeWithDoubleResponse(String commandToWrite) throws
             IOException {
         this.write(commandToWrite);
+        log.debug("Writing command {} to power supply.", commandToWrite);
         String response = this.read();
+        log.debug("Received response {} from power supply", response);
 
         return Double.parseDouble(response);
     }
@@ -165,12 +176,17 @@ public class TDKLambdaPowerSupply extends AbstractRS232Device
     private void writeWithOKResponse(String commandToWrite) throws
             IOException {
         this.write(commandToWrite);
-        String response = this.read();
-
-        logger.debug(
+        log.debug(
                 String.format(
                         "Writing command %s to power supply",
                         commandToWrite
+                )
+        );
+        String response = this.read();
+        log.debug(
+                String.format(
+                        "Received response %s from power supply",
+                        response
                 )
         );
 

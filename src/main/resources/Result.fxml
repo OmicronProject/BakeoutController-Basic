@@ -2,16 +2,15 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.text.Text?>
 <?import java.net.URL?>
-
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
-
 <?import javafx.scene.layout.TilePane?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Button?>
-
 <?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.Pane?>
+
 <GridPane styleClass="root"
           xmlns="http://javafx.com/javafx/8.0.112"
           xmlns:fx="http://javafx.com/fxml/1"
@@ -33,52 +32,64 @@
             <GridPane.rowIndex>1</GridPane.rowIndex>
             <GridPane.columnIndex>0</GridPane.columnIndex>
 
-            <TilePane styleClass="pressure-status">
+            <TilePane styleClass="status-line">
+                <GridPane.rowIndex>0</GridPane.rowIndex>
+                <GridPane.columnIndex>0</GridPane.columnIndex>
                 <Text text="Pressure"
                       styleClass="instrument-descriptor" />
                 <Text id="pressure"
                       styleClass="reported-variable"
                       fx:id="reportedPressure"/>
             </TilePane>
+            <TilePane styleClass="status-line">
+                <GridPane.rowIndex>1</GridPane.rowIndex>
+                <GridPane.columnIndex>0</GridPane.columnIndex>
+                <Text text="Output Voltage"
+                      styleClass="instrument-descriptor" />
+                <Text id="voltage" styleClass="reported-variable"
+                      fx:id="reportedVoltage"/>
+            </TilePane>
         </GridPane>
     </GridPane>
 
-    <GridPane styleClass="chart-panel">
+    <TabPane styleClass="chart-panel">
         <GridPane.columnIndex>0</GridPane.columnIndex>
         <GridPane.rowIndex>2</GridPane.rowIndex>
-        <LineChart styleClass="live-chart" fx:id="pressureChart">
-            <GridPane.columnIndex>0</GridPane.columnIndex>
-            <GridPane.rowIndex>0</GridPane.rowIndex>
-            <xAxis>
-                <CategoryAxis label="Date" animated="false"/>
-            </xAxis>
-            <yAxis>
-                <NumberAxis label="Pressure / 10^-10 mBar" animated="false"/>
-            </yAxis>
-        </LineChart>
 
-        <TilePane styleClass="live-chart-controls">
-            <GridPane.columnIndex>1</GridPane.columnIndex>
-            <GridPane.rowIndex>0</GridPane.rowIndex>
-            <HBox styleClass="axis-control">
-                <Text text="X-Axis" />
-                <ComboBox />
-            </HBox>
-            <HBox styleClass="axis-control">
-                <Text text="Y-Axis" />
-                <ComboBox />
-            </HBox>
-            <HBox styleClass="axis-control">
-                <Text text="Y2-Axis" />
-                <ComboBox />
-            </HBox>
-        </TilePane>
+        <Tab text="Pressure" closable="false" id="pressure-tab">
+            <Pane>
+                <LineChart styleClass="live-chart" fx:id="pressureChart"
+                           id="pressure-chart">
+                    <xAxis>
+                        <CategoryAxis label="Date" animated="false"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="Pressure / 10^-10 mBar" animated="false"/>
+                    </yAxis>
+                </LineChart>
+            </Pane>
+        </Tab>
+        <Tab text="Voltage" closable="false" id="voltage-tab">
+            <Pane>
+                <LineChart styleClass="top-chart, live-chart"
+                           fx:id="voltageChart" id="voltage-chart">
+                    <xAxis>
+                        <CategoryAxis label="Date" animated="false"
+                                      styleClass="voltage-x-axis"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="Voltage / V" animated="false"
+                                    styleClass="voltage-y-axis"/>
+                    </yAxis>
+                </LineChart>
+            </Pane>
+        </Tab>
+    </TabPane>
 
-        <Button text="Refresh" onAction="#handleRefreshButtonClicked">
-            <GridPane.columnIndex>0</GridPane.columnIndex>
-            <GridPane.rowIndex>3</GridPane.rowIndex>
-        </Button>
-    </GridPane>
+    <Button text="Refresh" onAction="#handleRefreshButtonClicked">
+        <GridPane.columnIndex>0</GridPane.columnIndex>
+        <GridPane.rowIndex>3</GridPane.rowIndex>
+    </Button>
 
     <stylesheets>
         <URL value="@css/Result.css" />

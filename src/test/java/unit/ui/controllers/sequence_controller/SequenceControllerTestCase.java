@@ -9,6 +9,12 @@ import unit.ui.controllers.ControllersTestCase;
 public abstract class SequenceControllerTestCase extends ControllersTestCase {
     private static final String queryForSequenceTab = "#sequence-tab";
 
+    protected static final String queryForVoltageTextField =
+            "#voltage-text-field";
+
+    protected static final String queryForVoltageSlider =
+            "#voltage-slider";
+
     @Before
     public void navigateToSequenceTab(){
         clickOn(queryForSequenceTab);
