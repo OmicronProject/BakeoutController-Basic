@@ -59,17 +59,17 @@ public class ResultController {
     }
 
     @FXML public void initialize(){
+        configurePressureSeries();
         if (kernel.getVariableProvidersView().hasPressureProvider()){
             log.info("Found pressure provider. Reporting");
             configurePressureProvider();
         }
-        configurePressureSeries();
 
+        configureVoltageSeries();
         if (kernel.getVariableProvidersView().hasVoltageProvider()){
             log.info("Found voltage provider. Reporting");
             configureVoltageProvider();
         }
-        configureVoltageSeries();
     }
 
     private void configureVoltageProvider(){
@@ -131,6 +131,10 @@ public class ResultController {
                 variableSeries){
             this.report = report;
             this.variableSeries = variableSeries;
+
+            log.debug(
+                    "Created Change handler of type {} with variable series " +
+                            "{}", getVariableType(), variableSeries);
         }
 
         @NotNull

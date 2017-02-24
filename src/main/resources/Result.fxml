@@ -2,14 +2,14 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.text.Text?>
 <?import java.net.URL?>
-
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
-
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.control.Button?>
-
 <?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.Pane?>
 
 <GridPane styleClass="root"
           xmlns="http://javafx.com/javafx/8.0.112"
@@ -52,35 +52,44 @@
         </GridPane>
     </GridPane>
 
-    <TilePane styleClass="chart-panel">
+    <TabPane styleClass="chart-panel">
         <GridPane.columnIndex>0</GridPane.columnIndex>
         <GridPane.rowIndex>2</GridPane.rowIndex>
 
-        <LineChart styleClass="live-chart" fx:id="pressureChart">
-            <xAxis>
-                <CategoryAxis label="Date" animated="false"/>
-            </xAxis>
-            <yAxis>
-                <NumberAxis label="Pressure / 10^-10 mBar" animated="false"/>
-            </yAxis>
-        </LineChart>
-        <LineChart styleClass="top-chart, live-chart"
-                   fx:id="voltageChart">
-            <xAxis>
-                <CategoryAxis label="Date" animated="false"
-                              styleClass="voltage-x-axis"/>
-            </xAxis>
-            <yAxis>
-                <NumberAxis label="Voltage / V" animated="false"
-                            styleClass="voltage-y-axis"/>
-            </yAxis>
-        </LineChart>
-    </TilePane>
+        <Tab text="Pressure" closable="false" id="pressure-tab">
+            <Pane>
+                <LineChart styleClass="live-chart" fx:id="pressureChart"
+                           id="pressure-chart">
+                    <xAxis>
+                        <CategoryAxis label="Date" animated="false"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="Pressure / 10^-10 mBar" animated="false"/>
+                    </yAxis>
+                </LineChart>
+            </Pane>
+        </Tab>
+        <Tab text="Voltage" closable="false" id="voltage-tab">
+            <Pane>
+                <LineChart styleClass="top-chart, live-chart"
+                           fx:id="voltageChart" id="voltage-chart">
+                    <xAxis>
+                        <CategoryAxis label="Date" animated="false"
+                                      styleClass="voltage-x-axis"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="Voltage / V" animated="false"
+                                    styleClass="voltage-y-axis"/>
+                    </yAxis>
+                </LineChart>
+            </Pane>
+        </Tab>
+    </TabPane>
 
-        <Button text="Refresh" onAction="#handleRefreshButtonClicked">
-            <GridPane.columnIndex>0</GridPane.columnIndex>
-            <GridPane.rowIndex>3</GridPane.rowIndex>
-        </Button>
+    <Button text="Refresh" onAction="#handleRefreshButtonClicked">
+        <GridPane.columnIndex>0</GridPane.columnIndex>
+        <GridPane.rowIndex>3</GridPane.rowIndex>
+    </Button>
 
     <stylesheets>
         <URL value="@css/Result.css" />

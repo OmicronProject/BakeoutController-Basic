@@ -24,7 +24,7 @@
         <Tab closable="false" text="Sequence" id="sequence-tab">
             <fx:include source="Sequence.fxml" />
         </Tab>
-        <Tab closable="false" text="Result">
+        <Tab closable="false" text="Result" id="results-tab">
             <fx:include source="Result.fxml" />
         </Tab>
 

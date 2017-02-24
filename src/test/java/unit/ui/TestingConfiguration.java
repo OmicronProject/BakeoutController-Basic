@@ -47,6 +47,9 @@ public class TestingConfiguration {
 
     private volatile VariableProviderRegistry mockVariableProviderRegistry;
 
+    private volatile MockVoltageProvider mockVoltageProvider =
+            new MockVoltageProvider();
+
     /**
      * @return The context in which mockery is to take place
      */
@@ -128,7 +131,7 @@ public class TestingConfiguration {
     @Bean
     @Scope("singleton")
     public VoltageProvider voltageProvider(){
-        return mockingContext().mock(VoltageProvider.class);
+        return mockVoltageProvider;
     }
 
     /**
@@ -232,14 +235,6 @@ public class TestingConfiguration {
             will(returnValue(voltageProvider()));
             allowing(variableProviderRegistry()).hasVoltageProvider();
             will(returnValue(Boolean.TRUE));
-
-            allowing(voltageProvider()).setPollingInterval(
-                    with(any(Duration.class))
-            );
-
-            allowing(voltageProvider()).addOnChangeListener(
-                    with(any(VariableChangeEventListener.class))
-            );
         }
     }
 }
