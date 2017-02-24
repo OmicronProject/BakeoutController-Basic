@@ -14,6 +14,13 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class TDKLambdaPowerSupply extends AbstractRS232Device
         implements PowerSupply {
+
+    /**
+     * A lock for communicating with the device, locked when a response is
+     * expected.
+     */
+    private static final Lock portCommunicatorLock = new ReentrantLock();
+
     /**
      * The device address
      */
@@ -44,8 +51,6 @@ public class TDKLambdaPowerSupply extends AbstractRS232Device
         this.deviceAddress = deviceAddress;
         this.startDevice();
     }
-
-    private static final Lock portCommunicatorLock = new ReentrantLock();
 
     /**
      * @return The address of the device
