@@ -161,8 +161,10 @@ public class ResultController implements Executor {
 
         @Override
         public void onChange(Voltage newVoltage){
-            Task<Void> task = new UpdateVoltageTask(newVoltage);
-            this.taskExecutor.execute(task);
+            if (voltageChart.isVisible() && reportedVoltage.isVisible()) {
+                Task<Void> task = new UpdateVoltageTask(newVoltage);
+                this.taskExecutor.execute(task);
+            }
         }
     }
 
@@ -176,8 +178,10 @@ public class ResultController implements Executor {
 
         @Override
         public void onChange(Pressure newPressure){
-            Task<Void> task = new UpdatePressureTask(newPressure);
-            this.taskExecutor.execute(task);
+            if (pressureChart.isVisible() && reportedPressure.isVisible()) {
+                Task<Void> task = new UpdatePressureTask(newPressure);
+                this.taskExecutor.execute(task);
+            }
         }
     }
 
