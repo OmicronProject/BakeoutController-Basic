@@ -36,7 +36,7 @@ public class VoltageSetPointAlgorithm implements kernel.controllers.VoltageSetPo
 
         try {
             task = new VoltageSetPointTask(
-                kernel, maximumIterations, pressureUpperBound
+                kernel, maximumIterations, pressureUpperBound, desiredVoltage
             );
         } catch (IOException error){
             log.error("Unable to create voltage setpoint task", error);
@@ -156,14 +156,17 @@ public class VoltageSetPointAlgorithm implements kernel.controllers.VoltageSetPo
 
         private final Float maximumPressure;
 
+        private final Double desiredVoltage;
+
         public VoltageSetPointTask(
                 Kernel kernel, Integer maximumIterations,
-                Float maximumPressure
+                Float maximumPressure, Double desiredVoltage
         )
                 throws IOException {
             this.kernel = kernel;
             this.maximumIterations = maximumIterations;
             this.maximumPressure = maximumPressure;
+            this.desiredVoltage = desiredVoltage;
 
             startingVoltage = kernel.getDeviceRegistryView().getPowerSupply
                     ().getMeasuredVoltage();
@@ -217,12 +220,22 @@ public class VoltageSetPointAlgorithm implements kernel.controllers.VoltageSetPo
                 Double measuredVoltage, Integer iterationNumber
         ){
             Boolean hasExceededIterations =
-                    iterationNumber <= maximumIterations;
+                    iterationNumber > maximumIterations;
 
             Boolean hasExceededDesiredVoltage = measuredVoltage >
-                    startingVoltage;
+                    desiredVoltage;
 
-            return hasExceededDesiredVoltage || hasExceededIterations;
+            if (hasExceededDesiredVoltage){
+                log.info("Stopping loop");
+                return Boolean.FALSE;
+            }
+
+            if (hasExceededIterations) {
+                log.info("Stopping loop");
+                return Boolean.FALSE;
+            }
+
+            return Boolean.TRUE;
         }
 
         private Double getVoltage() throws IOException {
