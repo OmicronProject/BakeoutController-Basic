@@ -1,6 +1,8 @@
 package ui.controllers;
 
 import exceptions.NonNegativeDurationException;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
@@ -16,22 +18,36 @@ import ui.Controller;
 import java.text.SimpleDateFormat;
 import java.time.DateTimeException;
 import java.time.Duration;
+import java.util.concurrent.Executor;
 
 /**
  * Responsible for updating the results panel with results of the bakeout
  */
 @Controller
-public class ResultController {
+public class ResultController implements Executor {
 
+    /**
+     * The log for the controller to use
+     */
     private static final Logger log = LoggerFactory.getLogger
             (ResultController.class);
 
+    /**
+     * The duration between calls to get the pressure from the Pressure
+     * VariableProvider
+     */
     private static final Duration pressurePollingInterval =
             Duration.ofMillis(1000);
 
+    /**
+     * The duration between calls to get the voltae
+     */
     private static final Duration voltagePollingInterval =
             Duration.ofMillis(1000);
 
+    /**
+     * The application kernel
+     */
     @Autowired
     private Kernel kernel;
 
@@ -47,6 +63,28 @@ public class ResultController {
 
     private XYChart.Series<String, Float> voltageSeries;
 
+    /**
+     * Find the pressure and voltage providers, and attach a listener to
+     * both of them
+     */
+    @FXML public void initialize(){
+        configurePressureSeries();
+        if (kernel.getVariableProvidersView().hasPressureProvider()){
+            log.info("Found pressure provider. Reporting");
+            configurePressureProvider();
+        }
+
+        configureVoltageSeries();
+        if (kernel.getVariableProvidersView().hasVoltageProvider()){
+            log.info("Found voltage provider. Reporting");
+            configureVoltageProvider();
+        }
+    }
+
+    /**
+     * Called if the refresh button is clicked on the UI
+     */
+    @FXML
     public void handleRefreshButtonClicked(){
         if (kernel.getVariableProvidersView().hasPressureProvider()){
             log.info("Found pressure provider. Using this for reports");
@@ -58,20 +96,18 @@ public class ResultController {
         }
     }
 
-    @FXML public void initialize(){
-        if (kernel.getVariableProvidersView().hasPressureProvider()){
-            log.info("Found pressure provider. Reporting");
-            configurePressureProvider();
-        }
-        configurePressureSeries();
-
-        if (kernel.getVariableProvidersView().hasVoltageProvider()){
-            log.info("Found voltage provider. Reporting");
-            configureVoltageProvider();
-        }
-        configureVoltageSeries();
+    /**
+     * Run the command given to it on the JavaFX application thread
+     * @param command The command to run
+     */
+    @Override
+    public void execute(@NotNull Runnable command){
+        Platform.runLater(command);
     }
 
+    /**
+     * Set up the voltage provider
+     */
     private void configureVoltageProvider(){
         VariableProvider<Voltage> provider = kernel.getVariableProvidersView()
                 .getVoltageProvider();
@@ -82,13 +118,12 @@ public class ResultController {
             error.printStackTrace();
         }
 
-        provider.addOnChangeListener(
-                new VoltageChangeHandler(reportedVoltage, voltageSeries)
-        );
-
-        configureVoltageSeries();
+        provider.addOnChangeListener(new VoltageChangeHandler(this));
     }
 
+    /**
+     * Set up the pressure provider
+     */
     private void configurePressureProvider(){
         VariableProvider<Pressure> provider = kernel
                 .getVariableProvidersView().getPressureProvider();
@@ -99,9 +134,7 @@ public class ResultController {
             error.printStackTrace();
         }
 
-        provider.addOnChangeListener(
-                new PressureChangeHandler(reportedPressure, pressureSeries)
-        );
+        provider.addOnChangeListener(new PressureChangeHandler(this));
     }
 
     private void configureVoltageSeries(){
@@ -118,117 +151,116 @@ public class ResultController {
         pressureChart.getData().add(pressureSeries);
     }
 
-    private abstract static class ChangeHandler<T extends Variable> implements
-            VariableChangeEventListener<T> {
-        protected final Logger log = LoggerFactory.getLogger(
-                ChangeHandler.class
-        );
+    private class VoltageChangeHandler implements
+            VariableChangeEventListener<Voltage> {
+        private Executor taskExecutor;
 
-        private final Text report;
-        private final XYChart.Series<String, Float> variableSeries;
-
-        public ChangeHandler(Text report, XYChart.Series<String, Float>
-                variableSeries){
-            this.report = report;
-            this.variableSeries = variableSeries;
-        }
-
-        @NotNull
-        protected abstract String getVariableType();
-
-        protected Number getValueMultiplier(){
-            return 1.0;
+        public VoltageChangeHandler(Executor taskExecutor){
+            this.taskExecutor = taskExecutor;
         }
 
         @Override
-        public void onChange(T newVariable){
-            log.debug("Controller for variable {} received change event for " +
-                    "variable {}", getVariableType(), newVariable.toString());
-
-            if (this.report != null){
-                this.report.setText(getMessageToWrite(newVariable));
-            } else {
-                log.info("Variable Reporting field for variable type {} is " +
-                        "null", getVariableType());
+        public void onChange(Voltage newVoltage){
+            if (voltageChart.isVisible() && reportedVoltage.isVisible()) {
+                Task<Void> task = new UpdateVoltageTask(newVoltage);
+                this.taskExecutor.execute(task);
             }
+        }
+    }
 
-            updateChart(newVariable);
+    private class PressureChangeHandler implements
+            VariableChangeEventListener<Pressure> {
+        private Executor taskExecutor;
+
+        public PressureChangeHandler(Executor taskExecutor){
+            this.taskExecutor = taskExecutor;
         }
 
-        private String getMessageToWrite(T variable){
-            return variable.getValue().toString();
+        @Override
+        public void onChange(Pressure newPressure){
+            if (pressureChart.isVisible() && reportedPressure.isVisible()) {
+                Task<Void> task = new UpdatePressureTask(newPressure);
+                this.taskExecutor.execute(task);
+            }
+        }
+    }
+
+
+    private class UpdatePressureTask extends Task<Void> {
+        private Pressure newPressure;
+
+        public UpdatePressureTask(Pressure newPressure){
+            this.newPressure = newPressure;
         }
 
-        private void updateChart(T newVariable){
+        @Override
+        public Void call(){
+            updatePressureText();
+            updatePressureChart();
+            return null;
+        }
 
+        private void updatePressureText(){
+            reportedPressure.setText(newPressure.getValue().toString());
+        }
+
+        private void updatePressureChart() throws DateTimeException {
+            String xValue = getDateFromPressure();
+            Float yValue = newPressure.getValue();
+            XYChart.Data<String, Float> dataPoint = new XYChart.Data<>(
+                    xValue, yValue);
+
+            pressureSeries.getData().add(dataPoint);
+            ResultController.checkSeriesSizeCorrect(pressureSeries);
+        }
+
+        @NotNull
+        private String getDateFromPressure() throws DateTimeException {
             SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+            return formatter.format(newPressure.getDate());
+        }
+    }
 
-            String date;
-            try {
-                date = formatter.format(newVariable.getDate());
-            } catch (DateTimeException error){
-                log.error("Formatter threw error", error);
-                return;
-            }
+    private class UpdateVoltageTask extends Task<Void> {
+        private Voltage newVoltage;
 
-            Float valueFromData;
-            try {
-                valueFromData = ((Number) newVariable.getValue()).floatValue();
-            } catch (ClassCastException error){
-                log.error("Casting to Number yielded error", error);
-                valueFromData = 0.0f;
-            }
+        public UpdateVoltageTask(Voltage newVoltage){
+            this.newVoltage = newVoltage;
+        }
 
-            Float value = getValueMultiplier().floatValue() * valueFromData;
+        @Override
+        public Void call(){
+            updateVoltageText();
+            updateVoltageChart();
+            return null;
+        }
 
-            this.variableSeries.getData().add(
-                    new XYChart.Data<>(date, value)
+        private void updateVoltageText(){
+            reportedVoltage.setText(newVoltage.getValue().toString());
+        }
+
+        private void updateVoltageChart(){
+            String xValue = getDateFromVoltage();
+            Float yValue = newVoltage.getValue().floatValue();
+
+            XYChart.Data<String, Float> dataPoint = new XYChart.Data<>(
+                    xValue, yValue
             );
 
-            checkSizeListCorrect();
+            voltageSeries.getData().add(dataPoint);
+            ResultController.checkSeriesSizeCorrect(voltageSeries);
         }
 
-        private void checkSizeListCorrect(){
-            Integer dataPointNumber = this.variableSeries.getData().size();
-
-            if (dataPointNumber > 30){
-                this.variableSeries.getData().remove(0);
-            }
+        private String getDateFromVoltage(){
+            return newVoltage.getDate().toString();
         }
     }
 
-    public static class PressureChangeHandler extends ChangeHandler<Pressure> {
-        public PressureChangeHandler(
-                Text pressureText,
-                XYChart.Series<String, Float> pressureSeries
-        ) {
-            super(pressureText, pressureSeries);
-        }
+    private static void checkSeriesSizeCorrect(XYChart.Series series){
+        Integer dataPointNumber = series.getData().size();
 
-        @Override
-        @NotNull
-        protected String getVariableType() {
-            return "Pressure";
-        }
-
-        @Override
-        protected Number getValueMultiplier(){
-            return 1e10;
-        }
-    }
-
-    public static class VoltageChangeHandler extends ChangeHandler<Voltage> {
-        public VoltageChangeHandler(
-                Text voltageText,
-                XYChart.Series<String, Float> voltageSeries
-        ){
-            super(voltageText, voltageSeries);
-        }
-
-        @Override
-        @NotNull
-        protected String getVariableType(){
-            return "Voltage";
+        if (dataPointNumber > 30){
+            series.getData().remove(0);
         }
     }
 }
