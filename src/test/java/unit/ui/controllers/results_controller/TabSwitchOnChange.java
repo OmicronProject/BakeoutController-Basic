@@ -30,16 +30,27 @@ public final class TabSwitchOnChange extends ResultControllerTestCase {
         mockVoltageProvider.addValue(newVoltageDataPoint);
         clickOn(queryForVoltageTab);
 
-        List<Double> pressuresOnChart = getVoltagesOnChart();
+        waitForFXAppToRun();
 
-        assertThat(pressuresOnChart, contains(newVoltageDataPoint.getValue()));
+        List<Double> voltagesOnChart = getVoltagesOnChart();
+
+        assertThat(voltagesOnChart, contains(newVoltageDataPoint.getValue()
+                .floatValue()));
+    }
+
+    private static void waitForFXAppToRun(){
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException error){
+            // Return to finish test
+        }
     }
 
     private List<Double> getVoltagesOnChart(){
         List<Double> voltages = new ArrayList<>();
 
         LineChart<String, Double> voltageChart = lookup
-                (queryForPressureChart).query();
+                (queryForVoltageChart).query();
 
         LineChart.Series<String, Double> voltageSeries = voltageChart
                 .getData().get(0);

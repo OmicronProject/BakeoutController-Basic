@@ -16,7 +16,7 @@ public abstract class ResultControllerTestCase extends ControllersTestCase {
     protected static final String queryForResultsTab = "#results-tab";
     protected static final String queryForPressureTab = "#pressure-tab";
     protected static final String queryForVoltageTab = "#voltage-tab";
-    protected static final String queryForPressureChart = "#pressure-chart";
+    protected static final String queryForVoltageChart = "#voltage-chart";
 
     protected final MockVoltageProvider mockVoltageProvider =
             (MockVoltageProvider) applicationContext.getBean(
