@@ -11,6 +11,8 @@ var searchData=
   ['getdeviceregistryview',['GetDeviceRegistryView',['../classunit_1_1kernel_1_1models_1_1kernel_1_1GetDeviceRegistryView.html',1,'unit::kernel::models::kernel']]],
   ['getkernel',['GetKernel',['../classunit_1_1kernel_1_1models_1_1pvci__pressure__gauge__factory_1_1GetKernel.html',1,'unit::kernel::models::pvci_pressure_gauge_factory']]],
   ['getkernelinstance',['GetKernelInstance',['../classunit_1_1kernel_1_1application__kernel__factory_1_1GetKernelInstance.html',1,'unit::kernel::application_kernel_factory']]],
+  ['getlengthofhistory',['GetLengthOfHistory',['../classunit_1_1kernel_1_1models_1_1variables_1_1pressure__provider_1_1GetLengthOfHistory.html',1,'unit::kernel::models::variables::pressure_provider']]],
+  ['getmeasuredvoltage',['GetMeasuredVoltage',['../classunit_1_1devices_1_1tdk__lambda__power__supply_1_1GetMeasuredVoltage.html',1,'unit::devices::tdk_lambda_power_supply']]],
   ['getmodbusconnector',['GetModbusConnector',['../classunit_1_1kernel_1_1models_1_1kernel_1_1GetModbusConnector.html',1,'unit::kernel::models::kernel']]],
   ['getparitybits',['GetParityBits',['../classunit_1_1kernel_1_1serial__ports_1_1rxtx__port__configuration_1_1GetParityBits.html',1,'unit::kernel::serial_ports::rxtx_port_configuration']]],
   ['getportbyname',['GetPortByName',['../classunit_1_1kernel_1_1serial__ports_1_1rxtx__port__driver_1_1GetPortByName.html',1,'unit::kernel::serial_ports::rxtx_port_driver']]],
@@ -21,8 +23,13 @@ var searchData=
   ['getpressuregauge',['GetPressureGauge',['../classunit_1_1kernel_1_1models_1_1pvci__pressure__gauge__factory_1_1GetPressureGauge.html',1,'unit::kernel::models::pvci_pressure_gauge_factory']]],
   ['getpressuregauge',['GetPressureGauge',['../classunit_1_1kernel_1_1models_1_1device__registry_1_1GetPressureGauge.html',1,'unit::kernel::models::device_registry']]],
   ['getpressuregaugenotinregistry',['GetPressureGaugeNotInRegistry',['../classunit_1_1kernel_1_1models_1_1pvci__pressure__gauge__factory_1_1GetPressureGaugeNotInRegistry.html',1,'unit::kernel::models::pvci_pressure_gauge_factory']]],
-  ['getserialportnames',['GetSerialPortNames',['../classunit_1_1kernel_1_1models_1_1kernel_1_1GetSerialPortNames.html',1,'unit::kernel::models::kernel']]],
+  ['getpressureprovider',['GetPressureProvider',['../classunit_1_1kernel_1_1models_1_1variable__provider__container_1_1GetPressureProvider.html',1,'unit::kernel::models::variable_provider_container']]],
   ['getserialportnames',['GetSerialPortNames',['../classunit_1_1kernel_1_1serial__ports_1_1rxtx__port__driver_1_1GetSerialPortNames.html',1,'unit::kernel::serial_ports::rxtx_port_driver']]],
+  ['getserialportnames',['GetSerialPortNames',['../classunit_1_1kernel_1_1models_1_1kernel_1_1GetSerialPortNames.html',1,'unit::kernel::models::kernel']]],
   ['getstopbits',['GetStopBits',['../classunit_1_1kernel_1_1serial__ports_1_1rxtx__port__configuration_1_1GetStopBits.html',1,'unit::kernel::serial_ports::rxtx_port_configuration']]],
-  ['getvoltage',['GetVoltage',['../classunit_1_1devices_1_1tdk__lambda__power__supply_1_1GetVoltage.html',1,'unit::devices::tdk_lambda_power_supply']]]
+  ['getvalues',['GetValues',['../classunit_1_1kernel_1_1models_1_1variables_1_1pressure__provider_1_1GetValues.html',1,'unit::kernel::models::variables::pressure_provider']]],
+  ['getvariableproviderscontroller',['GetVariableProvidersController',['../classunit_1_1kernel_1_1models_1_1kernel_1_1GetVariableProvidersController.html',1,'unit::kernel::models::kernel']]],
+  ['getvariableprovidersview',['GetVariableProvidersView',['../classunit_1_1kernel_1_1models_1_1kernel_1_1GetVariableProvidersView.html',1,'unit::kernel::models::kernel']]],
+  ['getvoltage',['GetVoltage',['../classunit_1_1devices_1_1tdk__lambda__power__supply_1_1GetVoltage.html',1,'unit::devices::tdk_lambda_power_supply']]],
+  ['getvoltageprovider',['GetVoltageProvider',['../classunit_1_1kernel_1_1models_1_1variable__provider__container_1_1GetVoltageProvider.html',1,'unit::kernel::models::variable_provider_container']]]
 ];

@@ -119,16 +119,15 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a2170dc906d34f285e7ee2a92a6a4e646"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f78018cbbea263b1cd799a5587cf728"><td class="memItemLeft" align="right" valign="top">Float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacekernel_1_1modbus_1_1ModbusConnector.html#a8f78018cbbea263b1cd799a5587cf728">parseFloatFromResponse</a> (ModbusMessage response)  throws ClassCastException, IOException</td></tr>
 <tr class="separator:a8f78018cbbea263b1cd799a5587cf728"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78d50643c98666e161388805fb8f7954"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a78d50643c98666e161388805fb8f7954"></a>
-String&#160;</td><td class="memItemRight" valign="bottom"><b>parseStringFromResponse</b> (ModbusMessage response)  throws ClassCastException, IOException</td></tr>
+<tr class="memitem:a78d50643c98666e161388805fb8f7954"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacekernel_1_1modbus_1_1ModbusConnector.html#a78d50643c98666e161388805fb8f7954">parseStringFromResponse</a> (ModbusMessage response)  throws ClassCastException, IOException</td></tr>
 <tr class="separator:a78d50643c98666e161388805fb8f7954"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab26bd492d7cbfefe337858813e4449e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacekernel_1_1modbus_1_1ModbusConnector.html#ab26bd492d7cbfefe337858813e4449e6">close</a> ()</td></tr>
 <tr class="separator:ab26bd492d7cbfefe337858813e4449e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Contains methods for working with modbus </p>
+<div class="textblock"><p>Contains methods for working with MODBUS over RS232 </p>
 
-<p>Definition at line <a class="el" href="ModbusConnector_8java_source.html#l00013">13</a> of file <a class="el" href="ModbusConnector_8java_source.html">ModbusConnector.java</a>.</p>
+<p>Definition at line <a class="el" href="ModbusConnector_8java_source.html#l00012">12</a> of file <a class="el" href="ModbusConnector_8java_source.html">ModbusConnector.java</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="ab26bd492d7cbfefe337858813e4449e6"></a>
 <div class="memitem">
@@ -245,6 +244,38 @@ String&#160;</td><td class="memItemRight" valign="bottom"><b>parseStringFromResp
 </dl>
 
 <p>Implemented in <a class="el" href="classkernel_1_1modbus_1_1ModBusConnectionManager.html#ab32da32cb1b644629056616283ad6e06">kernel.modbus.ModBusConnectionManager</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a78d50643c98666e161388805fb8f7954"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String kernel.modbus.ModbusConnector.parseStringFromResponse </td>
+          <td>(</td>
+          <td class="paramtype">ModbusMessage&#160;</td>
+          <td class="paramname"><em>response</em></td><td>)</td>
+          <td> throws ClassCastException, IOException</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Take a <a class="el" href="">com.ghgande.j2mod.modbus.msg.ModbusResponse</a>, retrieve a string from its data package, and return the string </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">response</td><td>The response from which a string is to be parsed </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The response </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">ClassCastException</td><td>If the argument of type <a class="el" href="">ModbusMessage</a> cannot be cast to a <a class="el" href="">com.ghgande.j2mod.modbus.msg.ModbusResponse</a> </td></tr>
+    <tr><td class="paramname">IOException</td><td>If a string cannot be retrieved from the response </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classkernel_1_1modbus_1_1ModBusConnectionManager.html#a1e6f376f92d2286542bcd0862f53126b">kernel.modbus.ModBusConnectionManager</a>.</p>
 
 </div>
 </div>

@@ -1,0 +1,11 @@
+<map id="unit.kernel.models.variable_provider_container.VariableProviderContainerTestCase" name="unit.kernel.models.variable_provider_container.VariableProviderContainerTestCase">
+<area shape="rect" id="node6" href="$classunit_1_1kernel_1_1models_1_1variable__provider__container_1_1GetPressureProvider.html" title="unit.kernel.models.variable\l_provider_container.GetPressure\lProvider" alt="" coords="1096,5,1308,61"/>
+<area shape="rect" id="node7" href="$classunit_1_1kernel_1_1models_1_1variable__provider__container_1_1GetVoltageProvider.html" title="unit.kernel.models.variable\l_provider_container.GetVoltageProvider" alt="" coords="1076,85,1328,126"/>
+<area shape="rect" id="node8" href="$classunit_1_1kernel_1_1models_1_1variable__provider__container_1_1HasPressureProvider.html" title="unit.kernel.models.variable\l_provider_container.HasPressure\lProvider" alt="" coords="1095,149,1309,205"/>
+<area shape="rect" id="node9" href="$classunit_1_1kernel_1_1models_1_1variable__provider__container_1_1HasVoltageProvider.html" title="unit.kernel.models.variable\l_provider_container.HasVoltageProvider" alt="" coords="1075,229,1329,270"/>
+<area shape="rect" id="node10" href="$classunit_1_1kernel_1_1models_1_1variable__provider__container_1_1SetPressureProvider.html" title="unit.kernel.models.variable\l_provider_container.SetPressure\lProvider" alt="" coords="1097,293,1307,349"/>
+<area shape="rect" id="node11" href="$classunit_1_1kernel_1_1models_1_1variable__provider__container_1_1SetVoltageProvider.html" title="unit.kernel.models.variable\l_provider_container.SetVoltageProvider" alt="" coords="1077,373,1327,414"/>
+<area shape="rect" id="node2" href="$classunit_1_1kernel_1_1models_1_1ModelsTestCase.html" title="unit.kernel.models.Models\lTestCase" alt="" coords="569,193,744,234"/>
+<area shape="rect" id="node3" href="$classunit_1_1kernel_1_1KernelTestCase.html" title="unit.kernel.KernelTestCase" alt="" coords="341,200,521,227"/>
+<area shape="rect" id="node4" href="$classunit_1_1UnitTestCase.html" title="unit.UnitTestCase" alt="" coords="165,200,293,227"/>
+</map>

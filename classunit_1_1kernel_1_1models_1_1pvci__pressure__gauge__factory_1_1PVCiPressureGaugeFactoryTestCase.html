@@ -122,9 +122,9 @@ Collaboration diagram for unit.kernel.models.pvci_pressure_gauge_factory.PVCiPre
 <area shape="rect" id="node3" href="classunit_1_1kernel_1_1KernelTestCase.html" title="unit.kernel.KernelTestCase" alt="" coords="391,31,571,57"/>
 <area shape="rect" id="node4" href="classunit_1_1UnitTestCase.html" title="unit.UnitTestCase" alt="" coords="213,31,341,57"/>
 <area shape="rect" id="node7" href="interfacekernel_1_1controllers_1_1PVCiPressureGaugeFactory.html" title="kernel.controllers.PVCiPressure\lGaugeFactory" alt="" coords="625,89,833,130"/>
-<area shape="rect" id="node8" href="interfacekernel_1_1controllers_1_1DeviceRegistry.html" title="kernel.controllers.Device\lRegistry" alt="" coords="645,154,812,195"/>
-<area shape="rect" id="node9" href="interfacekernel_1_1modbus_1_1ModbusConnector.html" title="kernel.modbus.ModbusConnector" alt="" coords="620,220,837,247"/>
-<area shape="rect" id="node10" href="interfacekernel_1_1Kernel.html" title="kernel.Kernel" alt="" coords="679,271,778,297"/>
+<area shape="rect" id="node8" href="interfacekernel_1_1views_1_1DeviceContainer.html" title="kernel.views.DeviceContainer" alt="" coords="631,155,827,181"/>
+<area shape="rect" id="node9" href="interfacekernel_1_1modbus_1_1ModbusConnector.html" title="kernel.modbus.ModbusConnector" alt="" coords="620,205,837,232"/>
+<area shape="rect" id="node10" href="interfacekernel_1_1Kernel.html" title="kernel.Kernel" alt="" coords="679,256,778,283"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -153,8 +153,8 @@ final <a class="el" href="interfacekernel_1_1Kernel.html">Kernel</a>&#160;</td><
 <tr class="memitem:ae13da683554bb337ccade71a9d039ca6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae13da683554bb337ccade71a9d039ca6"></a>
 <a class="el" href="interfacekernel_1_1controllers_1_1PVCiPressureGaugeFactory.html">PVCiPressureGaugeFactory</a>&#160;</td><td class="memItemRight" valign="bottom"><b>factory</b></td></tr>
 <tr class="separator:ae13da683554bb337ccade71a9d039ca6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adef130a987a498ea6049259f22769833"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfacekernel_1_1controllers_1_1DeviceRegistry.html">DeviceRegistry</a>&#160;</td><td class="memItemRight" valign="bottom"><b>mockRegistry</b></td></tr>
-<tr class="separator:adef130a987a498ea6049259f22769833"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13230ede6537226574fec119bd2ccb43"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfacekernel_1_1views_1_1DeviceContainer.html">DeviceContainer</a>&#160;</td><td class="memItemRight" valign="bottom"><b>mockRegistry</b></td></tr>
+<tr class="separator:a13230ede6537226574fec119bd2ccb43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d662b0e52eef259803a8d5c208abc40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfacekernel_1_1modbus_1_1ModbusConnector.html">ModbusConnector</a>&#160;</td><td class="memItemRight" valign="bottom"><b>mockConnector</b></td></tr>
 <tr class="separator:a9d662b0e52eef259803a8d5c208abc40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classunit_1_1UnitTestCase"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classunit_1_1UnitTestCase')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classunit_1_1UnitTestCase.html">unit.UnitTestCase</a></td></tr>
@@ -188,7 +188,7 @@ final <a class="el" href="interfacekernel_1_1Kernel.html">Kernel</a>&#160;</td><
 
 </div>
 </div>
-<a class="anchor" id="adef130a987a498ea6049259f22769833"></a>
+<a class="anchor" id="a13230ede6537226574fec119bd2ccb43"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -196,7 +196,7 @@ final <a class="el" href="interfacekernel_1_1Kernel.html">Kernel</a>&#160;</td><
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="interfacekernel_1_1controllers_1_1DeviceRegistry.html">DeviceRegistry</a> unit.kernel.models.pvci_pressure_gauge_factory.PVCiPressureGaugeFactoryTestCase.mockRegistry</td>
+          <td class="memname"><a class="el" href="interfacekernel_1_1views_1_1DeviceContainer.html">DeviceContainer</a> unit.kernel.models.pvci_pressure_gauge_factory.PVCiPressureGaugeFactoryTestCase.mockRegistry</td>
         </tr>
       </table>
   </td>
@@ -205,7 +205,7 @@ final <a class="el" href="interfacekernel_1_1Kernel.html">Kernel</a>&#160;</td><
   </tr>
 </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= <a class="code" href="classunit_1_1UnitTestCase.html#a2a4f655ff4bbd4cb94f878f6cfa2c18a">context</a>.mock(</div><div class="line">            DeviceRegistry.class</div><div class="line">    )</div></div><!-- fragment -->
+<b>Initial value:</b><div class="fragment"><div class="line">= <a class="code" href="classunit_1_1UnitTestCase.html#a2a4f655ff4bbd4cb94f878f6cfa2c18a">context</a>.mock(</div><div class="line">            DeviceContainer.class</div><div class="line">    )</div></div><!-- fragment -->
 <p>Definition at line <a class="el" href="PVCiPressureGaugeFactoryTestCase_8java_source.html#l00018">18</a> of file <a class="el" href="PVCiPressureGaugeFactoryTestCase_8java_source.html">PVCiPressureGaugeFactoryTestCase.java</a>.</p>
 
 </div>

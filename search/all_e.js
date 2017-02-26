@@ -3,6 +3,7 @@ var searchData=
   ['off',['OFF',['../interfacedevices_1_1PowerSupply.html#a7253e7b452608f0bab46de45838080c6',1,'devices::PowerSupply']]],
   ['ok_5fresponse',['OK_RESPONSE',['../interfacedevices_1_1PowerSupply.html#aebec0ad9bea8009602486a332382a77d',1,'devices::PowerSupply']]],
   ['on',['ON',['../interfacedevices_1_1PowerSupply.html#ac81741283ffa5044bd96971945d28561',1,'devices::PowerSupply']]],
+  ['onchange',['onChange',['../interfacekernel_1_1views_1_1variables_1_1VariableChangeEventListener.html#ac3e3640ac45ebe290d99959aab2462c8',1,'kernel::views::variables::VariableChangeEventListener']]],
   ['open',['open',['../classkernel_1_1serial__ports_1_1RXTXPortWrapper.html#a900e96ed9271f621d76e5f5876211d06',1,'kernel.serial_ports.RXTXPortWrapper.open()'],['../interfacekernel_1_1serial__ports_1_1SerialPort.html#ab6003d10f218721f40411153c6ed15ca',1,'kernel.serial_ports.SerialPort.open()']]],
   ['outputoff',['outputOff',['../interfacedevices_1_1PowerSupply.html#a4c45a602efddae04ad962b28f3ba0e2c',1,'devices.PowerSupply.outputOff()'],['../classdevices_1_1TDKLambdaPowerSupply.html#a44a7169389a846eb78e75dee3ada2ae5',1,'devices.TDKLambdaPowerSupply.outputOff()']]],
   ['outputoff',['OutputOff',['../classunit_1_1devices_1_1tdk__lambda__power__supply_1_1OutputOff.html',1,'unit::devices::tdk_lambda_power_supply']]],

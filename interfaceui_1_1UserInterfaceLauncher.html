@@ -111,8 +111,7 @@ Inheritance diagram for ui.UserInterfaceLauncher:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a95d13c2628fd5c463e39d8e92404255a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceui_1_1UserInterfaceLauncher.html#a95d13c2628fd5c463e39d8e92404255a">start</a> (Stage stage)  throws Exception</td></tr>
 <tr class="separator:a95d13c2628fd5c463e39d8e92404255a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4da5da53e77f8f7e243f7b8acd7c2d5e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4da5da53e77f8f7e243f7b8acd7c2d5e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>launchWithDefaultStage</b> (String[] commandLineArguments)</td></tr>
+<tr class="memitem:a4da5da53e77f8f7e243f7b8acd7c2d5e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceui_1_1UserInterfaceLauncher.html#a4da5da53e77f8f7e243f7b8acd7c2d5e">launchWithDefaultStage</a> (String[] commandLineArguments)</td></tr>
 <tr class="separator:a4da5da53e77f8f7e243f7b8acd7c2d5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -120,6 +119,30 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>launchWithDefaultStag
 
 <p>Definition at line <a class="el" href="UserInterfaceLauncher_8java_source.html#l00008">8</a> of file <a class="el" href="UserInterfaceLauncher_8java_source.html">UserInterfaceLauncher.java</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a4da5da53e77f8f7e243f7b8acd7c2d5e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ui.UserInterfaceLauncher.launchWithDefaultStage </td>
+          <td>(</td>
+          <td class="paramtype">String[]&#160;</td>
+          <td class="paramname"><em>commandLineArguments</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Launch the UI and create a new stage </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">commandLineArguments</td><td>The command line arguments with which the application (<a class="el" href="classmain_1_1Main.html#a896f71a651b705304693dbfe0cf9ca63">main.Main#main(String[])</a>) was called </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classui_1_1JavaFXGraphicalUserInterfaceLauncher.html#a808b8c2af4a7eb751d3f2aa3a4634b7e">ui.JavaFXGraphicalUserInterfaceLauncher</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a95d13c2628fd5c463e39d8e92404255a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -135,13 +158,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>launchWithDefaultStag
 </div><div class="memdoc">
 <p>Start the application with a given stage </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">stage</td><td></td></tr>
+    <tr><td class="paramname">stage</td><td>The stage in which the UI is to be loaded </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">Exception</td><td></td></tr>
+    <tr><td class="paramname">Exception</td><td>If the UI cannot be started </td></tr>
   </table>
   </dd>
 </dl>

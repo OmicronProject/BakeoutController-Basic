@@ -1,10 +1,9 @@
 <map id="unit.kernel.models.device_registry.DeviceRegistryTestCase" name="unit.kernel.models.device_registry.DeviceRegistryTestCase">
-<area shape="rect" id="node2" href="$classunit_1_1kernel_1_1models_1_1ModelsTestCase.html" title="unit.kernel.models.Models\lTestCase" alt="" coords="719,23,894,65"/>
-<area shape="rect" id="node3" href="$classunit_1_1kernel_1_1KernelTestCase.html" title="unit.kernel.KernelTestCase" alt="" coords="465,31,645,57"/>
-<area shape="rect" id="node4" href="$classunit_1_1UnitTestCase.html" title="unit.UnitTestCase" alt="" coords="244,31,372,57"/>
-<area shape="rect" id="node7" href="$interfacedevices_1_1PowerSupply.html" title="devices.PowerSupply" alt="" coords="733,89,881,116"/>
-<area shape="rect" id="node8" href="$interfacedevices_1_1RS232Device.html" title="devices.RS232Device" alt="" coords="479,115,631,141"/>
-<area shape="rect" id="node9" href="$interfacedevices_1_1PressureGauge.html" title="devices.PressureGauge" alt="" coords="726,140,887,167"/>
-<area shape="rect" id="node10" href="$classkernel_1_1models_1_1DeviceRegistry.html" title="kernel.models.DeviceRegistry" alt="" coords="708,191,905,217"/>
-<area shape="rect" id="node13" href="$interfacekernel_1_1views_1_1DeviceRegistry.html" title="kernel.views.DeviceRegistry" alt="" coords="213,220,403,247"/>
+<area shape="rect" id="node2" href="$classunit_1_1kernel_1_1models_1_1ModelsTestCase.html" title="unit.kernel.models.Models\lTestCase" alt="" coords="700,23,875,65"/>
+<area shape="rect" id="node3" href="$classunit_1_1kernel_1_1KernelTestCase.html" title="unit.kernel.KernelTestCase" alt="" coords="443,31,623,57"/>
+<area shape="rect" id="node4" href="$classunit_1_1UnitTestCase.html" title="unit.UnitTestCase" alt="" coords="233,31,361,57"/>
+<area shape="rect" id="node7" href="$interfacedevices_1_1PowerSupply.html" title="devices.PowerSupply" alt="" coords="713,89,861,116"/>
+<area shape="rect" id="node8" href="$interfacedevices_1_1RS232Device.html" title="devices.RS232Device" alt="" coords="457,115,609,141"/>
+<area shape="rect" id="node9" href="$interfacedevices_1_1PressureGauge.html" title="devices.PressureGauge" alt="" coords="707,140,868,167"/>
+<area shape="rect" id="node10" href="$classkernel_1_1models_1_1DeviceContainer.html" title="kernel.models.DeviceContainer" alt="" coords="685,191,889,217"/>
 </map>

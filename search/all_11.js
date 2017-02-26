@@ -1,11 +1,16 @@
 var searchData=
 [
+  ['removeonchangelistener',['removeOnChangeListener',['../classkernel_1_1models_1_1variables_1_1PressureProvider.html#aac70a118dad48a24da54cfd612693f51',1,'kernel.models.variables.PressureProvider.removeOnChangeListener()'],['../classkernel_1_1models_1_1variables_1_1VoltageProvider.html#a91b6bb185dc3f70b18bd72bab36030be',1,'kernel.models.variables.VoltageProvider.removeOnChangeListener()'],['../interfacekernel_1_1views_1_1variables_1_1VariableProvider.html#a37a25996cf08c9d92275943369876f85',1,'kernel.views.variables.VariableProvider.removeOnChangeListener()']]],
   ['reset',['Reset',['../classunit_1_1devices_1_1tdk__lambda__power__supply_1_1Reset.html',1,'unit::devices::tdk_lambda_power_supply']]],
   ['reset',['reset',['../interfacedevices_1_1PowerSupply.html#a8634b4c427419fdeca080074081a609d',1,'devices.PowerSupply.reset()'],['../classdevices_1_1TDKLambdaPowerSupply.html#abf49edb1448f7451b68b5b09b9cf1ac3',1,'devices.TDKLambdaPowerSupply.reset()']]],
   ['reset_5fcommand',['RESET_COMMAND',['../interfacedevices_1_1PowerSupply.html#a29827d26804f3c9ef8b8a3ecad6f7461',1,'devices::PowerSupply']]],
   ['responsenotokexception',['ResponseNotOKException',['../classexceptions_1_1ResponseNotOKException.html',1,'exceptions']]],
   ['responsenotokexception',['ResponseNotOKException',['../classexceptions_1_1ResponseNotOKException.html#a25e86927e70db93489f7454d5b67df51',1,'exceptions::ResponseNotOKException']]],
+  ['resultcontroller',['ResultController',['../classui_1_1controllers_1_1ResultController.html',1,'ui::controllers']]],
+  ['resultcontrollertestcase',['ResultControllerTestCase',['../classunit_1_1ui_1_1controllers_1_1results__controller_1_1ResultControllerTestCase.html',1,'unit::ui::controllers::results_controller']]],
   ['rs232device',['RS232Device',['../interfacedevices_1_1RS232Device.html',1,'devices']]],
+  ['rtu_5fencoding',['RTU_ENCODING',['../interfacekernel_1_1modbus_1_1ModbusPortConfiguration.html#a41ba93de602ad0073fa951e4236cd30c',1,'kernel::modbus::ModbusPortConfiguration']]],
+  ['run',['run',['../interfacekernel_1_1controllers_1_1ControlAlgorithm.html#ac9d6955c265415ee26a6f4498559ff75',1,'kernel.controllers.ControlAlgorithm.run()'],['../classkernel_1_1models_1_1VoltageSetPointAlgorithm.html#ab70900aaa78e19680447f97ad848ebb1',1,'kernel.models.VoltageSetPointAlgorithm.run()']]],
   ['rxtxportconfiguration',['RXTXPortConfiguration',['../classkernel_1_1serial__ports_1_1RXTXPortConfiguration.html',1,'kernel::serial_ports']]],
   ['rxtxportconfiguration',['RXTXPortConfiguration',['../classkernel_1_1serial__ports_1_1RXTXPortConfiguration.html#ac4fabced7419ea1e63514f36fb2aff95',1,'kernel::serial_ports::RXTXPortConfiguration']]],
   ['rxtxportconfigurationtestcase',['RXTXPortConfigurationTestCase',['../classunit_1_1kernel_1_1serial__ports_1_1rxtx__port__configuration_1_1RXTXPortConfigurationTestCase.html',1,'unit::kernel::serial_ports::rxtx_port_configuration']]],

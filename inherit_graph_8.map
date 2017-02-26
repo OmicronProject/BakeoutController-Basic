@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$interfacekernel_1_1controllers_1_1VoltageController.html" title="kernel.controllers.Voltage\lController" alt="" coords="5,5,175,47"/>
+<area shape="rect" id="node1" href="$interfacekernel_1_1controllers_1_1PVCiPressureGaugeFactory.html" title="kernel.controllers.PVCiPressure\lGaugeFactory" alt="" coords="5,5,213,47"/>
+<area shape="rect" id="node2" href="$classkernel_1_1models_1_1PVCiPressureGaugeFactory.html" title="kernel.models.PVCiPressure\lGaugeFactory" alt="" coords="261,5,452,47"/>
 </map>

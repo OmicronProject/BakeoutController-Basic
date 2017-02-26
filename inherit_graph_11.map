@@ -1,4 +1,3 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$interfacekernel_1_1modbus_1_1ModbusConnector.html" title="kernel.modbus.ModbusConnector" alt="" coords="5,13,223,39"/>
-<area shape="rect" id="node2" href="$classkernel_1_1modbus_1_1ModBusConnectionManager.html" title="kernel.modbus.ModBusConnection\lManager" alt="" coords="271,5,496,47"/>
+<area shape="rect" id="node1" href="$interfacekernel_1_1controllers_1_1variables_1_1VariableProviderContainer.html" title="kernel.controllers.variables.\lVariableProviderContainer" alt="" coords="5,5,187,47"/>
 </map>

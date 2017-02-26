@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['off',['OFF',['../interfacedevices_1_1PowerSupply.html#a7253e7b452608f0bab46de45838080c6',1,'devices::PowerSupply']]],
-  ['ok_5fresponse',['OK_RESPONSE',['../interfacedevices_1_1PowerSupply.html#aebec0ad9bea8009602486a332382a77d',1,'devices::PowerSupply']]],
-  ['on',['ON',['../interfacedevices_1_1PowerSupply.html#ac81741283ffa5044bd96971945d28561',1,'devices::PowerSupply']]]
+  ['get_5faddress_5fcommand',['GET_ADDRESS_COMMAND',['../interfacedevices_1_1PowerSupply.html#a4a3879f6d2c7379bc55f114e3b4949bd',1,'devices::PowerSupply']]],
+  ['get_5fcurrent_5fcommand',['GET_CURRENT_COMMAND',['../interfacedevices_1_1PowerSupply.html#a5cbafffd1430565013c4c7a707937b8c',1,'devices::PowerSupply']]],
+  ['get_5fvoltage_5fcommand',['GET_VOLTAGE_COMMAND',['../interfacedevices_1_1PowerSupply.html#a9e150a1349466b08263198296a3d54c1',1,'devices::PowerSupply']]]
 ];

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['load',['load',['../interfaceui_1_1FXMLLoader.html#a72b14a38a9ef5a90f07ed66c86e95228',1,'ui::FXMLLoader']]],
-  ['loadfxml',['loadFXML',['../classui_1_1AutowiredFXMLStage.html#a7d22942d2a1c86fa983e080977e093e5',1,'ui.AutowiredFXMLStage.loadFXML()'],['../interfaceui_1_1FXMLStage.html#aca231fb51bcc7e4fdd75fac470f56954',1,'ui.FXMLStage.loadFXML()']]]
+  ['kernel',['Kernel',['../classkernel_1_1models_1_1Kernel.html#a12e3beeb0411eb3e0b41113429c4c5f9',1,'kernel.models.Kernel.Kernel()'],['../classmain_1_1ApplicationConfiguration.html#a716977811d1c965c1a6d644654b88379',1,'main.ApplicationConfiguration.kernel()'],['../classunit_1_1ui_1_1TestingConfiguration.html#ad5656c822f80397eb03ce6b15b907425',1,'unit.ui.TestingConfiguration.kernel()']]]
 ];

@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classmain_1_1ApplicationConfiguration.html" title="main.ApplicationConfiguration" alt="" coords="5,5,200,32"/>
+<area shape="rect" id="node1" href="$interfacekernel_1_1serial__ports_1_1PortDriver.html" title="kernel.serial_ports.Port\lDriver" alt="" coords="5,5,161,47"/>
+<area shape="rect" id="node2" href="$classkernel_1_1serial__ports_1_1RXTXPortDriver.html" title="kernel.serial_ports.RXTXPort\lDriver" alt="" coords="209,5,401,47"/>
 </map>

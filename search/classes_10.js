@@ -7,9 +7,12 @@ var searchData=
   ['setcurrent',['SetCurrent',['../classunit_1_1devices_1_1tdk__lambda__power__supply_1_1SetCurrent.html',1,'unit::devices::tdk_lambda_power_supply']]],
   ['setpowersupply',['SetPowerSupply',['../classunit_1_1kernel_1_1models_1_1device__registry_1_1SetPowerSupply.html',1,'unit::kernel::models::device_registry']]],
   ['setpressuregauge',['SetPressureGauge',['../classunit_1_1kernel_1_1models_1_1device__registry_1_1SetPressureGauge.html',1,'unit::kernel::models::device_registry']]],
+  ['setpressureprovider',['SetPressureProvider',['../classunit_1_1kernel_1_1models_1_1variable__provider__container_1_1SetPressureProvider.html',1,'unit::kernel::models::variable_provider_container']]],
   ['setvoltage',['SetVoltage',['../classunit_1_1devices_1_1tdk__lambda__power__supply_1_1SetVoltage.html',1,'unit::devices::tdk_lambda_power_supply']]],
+  ['setvoltageprovider',['SetVoltageProvider',['../classunit_1_1kernel_1_1models_1_1variable__provider__container_1_1SetVoltageProvider.html',1,'unit::kernel::models::variable_provider_container']]],
   ['standalonemodbusportconfiguration',['StandaloneModbusPortConfiguration',['../classkernel_1_1modbus_1_1StandaloneModbusPortConfiguration.html',1,'kernel::modbus']]],
   ['standalonemodbusportconfigurationgenerator',['StandaloneModbusPortConfigurationGenerator',['../classunit_1_1kernel_1_1modbus_1_1StandaloneModbusPortConfigurationGenerator.html',1,'unit::kernel::modbus']]],
   ['standalonemodbusportconfigurationtestcase',['StandaloneModbusPortConfigurationTestCase',['../classunit_1_1kernel_1_1modbus_1_1standalone__modbus__port__configuration_1_1StandaloneModbusPortConfigurationTestCase.html',1,'unit::kernel::modbus::standalone_modbus_port_configuration']]],
-  ['start',['Start',['../classunit_1_1ui_1_1user__interface__launcher_1_1Start.html',1,'unit::ui::user_interface_launcher']]]
+  ['start',['Start',['../classunit_1_1ui_1_1user__interface__launcher_1_1Start.html',1,'unit::ui::user_interface_launcher']]],
+  ['stopiteration',['StopIteration',['../classexceptions_1_1StopIteration.html',1,'exceptions']]]
 ];

@@ -6,5 +6,7 @@ var searchData=
   ['modbus',['modbus',['../namespacekernel_1_1modbus.html',1,'kernel']]],
   ['models',['models',['../namespacekernel_1_1models.html',1,'kernel']]],
   ['serial_5fports',['serial_ports',['../namespacekernel_1_1serial__ports.html',1,'kernel']]],
+  ['variables',['variables',['../namespacekernel_1_1views_1_1variables.html',1,'kernel::views']]],
+  ['variables',['variables',['../namespacekernel_1_1models_1_1variables.html',1,'kernel::models']]],
   ['views',['views',['../namespacekernel_1_1views.html',1,'kernel']]]
 ];

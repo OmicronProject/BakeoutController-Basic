@@ -1,0 +1,9 @@
+<map id="unit.devices.tdk_lambda_power_supply.GetMeasuredVoltage" name="unit.devices.tdk_lambda_power_supply.GetMeasuredVoltage">
+<area shape="rect" id="node2" href="$classunit_1_1devices_1_1tdk__lambda__power__supply_1_1TDKLambdaPowerSupplyTestCase.html" title="unit.devices.tdk_lambda\l_power_supply.TDKLambdaPower\lSupplyTestCase" alt="" coords="357,288,579,344"/>
+<area shape="rect" id="node3" href="$classunit_1_1devices_1_1DevicesTestCase.html" title="unit.devices.DevicesTestCase" alt="" coords="246,199,447,225"/>
+<area shape="rect" id="node4" href="$classunit_1_1UnitTestCase.html" title="unit.UnitTestCase" alt="" coords="83,109,211,136"/>
+<area shape="rect" id="node7" href="$interfaceunit_1_1devices_1_1DeviceCommunicator.html" title="unit.devices.DeviceCommunicator" alt="" coords="235,109,458,136"/>
+<area shape="rect" id="node8" href="$interfacekernel_1_1serial__ports_1_1PortCommunicator.html" title="kernel.serial_ports.Port\lCommunicator" alt="" coords="269,5,425,47"/>
+<area shape="rect" id="node9" href="$interfacedevices_1_1PowerSupply.html" title="devices.PowerSupply" alt="" coords="478,199,626,225"/>
+<area shape="rect" id="node10" href="$interfacedevices_1_1RS232Device.html" title="devices.RS232Device" alt="" coords="483,109,635,136"/>
+</map>

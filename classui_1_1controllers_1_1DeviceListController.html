@@ -102,15 +102,82 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:abc1f75ebcf114a743fc9348362f6284e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abc1f75ebcf114a743fc9348362f6284e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>handleRefreshButtonClicked</b> ()</td></tr>
+<tr class="memitem:abc1f75ebcf114a743fc9348362f6284e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classui_1_1controllers_1_1DeviceListController.html#abc1f75ebcf114a743fc9348362f6284e">handleRefreshButtonClicked</a> ()</td></tr>
 <tr class="separator:abc1f75ebcf114a743fc9348362f6284e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae74f0afa775c247d44cc9f4577192a60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfacekernel_1_1Kernel.html">Kernel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classui_1_1controllers_1_1DeviceListController.html#ae74f0afa775c247d44cc9f4577192a60">getKernel</a> ()</td></tr>
+<tr class="separator:ae74f0afa775c247d44cc9f4577192a60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea69f7877882b4d1a9703001e4949735"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classui_1_1controllers_1_1DeviceListController.html#aea69f7877882b4d1a9703001e4949735">setKernel</a> (<a class="el" href="interfacekernel_1_1Kernel.html">Kernel</a> kernel)</td></tr>
+<tr class="separator:aea69f7877882b4d1a9703001e4949735"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Controls a menu that shows the list of devices currently connected </p>
 
 <p>Definition at line <a class="el" href="DeviceListController_8java_source.html#l00020">20</a> of file <a class="el" href="DeviceListController_8java_source.html">DeviceListController.java</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ae74f0afa775c247d44cc9f4577192a60"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="interfacekernel_1_1Kernel.html">Kernel</a> ui.controllers.DeviceListController.getKernel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The attached kernel </dd></dl>
+
+<p>Definition at line <a class="el" href="DeviceListController_8java_source.html#l00045">45</a> of file <a class="el" href="DeviceListController_8java_source.html">DeviceListController.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                             {</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="namespacekernel.html">kernel</a>;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div><div class="ttc" id="namespacekernel_html"><div class="ttname"><a href="namespacekernel.html">kernel</a></div><div class="ttdef"><b>Definition:</b> <a href="ApplicationKernelFactory_8java_source.html#l00001">ApplicationKernelFactory.java:1</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="abc1f75ebcf114a743fc9348362f6284e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ui.controllers.DeviceListController.handleRefreshButtonClicked </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Handler called when the refresh button is clicked. </p>
+
+<p>Definition at line <a class="el" href="DeviceListController_8java_source.html#l00036">36</a> of file <a class="el" href="DeviceListController_8java_source.html">DeviceListController.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                                  {</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        DeviceContainer registry = <a class="code" href="namespacekernel.html">kernel</a>.getDeviceRegistryView();</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        lookupPowerSupply(registry);</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        lookupPressureGauge(registry);</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div><div class="ttc" id="namespacekernel_html"><div class="ttname"><a href="namespacekernel.html">kernel</a></div><div class="ttdef"><b>Definition:</b> <a href="ApplicationKernelFactory_8java_source.html#l00001">ApplicationKernelFactory.java:1</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="aea69f7877882b4d1a9703001e4949735"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ui.controllers.DeviceListController.setKernel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="interfacekernel_1_1Kernel.html">Kernel</a>&#160;</td>
+          <td class="paramname"><em>kernel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kernel</td><td>The kernel to which this controller is to be attached </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="DeviceListController_8java_source.html#l00052">52</a> of file <a class="el" href="DeviceListController_8java_source.html">DeviceListController.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                        {</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        this.<a class="code" href="namespacekernel.html">kernel</a> = <a class="code" href="namespacekernel.html">kernel</a>;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div><div class="ttc" id="namespacekernel_html"><div class="ttname"><a href="namespacekernel.html">kernel</a></div><div class="ttdef"><b>Definition:</b> <a href="ApplicationKernelFactory_8java_source.html#l00001">ApplicationKernelFactory.java:1</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="DeviceListController_8java_source.html">DeviceListController.java</a></li>
 </ul>
 </div><!-- contents -->

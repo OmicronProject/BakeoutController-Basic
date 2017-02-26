@@ -1,0 +1,11 @@
+<map id="unit.kernel.models.variable_provider_container.HasVoltageProvider" name="unit.kernel.models.variable_provider_container.HasVoltageProvider">
+<area shape="rect" id="node2" href="$classunit_1_1kernel_1_1models_1_1variable__provider__container_1_1VariableProviderContainerTestCase.html" title="unit.kernel.models.variable\l_provider_container.VariableProvider\lContainerTestCase" alt="" coords="1035,120,1269,176"/>
+<area shape="rect" id="node3" href="$classunit_1_1kernel_1_1models_1_1ModelsTestCase.html" title="unit.kernel.models.Models\lTestCase" alt="" coords="659,23,833,65"/>
+<area shape="rect" id="node4" href="$classunit_1_1kernel_1_1KernelTestCase.html" title="unit.kernel.KernelTestCase" alt="" coords="402,31,582,57"/>
+<area shape="rect" id="node5" href="$classunit_1_1UnitTestCase.html" title="unit.UnitTestCase" alt="" coords="213,31,341,57"/>
+<area shape="rect" id="node8" href="$interfacekernel_1_1views_1_1variables_1_1VoltageProvider.html" title="kernel.views.variables.Voltage\lProvider" alt="" coords="647,89,845,130"/>
+<area shape="rect" id="node9" href="$interfacekernel_1_1views_1_1variables_1_1VariableProvider.html" title="kernel.views.variables.Variable\lProvider\&lt; Voltage \&gt;" alt="" coords="391,89,593,130"/>
+<area shape="rect" id="node10" href="$interfacekernel_1_1controllers_1_1variables_1_1VariableProviderContainer.html" title="kernel.controllers.variables.\lVariableProviderContainer" alt="" coords="655,154,837,195"/>
+<area shape="rect" id="node11" href="$interfacekernel_1_1views_1_1variables_1_1PressureProvider.html" title="kernel.views.variables.Pressure\lProvider" alt="" coords="643,219,849,261"/>
+<area shape="rect" id="node12" href="$interfacekernel_1_1views_1_1variables_1_1VariableProvider.html" title="kernel.views.variables.Variable\lProvider\&lt; Pressure \&gt;" alt="" coords="391,219,593,261"/>
+</map>

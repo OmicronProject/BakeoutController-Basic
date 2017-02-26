@@ -1,4 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node2" href="$classexceptions_1_1DeviceAlreadyCreatedException.html" title="exceptions.DeviceAlready\lCreatedException" alt="" coords="139,5,314,47"/>
-<area shape="rect" id="node3" href="$classexceptions_1_1WrappedModbusException.html" title="exceptions.WrappedModbus\lException" alt="" coords="133,71,320,112"/>
+<area shape="rect" id="node2" href="$classexceptions_1_1DeviceAlreadyCreatedException.html" title="exceptions.DeviceAlready\lCreatedException" alt="" coords="151,5,326,47"/>
+<area shape="rect" id="node3" href="$classexceptions_1_1NegativeDurationException.html" title="exceptions.NegativeDuration\lException" alt="" coords="143,71,334,112"/>
+<area shape="rect" id="node4" href="$classexceptions_1_1UnableToRunControlAlgorithmException.html" title="exceptions.UnableToRunControl\lAlgorithmException" alt="" coords="133,136,344,177"/>
+<area shape="rect" id="node5" href="$classexceptions_1_1WrappedModbusException.html" title="exceptions.WrappedModbus\lException" alt="" coords="145,201,332,243"/>
 </map>

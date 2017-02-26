@@ -1,5 +1,29 @@
 var searchData=
 [
-  ['voltagecontroller',['VoltageController',['../interfacekernel_1_1controllers_1_1VoltageController.html',1,'kernel::controllers']]],
-  ['voltagereporter',['VoltageReporter',['../interfacekernel_1_1views_1_1VoltageReporter.html',1,'kernel::views']]]
+  ['variable',['Variable',['../interfacekernel_1_1views_1_1variables_1_1Variable.html',1,'kernel::views::variables']]],
+  ['variable_3c_20double_20_3e',['Variable&lt; Double &gt;',['../interfacekernel_1_1views_1_1variables_1_1Variable.html',1,'kernel::views::variables']]],
+  ['variable_3c_20float_20_3e',['Variable&lt; Float &gt;',['../interfacekernel_1_1views_1_1variables_1_1Variable.html',1,'kernel::views::variables']]],
+  ['variablechangeeventlistener',['VariableChangeEventListener',['../interfacekernel_1_1views_1_1variables_1_1VariableChangeEventListener.html',1,'kernel::views::variables']]],
+  ['variablechangeeventlistener_3c_20pressure_20_3e',['VariableChangeEventListener&lt; Pressure &gt;',['../interfacekernel_1_1views_1_1variables_1_1VariableChangeEventListener.html',1,'kernel::views::variables']]],
+  ['variablechangeeventlistener_3c_20voltage_20_3e',['VariableChangeEventListener&lt; Voltage &gt;',['../interfacekernel_1_1views_1_1variables_1_1VariableChangeEventListener.html',1,'kernel::views::variables']]],
+  ['variableprovider',['VariableProvider',['../interfacekernel_1_1views_1_1variables_1_1VariableProvider.html',1,'kernel::views::variables']]],
+  ['variableprovider_3c_20kernel_3a_3aviews_3a_3avariables_3a_3apressure_20_3e',['VariableProvider&lt; kernel::views::variables::Pressure &gt;',['../interfacekernel_1_1views_1_1variables_1_1VariableProvider.html',1,'kernel::views::variables']]],
+  ['variableprovider_3c_20kernel_3a_3aviews_3a_3avariables_3a_3avoltage_20_3e',['VariableProvider&lt; kernel::views::variables::Voltage &gt;',['../interfacekernel_1_1views_1_1variables_1_1VariableProvider.html',1,'kernel::views::variables']]],
+  ['variableprovider_3c_20pressure_20_3e',['VariableProvider&lt; Pressure &gt;',['../interfacekernel_1_1views_1_1variables_1_1VariableProvider.html',1,'kernel::views::variables']]],
+  ['variableprovider_3c_20voltage_20_3e',['VariableProvider&lt; Voltage &gt;',['../interfacekernel_1_1views_1_1variables_1_1VariableProvider.html',1,'kernel::views::variables']]],
+  ['variableprovidercontainer',['VariableProviderContainer',['../interfacekernel_1_1controllers_1_1variables_1_1VariableProviderContainer.html',1,'kernel::controllers::variables']]],
+  ['variableprovidercontainer',['VariableProviderContainer',['../interfacekernel_1_1views_1_1VariableProviderContainer.html',1,'kernel::views']]],
+  ['variableprovidercontainer',['VariableProviderContainer',['../classkernel_1_1models_1_1VariableProviderContainer.html',1,'kernel::models']]],
+  ['variableprovidercontainertestcase',['VariableProviderContainerTestCase',['../classunit_1_1kernel_1_1models_1_1variable__provider__container_1_1VariableProviderContainerTestCase.html',1,'unit::kernel::models::variable_provider_container']]],
+  ['variablestestcase',['VariablesTestCase',['../classunit_1_1kernel_1_1models_1_1variables_1_1VariablesTestCase.html',1,'unit::kernel::models::variables']]],
+  ['voltage',['Voltage',['../interfacekernel_1_1views_1_1variables_1_1Voltage.html',1,'kernel::views::variables']]],
+  ['voltagedatapoint',['VoltageDataPoint',['../classkernel_1_1models_1_1variables_1_1VoltageDataPoint.html',1,'kernel::models::variables']]],
+  ['voltagedatapoint',['VoltageDataPoint',['../classkernel_1_1models_1_1variables_1_1VoltageDataPoint.html#ae0982308bbd5ed5acf28c6205be512ee',1,'kernel::models::variables::VoltageDataPoint']]],
+  ['voltageprovider',['VoltageProvider',['../interfacekernel_1_1views_1_1variables_1_1VoltageProvider.html',1,'kernel::views::variables']]],
+  ['voltageprovider',['VoltageProvider',['../classkernel_1_1models_1_1variables_1_1VoltageProvider.html#a6b51de0f9d4247798ec2671815337bb2',1,'kernel::models::variables::VoltageProvider']]],
+  ['voltageprovider',['VoltageProvider',['../classkernel_1_1models_1_1variables_1_1VoltageProvider.html',1,'kernel::models::variables']]],
+  ['voltageprovidertestcase',['VoltageProviderTestCase',['../classunit_1_1kernel_1_1models_1_1variables_1_1voltage__provider_1_1VoltageProviderTestCase.html',1,'unit::kernel::models::variables::voltage_provider']]],
+  ['voltagereporter',['VoltageReporter',['../interfacekernel_1_1views_1_1VoltageReporter.html',1,'kernel::views']]],
+  ['voltagesetpointalgorithm',['VoltageSetPointAlgorithm',['../classkernel_1_1models_1_1VoltageSetPointAlgorithm.html',1,'kernel::models']]],
+  ['voltagesetpointalgorithm',['VoltageSetPointAlgorithm',['../interfacekernel_1_1controllers_1_1VoltageSetPointAlgorithm.html',1,'kernel::controllers']]]
 ];

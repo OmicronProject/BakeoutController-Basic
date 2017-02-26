@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['makepowersupply',['makePowerSupply',['../interfacekernel_1_1controllers_1_1TDKLambdaPowerSupplyFactory.html#aa72c869fc6be950f61e0a662dd04fea7',1,'kernel.controllers.TDKLambdaPowerSupplyFactory.makePowerSupply()'],['../classkernel_1_1models_1_1TDKLambdaPowerSupplyFactory.html#a831a994029b323585d049ee8482d7021',1,'kernel.models.TDKLambdaPowerSupplyFactory.makePowerSupply()']]],
-  ['makepressuregauge',['makePressureGauge',['../interfacekernel_1_1controllers_1_1PVCiPressureGaugeFactory.html#aaf8ddd011468c2cfe67a4755350b4005',1,'kernel.controllers.PVCiPressureGaugeFactory.makePressureGauge()'],['../classkernel_1_1models_1_1PVCiPressureGaugeFactory.html#a9c541f1fd779f9417efa11f3ca9241b6',1,'kernel.models.PVCiPressureGaugeFactory.makePressureGauge()']]],
-  ['mockingcontext',['mockingContext',['../classunit_1_1ui_1_1TestingConfiguration.html#a102393dfd4fa5d8a85f7333615505b25',1,'unit::ui::TestingConfiguration']]]
+  ['launchwithdefaultstage',['launchWithDefaultStage',['../classui_1_1JavaFXGraphicalUserInterfaceLauncher.html#a808b8c2af4a7eb751d3f2aa3a4634b7e',1,'ui.JavaFXGraphicalUserInterfaceLauncher.launchWithDefaultStage()'],['../interfaceui_1_1UserInterfaceLauncher.html#a4da5da53e77f8f7e243f7b8acd7c2d5e',1,'ui.UserInterfaceLauncher.launchWithDefaultStage()']]],
+  ['load',['load',['../interfaceui_1_1FXMLLoader.html#a72b14a38a9ef5a90f07ed66c86e95228',1,'ui::FXMLLoader']]],
+  ['loadfxml',['loadFXML',['../classui_1_1AutowiredFXMLStage.html#a7d22942d2a1c86fa983e080977e093e5',1,'ui.AutowiredFXMLStage.loadFXML()'],['../interfaceui_1_1FXMLStage.html#aca231fb51bcc7e4fdd75fac470f56954',1,'ui.FXMLStage.loadFXML()']]]
 ];

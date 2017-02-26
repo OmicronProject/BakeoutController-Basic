@@ -1,6 +1,7 @@
 var searchData=
 [
   ['unabletocreatekernelexception',['UnableToCreateKernelException',['../classexceptions_1_1UnableToCreateKernelException.html',1,'exceptions']]],
+  ['unabletoruncontrolalgorithmexception',['UnableToRunControlAlgorithmException',['../classexceptions_1_1UnableToRunControlAlgorithmException.html',1,'exceptions']]],
   ['unittestcase',['UnitTestCase',['../classunit_1_1UnitTestCase.html',1,'unit']]],
   ['unsupportedcommoperationexceptiontest',['UnsupportedCommOperationExceptionTest',['../classunit_1_1ui_1_1controllers_1_1device__setup__controller_1_1handle__go__button__clicked_1_1Un5720ba8d2c17a44ece096dbde595909c.html',1,'unit::ui::controllers::device_setup_controller::handle_go_button_clicked']]],
   ['userinterfaceconfiguration',['UserInterfaceConfiguration',['../classui_1_1UserInterfaceConfiguration.html',1,'ui']]],

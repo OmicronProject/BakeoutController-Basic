@@ -1,0 +1,5 @@
+<map id="kernel.views.variables.VoltageProvider" name="kernel.views.variables.VoltageProvider">
+<area shape="rect" id="node3" href="$classkernel_1_1models_1_1variables_1_1VoltageProvider.html" title="kernel.models.variables.\lVoltageProvider" alt="" coords="5,184,168,225"/>
+<area shape="rect" id="node4" href="$classunit_1_1ui_1_1MockVoltageProvider.html" title="unit.ui.MockVoltageProvider" alt="" coords="193,191,378,218"/>
+<area shape="rect" id="node2" href="$interfacekernel_1_1views_1_1variables_1_1VariableProvider.html" title="kernel.views.variables.Variable\lProvider\&lt; Voltage \&gt;" alt="" coords="84,5,287,47"/>
+</map>

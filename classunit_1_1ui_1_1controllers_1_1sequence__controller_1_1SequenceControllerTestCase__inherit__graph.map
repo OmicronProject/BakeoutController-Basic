@@ -1,6 +1,7 @@
 <map id="unit.ui.controllers.sequence_controller.SequenceControllerTestCase" name="unit.ui.controllers.sequence_controller.SequenceControllerTestCase">
-<area shape="rect" id="node6" href="$classunit_1_1ui_1_1controllers_1_1sequence__controller_1_1DisplayNewStepForm.html" title="unit.ui.controllers.sequence\l_controller.DisplayNewStepForm" alt="" coords="27,408,241,449"/>
-<area shape="rect" id="node2" href="$classunit_1_1ui_1_1controllers_1_1ControllersTestCase.html" title="unit.ui.controllers.Controllers\lTestCase" alt="" coords="40,229,228,271"/>
-<area shape="rect" id="node3" href="$classunit_1_1ui_1_1UserInterfaceTestCase.html" title="unit.ui.UserInterfaceTestCase" alt="" coords="35,155,233,181"/>
-<area shape="rect" id="node4" href="$classunit_1_1UnitTestCase.html" title="unit.UnitTestCase" alt="" coords="70,80,198,107"/>
+<area shape="rect" id="node6" href="$classunit_1_1ui_1_1controllers_1_1sequence__controller_1_1HandleSliderChanged.html" title="unit.ui.controllers.sequence\l_controller.HandleSliderChanged" alt="" coords="1139,5,1351,47"/>
+<area shape="rect" id="node7" href="$classunit_1_1ui_1_1controllers_1_1sequence__controller_1_1HandleTextFieldChanged.html" title="unit.ui.controllers.sequence\l_controller.HandleTextFieldChanged" alt="" coords="1128,71,1361,112"/>
+<area shape="rect" id="node2" href="$classunit_1_1ui_1_1controllers_1_1ControllersTestCase.html" title="unit.ui.controllers.Controllers\lTestCase" alt="" coords="587,39,775,80"/>
+<area shape="rect" id="node3" href="$classunit_1_1ui_1_1UserInterfaceTestCase.html" title="unit.ui.UserInterfaceTestCase" alt="" coords="341,46,539,73"/>
+<area shape="rect" id="node4" href="$classunit_1_1UnitTestCase.html" title="unit.UnitTestCase" alt="" coords="165,46,293,73"/>
 </map>

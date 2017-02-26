@@ -1,0 +1,8 @@
+<map id="unit.kernel.models.kernel.GetVariableProvidersView" name="unit.kernel.models.kernel.GetVariableProvidersView">
+<area shape="rect" id="node2" href="$classunit_1_1kernel_1_1models_1_1kernel_1_1KernelTestCase.html" title="unit.kernel.models.kernel.\lKernelTestCase" alt="" coords="223,351,393,392"/>
+<area shape="rect" id="node3" href="$classunit_1_1kernel_1_1models_1_1ModelsTestCase.html" title="unit.kernel.models.Models\lTestCase" alt="" coords="31,247,206,288"/>
+<area shape="rect" id="node4" href="$classunit_1_1kernel_1_1KernelTestCase.html" title="unit.kernel.KernelTestCase" alt="" coords="29,171,209,197"/>
+<area shape="rect" id="node5" href="$classunit_1_1UnitTestCase.html" title="unit.UnitTestCase" alt="" coords="55,95,183,121"/>
+<area shape="rect" id="node8" href="$interfacekernel_1_1serial__ports_1_1PortDriver.html" title="kernel.serial_ports.Port\lDriver" alt="" coords="230,247,386,288"/>
+<area shape="rect" id="node9" href="$interfacekernel_1_1Kernel.html" title="kernel.Kernel" alt="" coords="411,254,509,281"/>
+</map>

@@ -1,4 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$interfacekernel_1_1serial__ports_1_1comm__port__wrapper_1_1PortIdentifierGetter.html" title="kernel.serial_ports.comm\l_port_wrapper.PortIdentifierGetter" alt="" coords="5,5,224,47"/>
-<area shape="rect" id="node2" href="$classkernel_1_1serial__ports_1_1comm__port__wrapper_1_1JavaCommsAPIWrapper.html" title="kernel.serial_ports.comm\l_port_wrapper.JavaCommsAPIWrapper" alt="" coords="272,5,525,47"/>
+<area shape="rect" id="node1" href="$interfacekernel_1_1KernelFactory.html" title="kernel.KernelFactory" alt="" coords="5,13,148,39"/>
+<area shape="rect" id="node2" href="$classkernel_1_1ApplicationKernelFactory.html" title="kernel.ApplicationKernel\lFactory" alt="" coords="196,5,359,47"/>
 </map>

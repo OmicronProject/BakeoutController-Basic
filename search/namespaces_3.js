@@ -13,12 +13,14 @@ var searchData=
   ['kernel',['kernel',['../namespaceunit_1_1kernel_1_1models_1_1kernel.html',1,'unit::kernel::models']]],
   ['main',['main',['../namespaceunit_1_1main.html',1,'unit']]],
   ['modals',['modals',['../namespaceunit_1_1ui_1_1controllers_1_1modals.html',1,'unit::ui::controllers']]],
-  ['modals',['modals',['../namespaceui_1_1controllers_1_1modals.html',1,'ui::controllers']]],
   ['modbus',['modbus',['../namespaceunit_1_1kernel_1_1modbus.html',1,'unit::kernel']]],
   ['modbus_5fconnection_5fmanager',['modbus_connection_manager',['../namespaceunit_1_1kernel_1_1modbus_1_1modbus__connection__manager.html',1,'unit::kernel::modbus']]],
   ['models',['models',['../namespaceunit_1_1kernel_1_1models.html',1,'unit::kernel']]],
+  ['pressure_5fdata_5fpoint',['pressure_data_point',['../namespaceunit_1_1kernel_1_1models_1_1variables_1_1pressure__data__point.html',1,'unit::kernel::models::variables']]],
+  ['pressure_5fprovider',['pressure_provider',['../namespaceunit_1_1kernel_1_1models_1_1variables_1_1pressure__provider.html',1,'unit::kernel::models::variables']]],
   ['pvci_5fpressure_5fgauge',['pvci_pressure_gauge',['../namespaceunit_1_1devices_1_1pvci__pressure__gauge.html',1,'unit::devices']]],
   ['pvci_5fpressure_5fgauge_5ffactory',['pvci_pressure_gauge_factory',['../namespaceunit_1_1kernel_1_1models_1_1pvci__pressure__gauge__factory.html',1,'unit::kernel::models']]],
+  ['results_5fcontroller',['results_controller',['../namespaceunit_1_1ui_1_1controllers_1_1results__controller.html',1,'unit::ui::controllers']]],
   ['rxtx_5fport_5fconfiguration',['rxtx_port_configuration',['../namespaceunit_1_1kernel_1_1serial__ports_1_1rxtx__port__configuration.html',1,'unit::kernel::serial_ports']]],
   ['rxtx_5fport_5fdriver',['rxtx_port_driver',['../namespaceunit_1_1kernel_1_1serial__ports_1_1rxtx__port__driver.html',1,'unit::kernel::serial_ports']]],
   ['sequence_5fcontroller',['sequence_controller',['../namespaceunit_1_1ui_1_1controllers_1_1sequence__controller.html',1,'unit::ui::controllers']]],
@@ -29,5 +31,8 @@ var searchData=
   ['ui',['ui',['../namespaceui.html',1,'']]],
   ['unit',['unit',['../namespaceunit.html',1,'']]],
   ['user_5finterface_5fconfiguration',['user_interface_configuration',['../namespaceunit_1_1ui_1_1user__interface__configuration.html',1,'unit::ui']]],
-  ['user_5finterface_5flauncher',['user_interface_launcher',['../namespaceunit_1_1ui_1_1user__interface__launcher.html',1,'unit::ui']]]
+  ['user_5finterface_5flauncher',['user_interface_launcher',['../namespaceunit_1_1ui_1_1user__interface__launcher.html',1,'unit::ui']]],
+  ['variable_5fprovider_5fcontainer',['variable_provider_container',['../namespaceunit_1_1kernel_1_1models_1_1variable__provider__container.html',1,'unit::kernel::models']]],
+  ['variables',['variables',['../namespaceunit_1_1kernel_1_1models_1_1variables.html',1,'unit::kernel::models']]],
+  ['voltage_5fprovider',['voltage_provider',['../namespaceunit_1_1kernel_1_1models_1_1variables_1_1voltage__provider.html',1,'unit::kernel::models::variables']]]
 ];

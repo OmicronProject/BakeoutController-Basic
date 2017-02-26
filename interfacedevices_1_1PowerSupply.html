@@ -123,6 +123,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a8634b4c427419fdeca080074081a609d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0be25003510ca65188b80a659875a8ca"><td class="memItemLeft" align="right" valign="top">Double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacedevices_1_1PowerSupply.html#a0be25003510ca65188b80a659875a8ca">getVoltage</a> ()  throws IOException</td></tr>
 <tr class="separator:a0be25003510ca65188b80a659875a8ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac81ed0ef75867a5a21ece455072c4a13"><td class="memItemLeft" align="right" valign="top">Double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacedevices_1_1PowerSupply.html#ac81ed0ef75867a5a21ece455072c4a13">getMeasuredVoltage</a> ()  throws IOException</td></tr>
+<tr class="separator:ac81ed0ef75867a5a21ece455072c4a13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7fe21b60fffe9b5d59253ad1448a1862"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacedevices_1_1PowerSupply.html#a7fe21b60fffe9b5d59253ad1448a1862">setVoltage</a> (double newVoltage)  throws IOException</td></tr>
 <tr class="separator:a7fe21b60fffe9b5d59253ad1448a1862"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ff5deb17409ad3ffab0e1585356a032"><td class="memItemLeft" align="right" valign="top">Double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacedevices_1_1PowerSupply.html#a2ff5deb17409ad3ffab0e1585356a032">getCurrent</a> ()  throws IOException</td></tr>
@@ -158,6 +160,9 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a7253e7b452608f0bab46de45838080c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac81741283ffa5044bd96971945d28561"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacedevices_1_1PowerSupply.html#ac81741283ffa5044bd96971945d28561">ON</a> = &quot;1&quot;</td></tr>
 <tr class="separator:ac81741283ffa5044bd96971945d28561"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a510619668d79a604c6fea85ef28d80"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4a510619668d79a604c6fea85ef28d80"></a>
+String&#160;</td><td class="memItemRight" valign="bottom"><b>GET_MEASURED_VOLTAGE_COMMAND</b> = &quot;MV?\r&quot;</td></tr>
+<tr class="separator:a4a510619668d79a604c6fea85ef28d80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Describes all methods that the power supply implements </p>
@@ -203,6 +208,30 @@ Public Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The address that this device is mapped to </dd></dl>
 
 <p>Implemented in <a class="el" href="classdevices_1_1TDKLambdaPowerSupply.html#a9e1479a4d8061cd9b05e528ff6097c41">devices.TDKLambdaPowerSupply</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac81ed0ef75867a5a21ece455072c4a13"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Double devices.PowerSupply.getMeasuredVoltage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> throws IOException</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The measured voltage </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">IOException</td><td>If the value cannot be retrieved </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classdevices_1_1TDKLambdaPowerSupply.html#a1f5f5eab8431d1833766545b2c97f2f4">devices.TDKLambdaPowerSupply</a>.</p>
 
 </div>
 </div>

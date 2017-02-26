@@ -101,18 +101,101 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aabc3470d3ee4cf26b96061b339df9d61"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aabc3470d3ee4cf26b96061b339df9d61"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>initialize</b> ()</td></tr>
+<tr class="memitem:aabc3470d3ee4cf26b96061b339df9d61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classui_1_1controllers_1_1DeviceSetupController.html#aabc3470d3ee4cf26b96061b339df9d61">initialize</a> ()</td></tr>
 <tr class="separator:aabc3470d3ee4cf26b96061b339df9d61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b1a2fc5ecbf285afa264db5ca094307"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2b1a2fc5ecbf285afa264db5ca094307"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>handleGoButtonClicked</b> ()</td></tr>
+<tr class="memitem:a2b1a2fc5ecbf285afa264db5ca094307"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classui_1_1controllers_1_1DeviceSetupController.html#a2b1a2fc5ecbf285afa264db5ca094307">handleGoButtonClicked</a> ()</td></tr>
 <tr class="separator:a2b1a2fc5ecbf285afa264db5ca094307"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2022b61bde0b73dd8ca92af2cfa283c7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interfacekernel_1_1Kernel.html">Kernel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classui_1_1controllers_1_1DeviceSetupController.html#a2022b61bde0b73dd8ca92af2cfa283c7">getKernel</a> ()</td></tr>
+<tr class="separator:a2022b61bde0b73dd8ca92af2cfa283c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3725cf8e26abd5183bcc2b150110f6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classui_1_1controllers_1_1DeviceSetupController.html#af3725cf8e26abd5183bcc2b150110f6f">setKernel</a> (<a class="el" href="interfacekernel_1_1Kernel.html">Kernel</a> kernel)</td></tr>
+<tr class="separator:af3725cf8e26abd5183bcc2b150110f6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Controls the device setup </p>
+<div class="textblock"><p>Controls the panel for the device setup tab. This panel is where a user associates each required device with a port. </p>
 
-<p>Definition at line <a class="el" href="DeviceSetupController_8java_source.html#l00027">27</a> of file <a class="el" href="DeviceSetupController_8java_source.html">DeviceSetupController.java</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<p>Definition at line <a class="el" href="DeviceSetupController_8java_source.html#l00028">28</a> of file <a class="el" href="DeviceSetupController_8java_source.html">DeviceSetupController.java</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a2022b61bde0b73dd8ca92af2cfa283c7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="interfacekernel_1_1Kernel.html">Kernel</a> ui.controllers.DeviceSetupController.getKernel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The kernel to which this controller is attached </dd></dl>
+
+<p>Definition at line <a class="el" href="DeviceSetupController_8java_source.html#l00076">76</a> of file <a class="el" href="DeviceSetupController_8java_source.html">DeviceSetupController.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                             {</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="namespacekernel.html">kernel</a>;</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div><div class="ttc" id="namespacekernel_html"><div class="ttname"><a href="namespacekernel.html">kernel</a></div><div class="ttdef"><b>Definition:</b> <a href="ApplicationKernelFactory_8java_source.html#l00001">ApplicationKernelFactory.java:1</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a2b1a2fc5ecbf285afa264db5ca094307"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ui.controllers.DeviceSetupController.handleGoButtonClicked </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Describes what happens when the user clicks the go button. Set up the devices. </p>
+
+<p>Definition at line <a class="el" href="DeviceSetupController_8java_source.html#l00068">68</a> of file <a class="el" href="DeviceSetupController_8java_source.html">DeviceSetupController.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                             {</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        configurePowerSupply();</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        configurePressureGauge();</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div></div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="aabc3470d3ee4cf26b96061b339df9d61"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ui.controllers.DeviceSetupController.initialize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Start the port selector </p>
+
+<p>Definition at line <a class="el" href="DeviceSetupController_8java_source.html#l00060">60</a> of file <a class="el" href="DeviceSetupController_8java_source.html">DeviceSetupController.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                                  {</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        initializePortList();</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div></div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="af3725cf8e26abd5183bcc2b150110f6f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ui.controllers.DeviceSetupController.setKernel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="interfacekernel_1_1Kernel.html">Kernel</a>&#160;</td>
+          <td class="paramname"><em>kernel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kernel</td><td>The kernel to which this controller is to be attached </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="DeviceSetupController_8java_source.html#l00083">83</a> of file <a class="el" href="DeviceSetupController_8java_source.html">DeviceSetupController.java</a>.</p>
+<div class="fragment"><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                                        {</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        this.<a class="code" href="namespacekernel.html">kernel</a> = <a class="code" href="namespacekernel.html">kernel</a>;</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div><div class="ttc" id="namespacekernel_html"><div class="ttname"><a href="namespacekernel.html">kernel</a></div><div class="ttdef"><b>Definition:</b> <a href="ApplicationKernelFactory_8java_source.html#l00001">ApplicationKernelFactory.java:1</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="DeviceSetupController_8java_source.html">DeviceSetupController.java</a></li>
 </ul>
 </div><!-- contents -->
