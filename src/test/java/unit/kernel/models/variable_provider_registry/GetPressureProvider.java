@@ -1,6 +1,6 @@
 package unit.kernel.models.variable_provider_registry;
 
-import kernel.models.VariableProviderRegistry;
+import kernel.models.VariableProviderContainer;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Contains unit tests for
- * {@link VariableProviderRegistry#getPressureProvider()}
+ * {@link VariableProviderContainer#getPressureProvider()}
  */
 public final class GetPressureProvider extends
         VariableProviderRegistryTestCase {

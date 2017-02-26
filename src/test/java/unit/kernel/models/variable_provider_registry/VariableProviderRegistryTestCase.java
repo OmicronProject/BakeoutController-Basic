@@ -1,22 +1,22 @@
 package unit.kernel.models.variable_provider_registry;
 
-import kernel.models.VariableProviderRegistry;
+import kernel.models.VariableProviderContainer;
 import kernel.views.variables.Pressure;
 import kernel.views.variables.VariableProvider;
 import org.junit.Before;
 import unit.kernel.models.ModelsTestCase;
 
 /**
- * Base class for unit tests {@link kernel.models.VariableProviderRegistry}
+ * Base class for unit tests {@link VariableProviderContainer}
  */
 public abstract class VariableProviderRegistryTestCase extends ModelsTestCase {
-    protected VariableProviderRegistry providerRegistry;
+    protected VariableProviderContainer providerRegistry;
 
     protected VariableProvider<Pressure> mockPressureProvider;
 
     @Before
     public void setProviderRegistry(){
-        providerRegistry = new VariableProviderRegistry();
+        providerRegistry = new VariableProviderContainer();
     }
 
     @Before

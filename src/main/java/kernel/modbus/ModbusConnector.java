@@ -4,13 +4,13 @@ import com.ghgande.j2mod.modbus.io.ModbusTransaction;
 import com.ghgande.j2mod.modbus.msg.ModbusMessage;
 import com.ghgande.j2mod.modbus.msg.ModbusRequest;
 import exceptions.WrappedModbusException;
-
 import java.io.IOException;
 
 /**
- * Contains methods for working with modbus
+ * Contains methods for working with MODBUS over RS232
  */
 public interface ModbusConnector {
+
     /**
      * @return The current desired port configuration
      */
@@ -53,6 +53,16 @@ public interface ModbusConnector {
     Float parseFloatFromResponse(ModbusMessage response) throws
             ClassCastException, IOException;
 
+    /**
+     * Take a {@link com.ghgande.j2mod.modbus.msg.ModbusResponse}, retrieve
+     * a string from its data package, and return the string
+     * @param response The response from which a string is to be parsed
+     * @return The response
+     * @throws ClassCastException If the argument of type
+     * {@link ModbusMessage} cannot be cast to a
+     * {@link com.ghgande.j2mod.modbus.msg.ModbusResponse}
+     * @throws IOException If a string cannot be retrieved from the response
+     */
     String parseStringFromResponse(ModbusMessage response) throws
             ClassCastException, IOException;
 

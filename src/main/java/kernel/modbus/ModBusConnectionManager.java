@@ -1,6 +1,5 @@
 package kernel.modbus;
 
-
 import com.ghgande.j2mod.modbus.io.ModbusSerialTransaction;
 import com.ghgande.j2mod.modbus.io.ModbusTransaction;
 import com.ghgande.j2mod.modbus.msg.ModbusMessage;
@@ -11,9 +10,13 @@ import exceptions.WrappedModbusException;
 import org.jetbrains.annotations.Contract;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.*;
-
+import java.io.DataInput;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.DataOutput;
 
 /**
  * Manages connections to an RS232 port using MODBUS
@@ -65,8 +68,9 @@ public class ModBusConnectionManager implements ModbusConnector {
     }
 
     /**
-     * @return True if the port is open, otherwise false. If the connection
-     * is null, it is assumed that the connection is not open.
+     * @return {@link Boolean#TRUE} if the port is open, otherwise
+     * {@link Boolean#FALSE}. If the connection is null,
+     * it is assumed that the connection is not open.
      */
     @Override
     public Boolean isPortOpen(){
@@ -151,6 +155,16 @@ public class ModBusConnectionManager implements ModbusConnector {
 
     }
 
+    /**
+     * Retrieve a string from the data package of the retrieved response
+     * @param response The response from which a string must be retrieved
+     * @return The string from the data package of the response
+     * @throws ClassCastException If the {@link ModbusMessage} cannot be
+     * cast to a {@link ModbusResponse}. This cast is required so that the
+     * method {@link ModbusResponse#writeData(DataOutput)} can be used to
+     * extract the response data package
+     * @throws IOException if a string cannot be parsed from the response
+     */
     @Override
     public String parseStringFromResponse(ModbusMessage response) throws
             ClassCastException, IOException {
@@ -238,8 +252,30 @@ public class ModBusConnectionManager implements ModbusConnector {
         Runtime.getRuntime().removeShutdownHook(portShutdownThread);
     }
 
+    /**
+     * Perform a series of operations on the response data package in order
+     * to extract some meaningful response out of it. These manipulations
+     * are required due to the idiosyncracies of the PVCi IGC3 pressure
+     * gauge, and not due to the MODBUS protocol itself.
+     *
+     * The first byte of the response data package contains an unsigned
+     * short which states the number of bytes in the response. Remove this
+     * byte from the response.
+     *
+     * The byte order of the message is also reversed, in that the byte in
+     * which the mantissa of a float is to be located is transmitted first,
+     * as opposed to being transmitted last. Reverse the byte order of the
+     * bytes that remain in the stream
+     *
+     * @implNote Thank God it's only the byte orded and not the endianness
+     * of the data that I need to worry about. The data is big endian, but
+     * the bytes of the response are not loaded in the correct order.
+     *
+     * @param inputBytes The bytes to process
+     * @return A processed byte array
+     */
     @Contract(pure = true)
-    private byte[] processByteArray(byte[] inputBytes){
+    private static byte[] processByteArray(byte[] inputBytes){
         byte[] outputBytes = new byte[inputBytes.length - 1];
 
         for (int index = 0; index < outputBytes.length; index++){

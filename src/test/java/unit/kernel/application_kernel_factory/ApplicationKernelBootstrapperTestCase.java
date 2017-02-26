@@ -3,7 +3,6 @@ package unit.kernel.application_kernel_factory;
 import exceptions.UnableToCreateKernelException;
 import kernel.ApplicationKernelFactory;
 import kernel.KernelFactory;
-import kernel.controllers.VoltageController;
 import kernel.models.Kernel;
 import kernel.serial_ports.PortDriver;
 import kernel.views.VoltageReporter;
@@ -18,14 +17,12 @@ import static org.junit.Assert.fail;
 public abstract class ApplicationKernelBootstrapperTestCase
         extends KernelTestCase {
     protected VoltageReporter mockVoltageReporter;
-    protected VoltageController mockVoltageController;
     protected PortDriver mockPortDriver;
     protected KernelFactory applicationKernelBootstrapper;
 
     @Before
     public void setUp(){
         setupMockVoltageReporter();
-        setupMockVoltageController();
         setupMockPortDriver();
         setupBootstrapper();
     }
@@ -41,10 +38,6 @@ public abstract class ApplicationKernelBootstrapperTestCase
 
     private void setupMockVoltageReporter(){
         mockVoltageReporter = context.mock(VoltageReporter.class);
-    }
-
-    private void setupMockVoltageController(){
-        mockVoltageController = context.mock(VoltageController.class);
     }
 
     private void setupMockPortDriver(){

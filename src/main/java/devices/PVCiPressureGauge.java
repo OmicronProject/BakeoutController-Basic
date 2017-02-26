@@ -39,14 +39,23 @@ public class PVCiPressureGauge implements PressureGauge {
      * Therefore, two words must be read from the device, starting at the
      * register address.
      */
-    private static final Integer gaugePressureWordsTorRead = 2;
+    private static final Integer gaugePressureWordsToRead = 2;
 
+    /**
+     * The address of the register at which the unit ID is located. The Unit
+     * ID is a string labelled "IGC3". This string is used as a check to
+     * determine if the pressure gauge is alive and accepting commands.
+     */
     private static final Integer unitIDAddress = 0;
 
+    /**
+     * The number of words used to store the unit ID.
+     */
     private static final Integer unitIDNumberofWords = 2;
     
     /**
-     * The device address
+     * The device address. This is an integer from 1 to 99 that specifies a
+     * unique device on the network.
      */
     private final Integer address;
 
@@ -56,6 +65,8 @@ public class PVCiPressureGauge implements PressureGauge {
     private final ModbusConnector connection;
 
     /**
+     * Instantiate a pressure gauge, and check that it is alive.
+     *
      * @param address The device address, numbered from 1 to 99. MODBUS
      *                requests are sent to the device with this address.
      * @param connection The connection manager to use.
@@ -91,7 +102,7 @@ public class PVCiPressureGauge implements PressureGauge {
         log.debug("Method to get pressure was called");
 
         ModbusRequest pressureRequest = getReadRegisterRequest(
-                gaugePressureAddress, gaugePressureWordsTorRead
+                gaugePressureAddress, gaugePressureWordsToRead
         );
         ModbusTransaction transaction = connection.getTransactionForRequest(
                 pressureRequest);
@@ -131,6 +142,15 @@ public class PVCiPressureGauge implements PressureGauge {
         return request;
     }
 
+    /**
+     * Check that the unit ID returns a successful message
+     *
+     * @throws WrappedModbusException If getting a transaction for the
+     * Modbus request fails
+     * @throws ModbusException If executing the transaction fails
+     * @throws IOException If the transaction results cannot be parsed as a
+     * string
+     */
     private void checkUnitID() throws WrappedModbusException,
             ModbusException, IOException {
         ModbusRequest request = getReadRegisterRequest(

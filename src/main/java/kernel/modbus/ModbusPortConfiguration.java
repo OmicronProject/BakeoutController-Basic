@@ -9,10 +9,23 @@ import kernel.serial_ports.PortConfiguration;
  */
 public interface ModbusPortConfiguration extends PortConfiguration {
 
+    /**
+     * Represents a serial encoding where data is transmitted in ASCII
+     * characters.
+     */
     String ASCII_ENCODING = Modbus.SERIAL_ENCODING_ASCII;
 
+    /**
+     * Short for "Remote Terminal Unit," this encoding represents the data
+     * encoding used by the PVCi IGC3 gauge, where data is sent in binary
+     * with a 16-bit cyclic redundancy check (CRC) placed after the message
+     */
     String RTU_ENCODING = Modbus.SERIAL_ENCODING_RTU;
 
+    /**
+     * The desired baud rate. Currently, the baud rate for the PVCi gauge is
+     * set to the recommended rate of 19200 bits per second.
+     */
     int BAUD_RATE_19200 = 19200;
 
     /**

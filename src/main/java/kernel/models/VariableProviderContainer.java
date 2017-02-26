@@ -7,8 +7,8 @@ import kernel.views.variables.Voltage;
 /**
  * Responsible for storing variable providers
  */
-public class VariableProviderRegistry implements
-        CombinedVariableProviderRegistry {
+public class VariableProviderContainer implements
+        CombinedVariableProviderContainer {
     private VariableProvider<Pressure> pressureVariableProvider;
 
     private VariableProvider<Voltage> voltageVariableProvider;

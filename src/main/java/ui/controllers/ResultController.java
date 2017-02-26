@@ -1,6 +1,6 @@
 package ui.controllers;
 
-import exceptions.NonNegativeDurationException;
+import exceptions.NegativeDurationException;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -114,7 +114,7 @@ public class ResultController implements Executor {
 
         try {
             provider.setPollingInterval(voltagePollingInterval);
-        } catch (NonNegativeDurationException error){
+        } catch (NegativeDurationException error){
             error.printStackTrace();
         }
 
@@ -130,7 +130,7 @@ public class ResultController implements Executor {
 
         try {
             provider.setPollingInterval(pressurePollingInterval);
-        } catch (NonNegativeDurationException error){
+        } catch (NegativeDurationException error){
             error.printStackTrace();
         }
 

@@ -14,6 +14,7 @@ import org.jetbrains.annotations.Contract;
  * similar to Spring's IOC containers.
  */
 public final class DeviceRegistry implements CombinedDeviceRegistry {
+
     /**
      * The power supply to share
      */

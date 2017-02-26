@@ -1,6 +1,6 @@
 package kernel.views.variables;
 
-import exceptions.NonNegativeDurationException;
+import exceptions.NegativeDurationException;
 
 import java.time.Duration;
 import java.util.List;
@@ -25,7 +25,7 @@ public interface VariableProvider<T extends Variable> {
     Duration getPollingInterval();
 
     void setPollingInterval(Duration pollingInterval) throws
-            NonNegativeDurationException ;
+            NegativeDurationException;
 
     void addOnChangeListener(VariableChangeEventListener<T> listener);
 

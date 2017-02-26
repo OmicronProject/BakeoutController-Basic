@@ -6,7 +6,7 @@ import com.ghgande.j2mod.modbus.msg.*;
 import devices.PressureGauge;
 import kernel.controllers.DeviceRegistry;
 import kernel.controllers.TaskRunner;
-import kernel.controllers.variables.VariableProviderRegistry;
+import kernel.controllers.variables.VariableProviderContainer;
 import kernel.modbus.ModbusPortConfiguration;
 import kernel.models.PVCiPressureGaugeFactory;
 import kernel.views.variables.VariableProvider;
@@ -34,8 +34,8 @@ public final class GetPressureGaugeNotInRegistry extends
 
     private ModbusTransaction mockTransaction = new MockTransaction();
 
-    private VariableProviderRegistry mockVariableRegistry = context.mock(
-            VariableProviderRegistry.class
+    private VariableProviderContainer mockVariableRegistry = context.mock(
+            VariableProviderContainer.class
     );
 
     private TaskRunner mockTaskRunner = context.mock(
