@@ -2,7 +2,7 @@ package unit.kernel.models.variables.voltage_provider;
 
 import com.pholser.junit.quickcheck.Property;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
-import exceptions.NonNegativeDurationException;
+import exceptions.NegativeDurationException;
 import org.jetbrains.annotations.Contract;
 import org.junit.Assume;
 import org.junit.Rule;
@@ -41,7 +41,7 @@ public final class QuickcheckProperties extends VoltageProviderTestCase {
 
         try {
             provider.setPollingInterval(pollingInterval);
-        } catch (NonNegativeDurationException error){
+        } catch (NegativeDurationException error){
             fail();
         }
 
@@ -50,10 +50,10 @@ public final class QuickcheckProperties extends VoltageProviderTestCase {
 
     @Property
     public void pollingIntervalLessThanZero(Duration pollingInterval) throws
-            NonNegativeDurationException {
+            NegativeDurationException {
         Assume.assumeTrue(pollingInterval.isNegative());
 
-        thrown.expect(NonNegativeDurationException.class);
+        thrown.expect(NegativeDurationException.class);
         provider.setPollingInterval(pollingInterval);
     }
 }

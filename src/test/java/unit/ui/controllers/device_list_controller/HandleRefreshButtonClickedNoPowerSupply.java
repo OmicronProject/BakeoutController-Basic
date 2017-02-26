@@ -2,7 +2,7 @@ package unit.ui.controllers.device_list_controller;
 
 import devices.PowerSupply;
 import javafx.scene.text.Text;
-import kernel.views.DeviceRegistry;
+import kernel.views.DeviceContainer;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.junit.Before;
@@ -38,15 +38,15 @@ public final class HandleRefreshButtonClickedNoPowerSupply extends
 
     private class ExpectationsForPowerSupply extends Expectations {
         public ExpectationsForPowerSupply() {
-            oneOf(applicationContext.getBean(DeviceRegistry.class))
+            oneOf(applicationContext.getBean(DeviceContainer.class))
                     .hasPowerSupply();
             will(returnValue(Boolean.TRUE));
 
-            oneOf(applicationContext.getBean(DeviceRegistry.class))
+            oneOf(applicationContext.getBean(DeviceContainer.class))
                     .getPowerSupply();
             will(returnValue(applicationContext.getBean(PowerSupply.class)));
 
-            oneOf(applicationContext.getBean(DeviceRegistry.class))
+            oneOf(applicationContext.getBean(DeviceContainer.class))
                     .hasPressureGauge();
             will(returnValue(Boolean.FALSE));
         }

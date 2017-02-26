@@ -2,6 +2,7 @@ package kernel;
 
 import kernel.controllers.*;
 import kernel.controllers.DeviceRegistry;
+import kernel.controllers.variables.VariableProviderContainer;
 import kernel.modbus.ModbusConnector;
 import kernel.serial_ports.PortDriver;
 import kernel.views.*;
@@ -17,7 +18,7 @@ public interface Kernel {
 
     PortDriver getPortDriver();
 
-    kernel.views.DeviceRegistry getDeviceRegistryView();
+    DeviceContainer getDeviceRegistryView();
 
     DeviceRegistry getDeviceRegistryController();
 
@@ -27,9 +28,9 @@ public interface Kernel {
 
     PVCiPressureGaugeFactory getPressureGaugeFactory();
 
-    kernel.views.VariableProviderRegistry getVariableProvidersView();
+    kernel.views.VariableProviderContainer getVariableProvidersView();
 
-    kernel.controllers.variables.VariableProviderRegistry
+    VariableProviderContainer
     getVariableProvidersController();
 
     TaskRunner getTaskRunner();

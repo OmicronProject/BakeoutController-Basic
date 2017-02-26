@@ -150,6 +150,13 @@ public class RXTXPortDriver implements PortDriver {
         return portNames;
     }
 
+    /**
+     * Write a log entry indicating that a {@link CommPortIdentifier} was
+     * identified as a {@link gnu.io.SerialPort}
+     *
+     * @param identifier The identifier for which the log entry is to be
+     *                   written
+     */
     private void writeLogEntryForSerialPort(CommPortIdentifier identifier){
         log.info(
                 "Port identifier {} has been detected as a serial port",

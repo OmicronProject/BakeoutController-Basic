@@ -1,7 +1,7 @@
 package kernel.views.variables;
 
 /**
- * Created by mkononen on 16/02/17.
+ * Marker interface for the pressure variable.
  */
 public interface Pressure extends Variable<Float> {
 }

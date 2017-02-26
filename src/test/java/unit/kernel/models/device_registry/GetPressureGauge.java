@@ -1,6 +1,6 @@
 package unit.kernel.models.device_registry;
 
-import kernel.models.DeviceRegistry;
+import kernel.models.DeviceContainer;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Contains unit tests for {@link DeviceRegistry#getPressureGauge()}
+ * Contains unit tests for {@link DeviceContainer#getPressureGauge()}
  */
 public final class GetPressureGauge extends DeviceRegistryTestCase {
     @Before

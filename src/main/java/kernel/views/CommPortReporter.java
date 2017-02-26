@@ -11,5 +11,10 @@ public interface CommPortReporter {
      */
     List<String> getSerialPortNames();
 
+    /**
+     * @param portName The name of the port for which the check is to be made
+     * @return {@link Boolean#TRUE} if the port is in use, otherwise
+     * {@link Boolean#FALSE}
+     */
     Boolean isPortInUse(String portName);
 }

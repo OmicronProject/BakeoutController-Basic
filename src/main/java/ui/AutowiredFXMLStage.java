@@ -67,6 +67,10 @@ public class AutowiredFXMLStage extends Stage implements FXMLStage {
         this.fxmlLoader = loader;
     }
 
+    /**
+     * Remove the root element and the location of the FXML resource to be
+     * loaded, allowing loading of a different resource.
+     */
     private void resetLoader(){
         this.fxmlLoader.setRoot(null);
         this.fxmlLoader.setLocation(null);

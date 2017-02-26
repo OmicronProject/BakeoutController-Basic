@@ -8,6 +8,7 @@ import kernel.serial_ports.PortDriver;
  * a singleton factory.
  */
 public interface KernelFactory {
+
     /**
      * @param newPortDriver The new {@link PortDriver} to be used. The
      *                      purpose of the {@link PortDriver} is to manage

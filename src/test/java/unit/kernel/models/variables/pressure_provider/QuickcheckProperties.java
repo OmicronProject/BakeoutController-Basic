@@ -2,7 +2,7 @@ package unit.kernel.models.variables.pressure_provider;
 
 import com.pholser.junit.quickcheck.Property;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
-import exceptions.NonNegativeDurationException;
+import exceptions.NegativeDurationException;
 import org.jetbrains.annotations.Contract;
 import org.junit.runner.RunWith;
 
@@ -37,7 +37,7 @@ public final class QuickcheckProperties extends PressureProviderTestCase {
 
         try {
             provider.setPollingInterval(pollingInterval);
-        } catch (NonNegativeDurationException error){
+        } catch (NegativeDurationException error){
             fail();
         }
 

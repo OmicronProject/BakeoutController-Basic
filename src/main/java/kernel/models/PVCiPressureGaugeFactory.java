@@ -7,6 +7,7 @@ import kernel.modbus.ModbusConnector;
 import kernel.modbus.ModbusPortConfiguration;
 import kernel.modbus.StandaloneModbusPortConfiguration;
 import kernel.models.variables.PressureProvider;
+import kernel.views.DeviceContainer;
 import kernel.views.variables.Pressure;
 import kernel.views.variables.VariableProvider;
 import org.jetbrains.annotations.Contract;
@@ -104,7 +105,7 @@ public class PVCiPressureGaugeFactory implements
      */
     @Override
     public PressureGauge getPressureGauge() throws IOException {
-        kernel.views.DeviceRegistry registry = kernel.getDeviceRegistryView();
+        DeviceContainer registry = kernel.getDeviceRegistryView();
 
         if(!registry.hasPressureGauge()){
             writeEntryforNoGauge();
@@ -185,7 +186,7 @@ public class PVCiPressureGaugeFactory implements
 
     /**
      * Write an entry indicating that no pressure gauge was found in the
-     * {@link DeviceRegistry}, and that a new instance is being created.
+     * {@link kernel.models.DeviceContainer}, and that a new instance is being created.
      */
     private static void writeEntryforNoGauge(){
         log.debug("No pressure gauge found. Creating a new one.");

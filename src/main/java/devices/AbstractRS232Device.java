@@ -5,16 +5,22 @@ import kernel.serial_ports.PortCommunicator;
 import java.io.*;
 
 /**
- * Base class for all devices using an RS232 serial port
+ * Base class for all devices using an RS232 serial port through RXTX. This
+ * class defines a read and write method for writing to a serial port
  */
 abstract class AbstractRS232Device implements RS232Device {
+    /**
+     * A POJO capable of retrieving an input and output stream for the port
+     */
     private final PortCommunicator portCommunicator;
 
     /**
+     * Instantiate a device
+     *
      * @param portCommunicator Something capable of retrieving an
-     * {@link InputStream} and an {@link OutputStream}
+     * {@link InputStream} and an {@link OutputStream} for the RS232 port
      */
-    public AbstractRS232Device(PortCommunicator portCommunicator){
+    protected AbstractRS232Device(PortCommunicator portCommunicator){
         this.portCommunicator = portCommunicator;
     }
     
@@ -35,7 +41,7 @@ abstract class AbstractRS232Device implements RS232Device {
 
     /**
      * @param commandToWrite The command to write
-     * @throws IOException if a valid command cannot be written to the port
+     * @throws IOException if a command cannot be written to the port
      */
     protected void write(String commandToWrite) throws IOException {
         OutputStream outputStream = this.portCommunicator.getOutputStream();

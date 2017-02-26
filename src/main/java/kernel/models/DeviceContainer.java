@@ -13,7 +13,8 @@ import org.jetbrains.annotations.Contract;
  * to generalize this out to multiple types with generics, with something
  * similar to Spring's IOC containers.
  */
-public final class DeviceRegistry implements CombinedDeviceRegistry {
+public final class DeviceContainer implements CombinedDeviceContainer {
+
     /**
      * The power supply to share
      */

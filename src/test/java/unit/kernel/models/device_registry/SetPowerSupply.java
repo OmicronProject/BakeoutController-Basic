@@ -1,6 +1,7 @@
 package unit.kernel.models.device_registry;
 
 import devices.PowerSupply;
+import kernel.models.DeviceContainer;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -8,7 +9,7 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * Contains unit tests for
- * {@link kernel.models.DeviceRegistry#setPowerSupply(PowerSupply)}
+ * {@link DeviceContainer#setPowerSupply(PowerSupply)}
  */
 public final class SetPowerSupply extends DeviceRegistryTestCase {
     @Test

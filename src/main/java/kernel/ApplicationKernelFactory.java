@@ -3,6 +3,7 @@ package kernel;
 import exceptions.UnableToCreateKernelException;
 import kernel.models.Kernel;
 import kernel.serial_ports.PortDriver;
+import org.jetbrains.annotations.Contract;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,7 +42,8 @@ public final class ApplicationKernelFactory implements KernelFactory {
     /**
      * @param newPortDriver The port driver to use in the Kernel
      */
-    @Override public void setPortDriver(PortDriver newPortDriver){
+    @Override
+    public void setPortDriver(PortDriver newPortDriver){
         log.debug("Setting port driver to {}", newPortDriver.toString());
 
         this.portDriver = newPortDriver;
@@ -56,7 +58,8 @@ public final class ApplicationKernelFactory implements KernelFactory {
      * @return The kernel
      * @throws UnableToCreateKernelException If the kernel cannot be created
      */
-    @Override public kernel.Kernel getKernelInstance() throws
+    @Override
+    public kernel.Kernel getKernelInstance() throws
             UnableToCreateKernelException {
         if (!canKernelBeStarted()){
             throw new UnableToCreateKernelException("Cannot create kernel. " +
@@ -71,7 +74,9 @@ public final class ApplicationKernelFactory implements KernelFactory {
     /**
      * @return True if the kernel can be started, otherwise false
      */
-    @Override public Boolean canKernelBeStarted(){
+    @Contract(pure = true)
+    @Override
+    public Boolean canKernelBeStarted(){
         if (!hasPortDriver){
             return Boolean.FALSE;
         } else {

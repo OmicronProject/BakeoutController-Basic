@@ -1,5 +1,7 @@
 package kernel.serial_ports.comm_port_wrapper;
 
+import gnu.io.CommPortIdentifier;
+
 import java.util.Enumeration;
 
 /**
@@ -8,5 +10,11 @@ import java.util.Enumeration;
  * effective unit testing.
  */
 public interface PortIdentifierGetter {
+
+    /**
+     * @return An {@link Enumeration} of {@link gnu.io.CommPortIdentifier}
+     * available for communication to this application. This is the same
+     * form as returned by {@link CommPortIdentifier#getPortIdentifiers()}
+     */
     Enumeration getPortIdentifiers();
 }

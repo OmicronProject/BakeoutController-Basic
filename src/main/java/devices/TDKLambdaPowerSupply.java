@@ -22,13 +22,16 @@ public class TDKLambdaPowerSupply extends AbstractRS232Device
     private static final Lock portCommunicatorLock = new ReentrantLock();
 
     /**
-     * The device address
+     * The application log for this class
      */
-    private final int deviceAddress;
-
     private static final Logger log = LoggerFactory.getLogger(
             TDKLambdaPowerSupply.class
     );
+
+    /**
+     * The device address
+     */
+    private final int deviceAddress;
 
     /**
      *

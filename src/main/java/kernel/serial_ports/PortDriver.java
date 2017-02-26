@@ -6,6 +6,7 @@ import java.util.List;
  * Lists serial ports, and allows for serial ports to be opened
  */
 public interface PortDriver {
+
     /**
      * @return The name of serial ports available to this machine
      */

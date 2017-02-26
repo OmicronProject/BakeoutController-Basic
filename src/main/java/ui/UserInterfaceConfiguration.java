@@ -5,7 +5,6 @@ import org.springframework.context.annotation.*;
 import ui.controllers.DeviceListController;
 import ui.controllers.DeviceSetupController;
 import ui.controllers.ResultController;
-import ui.controllers.modals.NewStepController;
 import ui.controllers.SequenceController;
 
 /**
@@ -48,22 +47,22 @@ public class UserInterfaceConfiguration {
         return new ContextAwareFXMLLoader();
     }
 
+    /**
+     * @return The controller for the device setup panel
+     */
     @Bean
     @Scope("prototype")
     public DeviceSetupController deviceSetupController(){
         return new DeviceSetupController();
     }
 
+    /**
+     * @return The controller for the sequence panel
+     */
     @Bean
     @Scope("prototype")
     public SequenceController sequenceController(){
         return new SequenceController();
-    }
-
-    @Bean
-    @Scope("prototype")
-    public NewStepController newStepController(){
-        return new NewStepController();
     }
 
     @Bean

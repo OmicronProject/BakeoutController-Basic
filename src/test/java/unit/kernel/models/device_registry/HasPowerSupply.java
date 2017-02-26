@@ -1,13 +1,13 @@
 package unit.kernel.models.device_registry;
 
-import kernel.models.DeviceRegistry;
+import kernel.models.DeviceContainer;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Contains unit tests for {@link DeviceRegistry#hasPowerSupply()}
+ * Contains unit tests for {@link DeviceContainer#hasPowerSupply()}
  */
 public final class HasPowerSupply extends DeviceRegistryTestCase {
     @Test

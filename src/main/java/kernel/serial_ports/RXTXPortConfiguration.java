@@ -4,6 +4,7 @@ package kernel.serial_ports;
  * Data structure to hold configuration parameters for a given Serial Port
  */
 public final class RXTXPortConfiguration implements PortConfiguration {
+
     /**
      * The data transfer rate in bits per second
      */
