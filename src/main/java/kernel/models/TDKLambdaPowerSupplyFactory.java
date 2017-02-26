@@ -8,7 +8,7 @@ import gnu.io.UnsupportedCommOperationException;
 import kernel.models.variables.VoltageProvider;
 import kernel.serial_ports.PortConfiguration;
 import kernel.serial_ports.SerialPort;
-import kernel.views.DeviceRegistry;
+import kernel.views.DeviceContainer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,7 +79,7 @@ public class TDKLambdaPowerSupplyFactory implements kernel.controllers.TDKLambda
             IOException, UnsupportedCommOperationException,
             DeviceAlreadyCreatedException {
 
-        kernel.views.DeviceRegistry registry = kernel.getDeviceRegistryView();
+        DeviceContainer registry = kernel.getDeviceRegistryView();
 
         if (!registry.hasPowerSupply()){
             makePowerSupply();
@@ -129,7 +129,7 @@ public class TDKLambdaPowerSupplyFactory implements kernel.controllers.TDKLambda
 
     private void assertPowerSupplyDoesNotExist() throws
             DeviceAlreadyCreatedException {
-        DeviceRegistry registry = kernel.getDeviceRegistryView();
+        DeviceContainer registry = kernel.getDeviceRegistryView();
         if (registry.hasPowerSupply()){
             throw new DeviceAlreadyCreatedException(
                     "A power supply has already been made"

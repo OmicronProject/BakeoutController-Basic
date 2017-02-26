@@ -1,7 +1,8 @@
 package kernel.views.variables;
 
 /**
- * Created by mkononen on 23/02/17.
+ * Marker interface for a {@link VariableProvider} that provides a
+ * {@link Voltage}
  */
 public interface VoltageProvider extends VariableProvider<Voltage> {
 }

@@ -18,7 +18,7 @@ public interface Kernel {
 
     PortDriver getPortDriver();
 
-    kernel.views.DeviceRegistry getDeviceRegistryView();
+    DeviceContainer getDeviceRegistryView();
 
     DeviceRegistry getDeviceRegistryController();
 
@@ -28,7 +28,7 @@ public interface Kernel {
 
     PVCiPressureGaugeFactory getPressureGaugeFactory();
 
-    kernel.views.VariableProviderRegistry getVariableProvidersView();
+    kernel.views.VariableProviderContainer getVariableProvidersView();
 
     VariableProviderContainer
     getVariableProvidersController();

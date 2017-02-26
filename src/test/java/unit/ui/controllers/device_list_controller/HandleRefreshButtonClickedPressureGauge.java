@@ -2,7 +2,7 @@ package unit.ui.controllers.device_list_controller;
 
 import devices.PressureGauge;
 import javafx.scene.text.Text;
-import kernel.views.DeviceRegistry;
+import kernel.views.DeviceContainer;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.junit.Before;
@@ -44,8 +44,8 @@ public class HandleRefreshButtonClickedPressureGauge extends
 
     private class ExpectationsForTest extends Expectations {
 
-        private final DeviceRegistry registry = applicationContext.getBean(
-                DeviceRegistry.class
+        private final DeviceContainer registry = applicationContext.getBean(
+                DeviceContainer.class
         );
 
         private final PressureGauge gauge = applicationContext.getBean

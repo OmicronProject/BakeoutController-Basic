@@ -2,15 +2,15 @@ package unit.kernel.models.device_registry;
 
 import devices.PowerSupply;
 import devices.PressureGauge;
-import kernel.models.DeviceRegistry;
+import kernel.models.DeviceContainer;
 import org.junit.Before;
 import unit.kernel.models.ModelsTestCase;
 
 /**
- * Base class for unit tests of {@link DeviceRegistry}
+ * Base class for unit tests of {@link DeviceContainer}
  */
 public abstract class DeviceRegistryTestCase extends ModelsTestCase {
-    protected DeviceRegistry deviceRegistry;
+    protected DeviceContainer deviceRegistry;
     protected PowerSupply mockPowerSupply;
     protected PressureGauge mockPressureGauge;
 
@@ -26,6 +26,6 @@ public abstract class DeviceRegistryTestCase extends ModelsTestCase {
 
     @Before
     public void setDeviceRegistry(){
-        deviceRegistry = new DeviceRegistry();
+        deviceRegistry = new DeviceContainer();
     }
 }

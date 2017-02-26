@@ -11,6 +11,7 @@ import ui.UserInterfaceLauncher;
  * The main runner for the application
  */
 public final class Main {
+
     /**
      * The application log
      */
@@ -24,12 +25,15 @@ public final class Main {
                     ApplicationConfiguration.class
             );
 
+    /**
+     * The main entry point for the application. Boot the kernel and the UI
+     *
+     * @param args The arguments with which the application jar was opened
+     */
     public static void main(String[] args){
         log.info("Started Logger");
         UserInterfaceLauncher launcher =
-                new JavaFXGraphicalUserInterfaceLauncher(
-                        context
-                );
+                new JavaFXGraphicalUserInterfaceLauncher(context);
         launcher.launchWithDefaultStage(args);
     }
 }

@@ -2,11 +2,11 @@ package kernel.controllers;
 
 import devices.PowerSupply;
 import devices.PressureGauge;
-import devices.RS232Device;
+import kernel.models.DeviceContainer;
 
 /**
  * Controller to modify values in the kernel's
- * {@link kernel.models.DeviceRegistry}. This is a singleton in which
+ * {@link DeviceContainer}. This is a singleton in which
  * representations of connected devices are held.
  */
 public interface DeviceRegistry {

@@ -8,6 +8,7 @@ import kernel.modbus.ModbusConnector;
 import kernel.serial_ports.PortDriver;
 import kernel.serial_ports.SerialPort;
 import kernel.views.CommPortReporter;
+import kernel.views.DeviceContainer;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -35,7 +36,7 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
     /**
      * The container that holds devices
      */
-    private DeviceRegistry deviceRegistry;
+    private kernel.models.DeviceContainer deviceRegistry;
 
     /**
      * The container for variable providers
@@ -67,7 +68,7 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
      */
     public Kernel(PortDriver portDriver){
         this.portDriver = portDriver;
-        this.deviceRegistry = new DeviceRegistry();
+        this.deviceRegistry = new kernel.models.DeviceContainer();
         createTDKLambdaPowerSupplyFactory();
 
         log.info("Started kernel {}", this.toString());
@@ -116,7 +117,7 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
 
     /**
      * @return a {@link kernel.controllers.DeviceRegistry} used for adding
-     * or updating which devices are in the {@link DeviceRegistry}
+     * or updating which devices are in the {@link kernel.models.DeviceContainer}
      */
     @Contract(pure = true)
     @Override
@@ -125,12 +126,12 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
     }
 
     /**
-     * @return a {@link kernel.views.DeviceRegistry} used for looking up
+     * @return a {@link DeviceContainer} used for looking up
      * devices that have been created
      */
     @Contract(pure = true)
     @Override
-    public kernel.views.DeviceRegistry getDeviceRegistryView(){
+    public DeviceContainer getDeviceRegistryView(){
         return this.deviceRegistry;
     }
 
@@ -168,7 +169,7 @@ public final class Kernel implements kernel.Kernel, CommPortReporter {
      */
     @Contract(pure = true)
     @Override
-    public kernel.views.VariableProviderRegistry getVariableProvidersView(){
+    public kernel.views.VariableProviderContainer getVariableProvidersView(){
         return this.variableProviders;
     }
 

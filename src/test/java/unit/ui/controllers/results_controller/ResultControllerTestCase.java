@@ -1,6 +1,6 @@
 package unit.ui.controllers.results_controller;
 
-import kernel.views.VariableProviderRegistry;
+import kernel.views.VariableProviderContainer;
 import kernel.views.variables.VoltageProvider;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
@@ -39,7 +39,7 @@ public abstract class ResultControllerTestCase extends ControllersTestCase {
 
     private class ExpectationsForTest extends Expectations {
         public ExpectationsForTest(){
-            allowing(applicationContext.getBean(VariableProviderRegistry.class)
+            allowing(applicationContext.getBean(VariableProviderContainer.class)
             ).getVoltageProvider();
             will(returnValue(mockVoltageProvider));
         }

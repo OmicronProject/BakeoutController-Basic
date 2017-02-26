@@ -290,6 +290,7 @@ public final class RXTXPortWrapper implements SerialPort, PortCommunicator,
      * the port is cleaned up should the application be instructed to exit.
      */
     private final class PortShutdown extends Thread {
+
         /**
          * The thread's log
          */

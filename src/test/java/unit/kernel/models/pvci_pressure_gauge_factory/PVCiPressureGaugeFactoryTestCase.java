@@ -3,7 +3,7 @@ package unit.kernel.models.pvci_pressure_gauge_factory;
 import kernel.Kernel;
 import kernel.controllers.PVCiPressureGaugeFactory;
 import kernel.modbus.ModbusConnector;
-import kernel.views.DeviceRegistry;
+import kernel.views.DeviceContainer;
 import org.junit.Before;
 import unit.kernel.models.ModelsTestCase;
 
@@ -15,8 +15,8 @@ public abstract class PVCiPressureGaugeFactoryTestCase extends ModelsTestCase {
 
     protected PVCiPressureGaugeFactory factory;
 
-    protected DeviceRegistry mockRegistry = context.mock(
-            DeviceRegistry.class
+    protected DeviceContainer mockRegistry = context.mock(
+            DeviceContainer.class
     );
 
     protected ModbusConnector mockConnector = context.mock(

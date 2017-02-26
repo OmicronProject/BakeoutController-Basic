@@ -21,34 +21,58 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Controls the device setup
+ * Controls the panel for the device setup tab. This panel is where a user
+ * associates each required device with a port.
  */
 @Controller
 public class DeviceSetupController {
 
-    private static final Logger log = LoggerFactory.getLogger
-            (DeviceSetupController.class);
+    /**
+     * The log for the controller
+     */
+    private static final Logger log = LoggerFactory.getLogger(
+            DeviceSetupController.class);
 
-    @Autowired
-    private Kernel kernel;
+    /**
+     * The kernel to which this controller is attached
+     */
+    @Autowired private Kernel kernel;
 
+    /**
+     * A drop-down menu in which the port for the power supply is selected
+     */
     @FXML private ComboBox<String> tdkPortSelector;
 
+    /**
+     * A drop-down menu in which the port for the pressure gauge can be
+     * selected
+     */
     @FXML private ComboBox<String> pvciPortSelector;
 
+    /**
+     * A field in which the status of device setup is reported
+     */
     @FXML private Text statusReportField;
 
-    @FXML
-    public void initialize(){
+    /**
+     * Start the port selector
+     */
+    @FXML public void initialize(){
         initializePortList();
     }
 
-    @FXML
-    public void handleGoButtonClicked(){
+    /**
+     * Describes what happens when the user clicks the go button. Set up the
+     * devices.
+     */
+    @FXML public void handleGoButtonClicked(){
         configurePowerSupply();
         configurePressureGauge();
     }
 
+    /**
+     * Select and populate the drop-down menus for active ports.
+     */
     private void initializePortList(){
         ObservableList<String> portsInBox = tdkPortSelector.getItems();
         ObservableList<String> portsInPVCiSelector = pvciPortSelector
@@ -65,6 +89,9 @@ public class DeviceSetupController {
         pvciPortSelector.getSelectionModel().select(0);
     }
 
+    /**
+     * Set up the power supply.
+     */
     private void configurePowerSupply(){
         String portName = tdkPortSelector.getSelectionModel().getSelectedItem();
 
@@ -84,6 +111,9 @@ public class DeviceSetupController {
         }
     }
 
+    /**
+     * write a message indicating that an {@link IOException } was thrown.
+     */
     private void handleIOException(){
         writeErrorMessage(
                 "Port was opened, but unable to establish device I/O",
@@ -91,6 +121,10 @@ public class DeviceSetupController {
         );
     }
 
+    /**
+     * If an {@link UnsupportedCommOperationException } was thrown, inform
+     * the user that this exception occured.
+     */
     private void handleUnsupportedCommException(){
         writeErrorMessage(
                 "Unable to set parameters to establish serial port " +
@@ -99,6 +133,9 @@ public class DeviceSetupController {
         );
     }
 
+    /**
+     * Write a message indicating that a {@link PortInUseException} was thrown.
+     */
     private void handlePortInUseException(){
         writeErrorMessage(
                 "Unable to acquire port. Port is already in use.",
@@ -106,12 +143,24 @@ public class DeviceSetupController {
         );
     }
 
+    /**
+     * Write an error message to the
+     * {@link DeviceSetupController#statusReportField}
+     * @param text The message to write
+     * @param fieldId A unique ID for the message, used in unit testing to
+     *                determine whether the message was written
+     */
     private void writeErrorMessage(String text, String fieldId){
         statusReportField.setText(text);
         statusReportField.setFill(Color.RED);
         statusReportField.setId(fieldId);
     }
 
+    /**
+     * If the power supply was already created, a
+     * {@link DeviceAlreadyCreatedException} will be thrown. This method
+     * informs the user that this error was thrown.
+     */
     private void handleDeviceAlreadyCreatedException(){
         statusReportField.setText(
                 "Attempted to create power supply twice"
@@ -121,6 +170,9 @@ public class DeviceSetupController {
         );
     }
 
+    /**
+     * Set up the PVCi pressure gauge
+     */
     private void configurePressureGauge(){
         String portName = pvciPortSelector.getSelectionModel()
                 .getSelectedItem();
@@ -137,6 +189,11 @@ public class DeviceSetupController {
         }
     }
 
+    /**
+     * If the PVCi pressure gauge was not created, an {@link IOException}
+     * will be thrown. This method handles the error
+     * @param error The error thrown
+     */
     private void handlePVCiIOException(Throwable error){
         log.error("Setup thew exception", error);
         writeErrorMessage(

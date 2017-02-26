@@ -3,10 +3,10 @@ package unit.ui;
 import devices.PowerSupply;
 import kernel.Kernel;
 import kernel.controllers.PVCiPressureGaugeFactory;
-import kernel.views.DeviceRegistry;
+import kernel.views.DeviceContainer;
 import kernel.controllers.TDKLambdaPowerSupplyFactory;
 import kernel.views.CommPortReporter;
-import kernel.views.VariableProviderRegistry;
+import kernel.views.VariableProviderContainer;
 import kernel.views.variables.*;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
@@ -43,9 +43,9 @@ public class TestingConfiguration {
      */
     private volatile List<String> portList;
 
-    private volatile DeviceRegistry mockDeviceRegistryView;
+    private volatile DeviceContainer mockDeviceContainerView;
 
-    private volatile VariableProviderRegistry mockVariableProviderRegistry;
+    private volatile VariableProviderContainer mockVariableProviderContainer;
 
     private volatile MockVoltageProvider mockVoltageProvider =
             new MockVoltageProvider();
@@ -96,24 +96,24 @@ public class TestingConfiguration {
 
     @Bean
     @Scope("singleton")
-    public DeviceRegistry deviceRegistryView(){
-        if(mockDeviceRegistryView == null){
-            mockDeviceRegistryView = mockingContext().mock(
-                    DeviceRegistry.class
+    public DeviceContainer deviceRegistryView(){
+        if(mockDeviceContainerView == null){
+            mockDeviceContainerView = mockingContext().mock(
+                    DeviceContainer.class
             );
         }
-        return mockDeviceRegistryView;
+        return mockDeviceContainerView;
     }
 
     @Bean
     @Scope("singleton")
-    public VariableProviderRegistry variableProviderRegistry(){
-        if (mockVariableProviderRegistry == null){
-            mockVariableProviderRegistry = mockingContext().mock(
-                    VariableProviderRegistry.class
+    public VariableProviderContainer variableProviderRegistry(){
+        if (mockVariableProviderContainer == null){
+            mockVariableProviderContainer = mockingContext().mock(
+                    VariableProviderContainer.class
             );
         }
-        return mockVariableProviderRegistry;
+        return mockVariableProviderContainer;
     }
 
     @Bean
