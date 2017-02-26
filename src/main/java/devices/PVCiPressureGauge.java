@@ -25,8 +25,8 @@ public class PVCiPressureGauge implements PressureGauge {
      * The application log to which entries about application state are to
      * be written
      */
-    private static final Logger log = LoggerFactory.getLogger
-            (PVCiPressureGauge.class);
+    private static final Logger log = LoggerFactory.getLogger(
+            PVCiPressureGauge.class);
 
     /**
      * The address (0x9A in hexadecimal) where pressure information is stored

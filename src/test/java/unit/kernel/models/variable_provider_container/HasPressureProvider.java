@@ -1,4 +1,4 @@
-package unit.kernel.models.variable_provider_registry;
+package unit.kernel.models.variable_provider_container;
 
 import kernel.models.VariableProviderContainer;
 import org.junit.Test;
@@ -11,7 +11,7 @@ import static org.junit.Assert.assertTrue;
  * {@link VariableProviderContainer#hasPressureProvider()}
  */
 public final class HasPressureProvider extends
-        VariableProviderRegistryTestCase {
+        VariableProviderContainerTestCase {
     @Test
     public void hasPressureProviderFalse(){
         providerRegistry.setPressureProvider(null);
