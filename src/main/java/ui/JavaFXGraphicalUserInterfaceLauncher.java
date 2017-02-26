@@ -44,6 +44,12 @@ public class JavaFXGraphicalUserInterfaceLauncher extends Application
         userInterface.application().show();
     }
 
+    /**
+     *
+     * @param commandLineArguments The command line arguments with which the
+     *                             application
+     *                             ({@link main.Main#main(String[])}) was
+     */
     @Override
     public void launchWithDefaultStage(String[] commandLineArguments){
         launch(this.getClass(), commandLineArguments);

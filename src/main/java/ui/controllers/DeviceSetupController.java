@@ -71,6 +71,20 @@ public class DeviceSetupController {
     }
 
     /**
+     * @return The kernel to which this controller is attached
+     */
+    public Kernel getKernel(){
+        return kernel;
+    }
+
+    /**
+     * @param kernel The kernel to which this controller is to be attached
+     */
+    public void setKernel(Kernel kernel){
+        this.kernel = kernel;
+    }
+
+    /**
      * Select and populate the drop-down menus for active ports.
      */
     private void initializePortList(){

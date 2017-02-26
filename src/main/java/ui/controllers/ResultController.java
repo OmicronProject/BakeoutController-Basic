@@ -45,22 +45,41 @@ public class ResultController implements Executor {
     private static final Duration voltagePollingInterval =
             Duration.ofMillis(1000);
 
-    /**
-     * The application kernel
-     */
-    @Autowired
-    private Kernel kernel;
+    private static final Integer maximumNumberOfDataPointsInCharts = 30;
 
+    /**
+     * The kernel to which this controller is attached
+     */
+    @Autowired private Kernel kernel;
+
+    /**
+     * The field to which the pressure from the PVCi pressure gauge is written
+     */
     @FXML private volatile Text reportedPressure;
 
+    /**
+     * The field to which the voltage is written
+     */
     @FXML private volatile Text reportedVoltage;
 
+    /**
+     * The chart where the pressure is written
+     */
     @FXML private LineChart<String, Float> pressureChart;
 
+    /**
+     * The chart where the voltage is written
+     */
     @FXML private LineChart<String, Float> voltageChart;
 
+    /**
+     * The data series to which pressure data is written
+     */
     private XYChart.Series<String, Float> pressureSeries;
 
+    /**
+     * The data series to which the voltage is written
+     */
     private XYChart.Series<String, Float> voltageSeries;
 
     /**
@@ -137,6 +156,9 @@ public class ResultController implements Executor {
         provider.addOnChangeListener(new PressureChangeHandler(this));
     }
 
+    /**
+     * Set up the voltage series
+     */
     private void configureVoltageSeries(){
         voltageSeries = new XYChart.Series<>();
         voltageSeries.setName("Voltage / V");
@@ -144,6 +166,9 @@ public class ResultController implements Executor {
         voltageChart.getData().add(voltageSeries);
     }
 
+    /**
+     * Set up the pressure series
+     */
     private void configurePressureSeries(){
         pressureSeries = new XYChart.Series<>();
         pressureSeries.setName("Pressure / mBar");
@@ -151,14 +176,30 @@ public class ResultController implements Executor {
         pressureChart.getData().add(pressureSeries);
     }
 
+    /**
+     * Recieves a change event from the {@link VoltageProvider}, and carries
+     * out the required updates to synchronize the UI with this change
+     */
     private class VoltageChangeHandler implements
             VariableChangeEventListener<Voltage> {
+
+        /**
+         * The executor in which the change handler is running. This
+         * executor must be able to run tasks on the JavaFX UI thread.
+         */
         private Executor taskExecutor;
 
+        /**
+         * @param taskExecutor The task runner in which the change handler
+         *                     will run
+         */
         public VoltageChangeHandler(Executor taskExecutor){
             this.taskExecutor = taskExecutor;
         }
 
+        /**
+         * @param newVoltage The new value of the voltage
+         */
         @Override
         public void onChange(Voltage newVoltage){
             if (voltageChart.isVisible() && reportedVoltage.isVisible()) {
@@ -168,14 +209,28 @@ public class ResultController implements Executor {
         }
     }
 
+    /**
+     * Handles changes to the pressure
+     */
     private class PressureChangeHandler implements
             VariableChangeEventListener<Pressure> {
+
+        /**
+         * The task executor for the JavaFX UI thread
+         */
         private Executor taskExecutor;
 
+        /**
+         * @param taskExecutor The executor for the JavaFX thread
+         */
         public PressureChangeHandler(Executor taskExecutor){
             this.taskExecutor = taskExecutor;
         }
 
+        /**
+         * Handles the change event
+         * @param newPressure The new value of the pressure
+         */
         @Override
         public void onChange(Pressure newPressure){
             if (pressureChart.isVisible() && reportedPressure.isVisible()) {
@@ -185,14 +240,26 @@ public class ResultController implements Executor {
         }
     }
 
-
+    /**
+     * Handles changes to the pressure on the JavaFX thread
+     */
     private class UpdatePressureTask extends Task<Void> {
+        /**
+         * The new value of the pressure
+         */
         private Pressure newPressure;
 
+        /**
+         * @param newPressure The new pressure
+         */
         public UpdatePressureTask(Pressure newPressure){
             this.newPressure = newPressure;
         }
 
+        /**
+         * Update the pressure text field and write the value to the chart
+         * @return null
+         */
         @Override
         public Void call(){
             updatePressureText();
@@ -200,10 +267,18 @@ public class ResultController implements Executor {
             return null;
         }
 
+        /**
+         * Sets the text to the new pressure
+         */
         private void updatePressureText(){
             reportedPressure.setText(newPressure.getValue().toString());
         }
 
+        /**
+         * Update the chart
+         * @throws DateTimeException If the date cannot be formatted to the
+         * required format string
+         */
         private void updatePressureChart() throws DateTimeException {
             String xValue = getDateFromPressure();
             Float yValue = newPressure.getValue();
@@ -214,6 +289,11 @@ public class ResultController implements Executor {
             ResultController.checkSeriesSizeCorrect(pressureSeries);
         }
 
+        /**
+         * @return The date string from the date at which the pressure was
+         * recorded
+         * @throws DateTimeException if the date cannot be formatted
+         */
         @NotNull
         private String getDateFromPressure() throws DateTimeException {
             SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
@@ -221,13 +301,26 @@ public class ResultController implements Executor {
         }
     }
 
+    /**
+     * The task to update the voltage, to be executed on the javaFX UI thread
+     */
     private class UpdateVoltageTask extends Task<Void> {
+        /**
+         * The new value of the voltage
+         */
         private Voltage newVoltage;
 
+        /**
+         * @param newVoltage The new voltage value
+         */
         public UpdateVoltageTask(Voltage newVoltage){
             this.newVoltage = newVoltage;
         }
 
+        /**
+         * Update the text and chart for the new voltage
+         * @return null
+         */
         @Override
         public Void call(){
             updateVoltageText();
@@ -235,10 +328,16 @@ public class ResultController implements Executor {
             return null;
         }
 
+        /**
+         * Set the place for voltage to be reported to the new value
+         */
         private void updateVoltageText(){
             reportedVoltage.setText(newVoltage.getValue().toString());
         }
 
+        /**
+         * Write the new voltage value to the chart
+         */
         private void updateVoltageChart(){
             String xValue = getDateFromVoltage();
             Float yValue = newVoltage.getValue().floatValue();
@@ -251,15 +350,26 @@ public class ResultController implements Executor {
             ResultController.checkSeriesSizeCorrect(voltageSeries);
         }
 
+        /**
+         * @return The formatted date for the voltage
+         */
+        @NotNull
         private String getDateFromVoltage(){
-            return newVoltage.getDate().toString();
+            SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+            return formatter.format(newVoltage.getDate());
         }
     }
 
+    /**
+     * Check that the data series is not too big. If it is, remove the first
+     * element.
+     *
+     * @param series The data series whose size is to be checked
+     */
     private static void checkSeriesSizeCorrect(XYChart.Series series){
         Integer dataPointNumber = series.getData().size();
 
-        if (dataPointNumber > 30){
+        if (dataPointNumber > maximumNumberOfDataPointsInCharts){
             series.getData().remove(0);
         }
     }
