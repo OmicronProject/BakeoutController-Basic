@@ -3,6 +3,7 @@ package main;
 import kernel.ApplicationKernelFactory;
 import kernel.Kernel;
 import kernel.KernelFactory;
+import kernel.controllers.VoltageSetPointAlgorithm;
 import kernel.serial_ports.PortDriver;
 import kernel.serial_ports.RXTXPortDriver;
 import kernel.serial_ports.comm_port_wrapper.JavaCommsAPIWrapper;
@@ -62,5 +63,10 @@ public class ApplicationConfiguration {
         assert kernelFactory.canKernelBeStarted();
 
         return kernelFactory.getKernelInstance();
+    }
+
+    @Bean
+    public static VoltageSetPointAlgorithm voltageSetPointAlgorithm(){
+        return new kernel.models.VoltageSetPointAlgorithm();
     }
 }
