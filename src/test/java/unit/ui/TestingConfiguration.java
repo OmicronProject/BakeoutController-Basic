@@ -51,8 +51,6 @@ public class TestingConfiguration {
     private volatile MockVoltageProvider mockVoltageProvider =
             new MockVoltageProvider();
 
-    private volatile VoltageSetPointAlgorithm mockAlgorithm;
-
     /**
      * @return The context in which mockery is to take place
      */
@@ -151,8 +149,7 @@ public class TestingConfiguration {
     @Bean
     @Scope("singleton")
     public VoltageSetPointAlgorithm algorithm(){
-        mockAlgorithm = mockingContext().mock(VoltageSetPointAlgorithm.class);
-        return mockAlgorithm;
+        return mockingContext().mock(VoltageSetPointAlgorithm.class);
     }
 
     /**
