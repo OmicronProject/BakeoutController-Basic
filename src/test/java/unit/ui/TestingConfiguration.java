@@ -3,6 +3,7 @@ package unit.ui;
 import devices.PowerSupply;
 import kernel.Kernel;
 import kernel.controllers.PVCiPressureGaugeFactory;
+import kernel.controllers.VoltageSetPointAlgorithm;
 import kernel.views.DeviceContainer;
 import kernel.controllers.TDKLambdaPowerSupplyFactory;
 import kernel.views.CommPortReporter;
@@ -49,6 +50,8 @@ public class TestingConfiguration {
 
     private volatile MockVoltageProvider mockVoltageProvider =
             new MockVoltageProvider();
+
+    private volatile VoltageSetPointAlgorithm mockAlgorithm;
 
     /**
      * @return The context in which mockery is to take place
@@ -143,6 +146,13 @@ public class TestingConfiguration {
         mockKernel = mockingContext().mock(Kernel.class);
         mockingContext().checking(new ExpectationsForKernel());
         return mockKernel;
+    }
+
+    @Bean
+    @Scope("singleton")
+    public VoltageSetPointAlgorithm algorithm(){
+        mockAlgorithm = mockingContext().mock(VoltageSetPointAlgorithm.class);
+        return mockAlgorithm;
     }
 
     /**

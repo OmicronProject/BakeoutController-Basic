@@ -18,7 +18,9 @@ import java.util.Optional;
 public class VoltageSetPointAlgorithm implements kernel.controllers.VoltageSetPointAlgorithm {
     private static final Logger log = LoggerFactory.getLogger
             (VoltageSetPointAlgorithm.class);
+
     private Double desiredVoltage = 28.0;
+
     private Float pressureUpperBound = 1e-9f;
 
     private Integer maximumIterations = 100;

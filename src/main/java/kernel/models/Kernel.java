@@ -1,5 +1,6 @@
 package kernel.models;
 
+import kernel.controllers.*;
 import kernel.controllers.TDKLambdaPowerSupplyFactory;
 import kernel.controllers.TaskRunner;
 import kernel.controllers.variables.VariableProviderContainer;

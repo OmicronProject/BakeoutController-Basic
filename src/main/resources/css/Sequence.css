@@ -7,6 +7,15 @@
     -fx-pref-width: 200px;
 }
 
+.slider {
+    -fx-orientation: vertical;
+}
+
+.parameter-box {
+    -fx-alignment: center;
+    -fx-background-color: #FFFFFF;
+}
+
 .steps-pane {
     -fx-orientation: vertical;
     -fx-pref-tile-height: 40px;
@@ -25,9 +34,14 @@
 }
 
 .form-field {
-    -fx-background-color: #FFFFFF;
+    -fx-spacing: 10px;
 }
 
 .section {
     -fx-font-weight: bold;
+}
+
+.parameter-text-field {
+    -fx-alignment: center;
+    -fx-pref-width: 50px;
 }

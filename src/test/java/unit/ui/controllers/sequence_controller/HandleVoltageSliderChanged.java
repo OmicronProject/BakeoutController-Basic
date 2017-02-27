@@ -8,9 +8,9 @@ import ui.controllers.SequenceController;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Contains unit tests for {@link SequenceController#handleSliderChanged()}
+ * Contains unit tests for {@link SequenceController#handleVoltageSliderChanged()}
  */
-public final class HandleSliderChanged extends SequenceControllerTestCase {
+public final class HandleVoltageSliderChanged extends SequenceControllerTestCase {
     private static final Double desiredVoltage = 10.0;
 
     @Test
